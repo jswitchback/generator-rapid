@@ -9,9 +9,10 @@ module.exports = function(grunt) {
     // grunt.loadNpmTasks('grunt-browser-sync');
 
 
-    //////////////////////////////////
+    ////////////////////////////////////////
     // COMMAND LINE OPTIONS
-    //////////////////////////////////
+    // http://gruntjs.com/api/grunt.option
+    ////////////////////////////////////////
 
     // Accept a command line override to the local machine url ... Browsersync task
     var url = grunt.option('url') || '<%= pkg.name %>';
