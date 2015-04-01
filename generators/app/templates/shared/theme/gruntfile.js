@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         filename: '<%= pkg.name %>',
         banner: '/*!\n' +
-              ' * Responsive Tables v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
+              ' * Custom Theme for <%= pkg.name %>. Generator v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
               ' * <%= pkg.description %>\n' +
               ' * Authors: Joe Maag <jmaag@rapiddg.com>' +
               ' * Licensed under <%= pkg.license.type %> (<%= pkg.license.url %>)\n' +
