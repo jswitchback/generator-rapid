@@ -1,0 +1,149 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+#main,
+#header,
+#subheader,
+#footer,
+.region__bottom {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $viewport-max;
+}
+
+#page {
+  min-width: $viewport-min;
+}
+
+#header,
+#subheader,
+#content,
+.region__sidebar-first,
+.region__sidebar-second,
+#footer {
+  padding-left: ($horiz-gutter/2);
+  padding-right: ($horiz-gutter/2);
+}
+
+.block {
+  margin-bottom: $vert-gutter;
+  margin-top: 0;
+}
+
+/*
+ * Containers for grid items and flow items.
+ */
+
+#header,
+#main,
+.region__highlighted {
+  @include micro-clearfix;
+}
+
+
+/*
+ * The layout when there is only one sidebar, the left one.
+ */
+
+.sidebar-first {
+  @include breakpoint($tablet-small-min $desktop-max) {
+    #content {
+      @include grid-span(16, 9);
+    }
+    .region__sidebar-first {
+      @include grid-span(8, 1);
+    }
+  }
+
+  @include breakpoint($desktop-min) {
+    #content {
+      @include grid-span(18, 7);
+    }
+    .region__sidebar-first {
+      @include grid-span(6, 1);
+    }
+  }
+}
+
+/*
+ * The layout when there is only one sidebar, the right one.
+ */
+
+.sidebar-second {
+  @include breakpoint($tablet-small-min $desktop-max) {
+    #content {
+     @include grid-span(16, 9);
+    }
+    .region__sidebar-second {
+      @include grid-span(8, 1);
+    }
+  }
+
+  @include breakpoint($desktop-min) {
+    #content {
+      @include grid-span(18, 1);
+    }
+    .region__sidebar-second {
+      @include grid-span(6, 19);
+    }
+  }
+}
+
+/*
+ * The layout when there are two sidebars.
+ */
+
+.two-sidebars {
+  @include breakpoint($tablet-small-min $desktop-max) {
+    #content {
+      @include grid-span(16, 9);
+    }
+    .region__sidebar-first {
+      @include grid-span(8, 1);
+    }
+    .region__sidebar-second {
+      @include grid-span(24, 1);
+    }
+  }
+
+  @include breakpoint($desktop-min) {
+    #content {
+      @include grid-span(12, 7);
+    }
+    .region__sidebar-first {
+      @include grid-span(6, 1);
+    }
+    .region__sidebar-second {
+      @include grid-span(6, 19);
+    }
+  }
+}
+
+
+/* Debug wireframes. Toggled at admin/appearance settings.
+   Or, add "html {@include debug-layout;}" all divs will get an outline.
+   ========================================================================== */
+
+
+.with-wireframes {
+  #header,
+  #main,
+  #content,
+  #navigation,
+  .region__sidebar-first,
+  .region__sidebar-second,
+  #footer,
+  .region-bottom {
+    outline: 1px solid #ccc;
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "generator-rapid",
+  "version": "0.0.1",
+  "description": "Yeoman generator",
+  "license": "MIT",
+  "main": "app/index.js",
+  "repository": "jswitchback/generator-rapid",
+  "author": {
+    "name": "Joe",
+    "email": "joe@jitnie.com",
+    "url": "https://github.com/jswitchback"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "files": [
+    "generators"
+  ],
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^0.17.0",
+    "chalk": "^0.5.0",
+    "yosay": "^0.3.0",
+    "underscore.string": "~2.3.3",
+    "execSync": "~1.0.1-pre",
+    "rimraf": "~2.2.0"
+  },
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "peerDependencies": {
+    "yo": ">=1.0.0"
+  }
+}

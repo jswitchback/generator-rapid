@@ -1,0 +1,31 @@
+// Import Sass mixins, variables, Compass modules, etc.
+@import "../_base.scss";
+@import "../_layout.scss";
+@import "../_theme.scss";   
+@import "../_mixins.scss";
+
+
+/* "To top" button. Enabled in theme settings.
+   ========================================================================== */
+
+
+.js #to-top {
+  display: none; 
+}
+
+#to-top {
+  background: $link-color;
+  z-index: 1;
+  @include single-text-shadow(darken($link-color, 20%), 1px, 1px, 0);
+  border-radius: 4px 0 0 4px;
+  color: white;
+}
+
+#to-top {
+  position: fixed;
+  right: 0;
+  bottom: 10px;
+  padding: 1em 1.5em;
+}
+
+ 

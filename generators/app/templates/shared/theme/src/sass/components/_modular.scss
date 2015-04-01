@@ -1,0 +1,107 @@
+/* @partial modular */
+
+
+
+///////////////////////////////////////////////////////////////
+// This file intended for object oriented css. 
+// Like a block style that is reused across all pages or 
+// A teaser listing that's the same across different content 
+// listing (news, events, etc.), shared animations, section dividers,
+// silent classes that can be extended (@extend)
+///////////////////////////////////////////////////////////////
+
+
+
+/////////////////////////////////////////
+// SILENT CLASSES (@extend %CLASSNAME)
+
+
+
+%divider-top {
+	padding-top: $vert-gutter;
+	border-top: 1px solid $horizontal-rule-border;
+}
+
+%divider-bottom {
+	padding-bottom: $vert-gutter;
+	border-bottom: 1px solid $horizontal-rule-border;
+}
+
+
+
+/////////////////////////////////////////
+// ANIMATION 
+
+
+
+%animated {
+  -webkit-animation-duration: .15s;
+  animation-duration: .15s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+%fade-in-down {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+%fade-in-up {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+
+@-webkit-keyframes fadeInUp {
+  0% {
+    @include transparent;
+    @include transform(translateY(20px));
+  }
+
+  100% {
+    @include opaque;
+    @include transform(translateY(0));
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    @include transparent;
+    @include transform(translateY(20px));
+  }
+
+  100% {
+    @include opaque;
+    @include transform(translateY(0));
+  }
+}
+
+
+/* Mobile Main Menu */
+@-webkit-keyframes fadeInDown {
+  0% {
+    @include transparent;
+    @include transform(translateY(-20px));
+  }
+
+  100% {
+    @include opaque;
+    @include transform(translateY(0));
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    @include transparent;
+    @include transform(translateY(-20px));
+  }
+
+  100% {
+    @include opaque;
+    @include transform(translateY(0));
+  }
+}

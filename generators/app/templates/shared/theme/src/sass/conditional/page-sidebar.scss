@@ -1,0 +1,89 @@
+// Import Sass mixins, variables, Compass modules, etc.
+@import "../_base.scss";
+@import "../_layout.scss";
+@import "../_theme.scss";   
+@import "../_mixins.scss";
+
+
+/* Off-Canvas Sidebar (body.has-page-sidebar)
+   ========================================================================== */
+
+body {
+   background-color: black;
+   background-size:8px 8px;
+}
+
+#page {
+   @include box-shadow(black 0 0 12px);
+   background-color: white;
+}
+
+
+$page-sidebar-width: 280px;
+
+/* Behavior
+   ========================================================================== */
+
+#page {
+   width: 100%;
+}
+
+#page:before {
+   content: " ";
+   height: 100%;
+   left: -100%;
+   position: absolute;
+   top: 0;
+   width: 100%;
+   z-index: -1;
+}
+
+#page-sidebar, #page {
+   display: block;
+   position: relative;
+   @include transition(all 0.25s ease-in-out);
+   width: 100%;
+
+}
+
+#page-sidebar {
+   @include micro-clearfix;
+   @include transparent;
+   @include transition(all 0.5s ease-in-out);
+   position: absolute;
+   right: 0;
+   top: 0;
+   width: $page-sidebar-width;
+   overflow-y: scroll;
+   height: 100%;
+   float: none;
+   z-index: 0;
+   -webkit-backface-visibility: hidden;
+   .region {
+      padding: 20px;
+   }
+}
+
+// Push sidebar below admin navigation
+.admin-menu #page-sidebar {
+   top: 20px;
+}
+
+#page {
+   position: relative;
+   z-index: 1;
+   overflow: hidden;
+}
+
+.show-page-sidebar #page-sidebar {
+   @include opaque;
+}
+
+.show-page-sidebar #page {
+   @include transform(translateX(-$page-sidebar-width));
+}
+
+/* Legacy browser fallback */
+.no-csstransforms .show-page-sidebar #page {
+   left: -$page-sidebar-width;
+}

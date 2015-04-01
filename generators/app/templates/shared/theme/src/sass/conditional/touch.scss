@@ -1,0 +1,31 @@
+
+
+/* Touch specific styles
+   ========================================================================== */
+
+// 1.)
+// To make your site feel faster, you need to make your buttons respond immediately to a user's touch 
+// and give that user a great visual indication that something is happening.
+// This still leaves a 300ms standard delay. Can be removed on elements using js:
+// http://developers.google.com/mobile/articles/fast_buttons
+// http://github.com/ftlabs/fastclick
+
+// document.addEventListener("touchstart", function(){}, true)
+
+// Then, you'll want to use CSS to add active states to our buttons and remove the tap highlight:
+// -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+// 2.)
+// For IE10, you can use -ms-touch-action: none to disable double-tap-to-zoom on certain elements (like links and buttons) as described in this
+// MSDN blog post : http://blogs.msdn.com/b/askie/archive/2013/01/06/how-to-implement-the-ms-touch-action-none-property-to-disable-double-tap-zoom-on-touch-devices.aspx
+// You'll then have no 300ms tap delay on those elements, without needing javascritpt libraries like FastClick.
+// https://github.com/ftlabs/fastclick
+
+
+// Be sure to add :active stats when removing tap highlighting
+a, input, button {
+    -ms-touch-action: none !important; // 1
+    -webkit-tap-highlight-color: rgba(0,0,0,0); // 2
+}
+
+

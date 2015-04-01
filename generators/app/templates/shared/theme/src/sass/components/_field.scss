@@ -1,0 +1,15 @@
+/* @partial _field.scss */
+
+.field__label {
+  font-weight: bold;
+}
+.field--label-inline {
+  .field__label,
+  .field__items {
+    float: left; /* LTR */
+  }
+}
+
+.field {
+  margin-bottom: ($vert-gutter/2);
+}

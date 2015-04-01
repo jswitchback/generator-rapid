@@ -1,0 +1,88 @@
+/* LAYOUT */
+
+/*#page {
+    float: left;
+    width: 66.6666%;
+}
+
+#sidebar {
+    float: left;
+    width: 33.3333%;
+    margin-right: -100%;
+}*/
+
+/* Theme */
+
+html {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    color: #537293;
+    line-height: 1.5;
+}
+
+h1,h2,h3,h4 {
+    color: #233d57;
+    margin: 48px 0;
+}
+
+h1 {
+  margin: 48px 0;
+}
+
+h2 {
+  margin: 36px 0;
+}
+
+h3 {
+  margin: 24px 0;
+}
+
+h4 {
+  margin: 24px 0;
+}
+
+code {
+    background: #f1f1f1;
+    padding: 4px;
+}
+
+pre {
+    padding: 12px;
+    margin: 32px 0;
+    background: #f1f1f1;
+}
+
+a {
+    color: #233d57;
+}
+
+a:hover {
+    color: #233d57;
+}
+
+.code-error {
+    background-color: #ffdce6;
+}
+
+.postscript {
+  padding-left: 24px;
+  border-left: 1px solid #d1d1d1;
+}
+
+.postscript .label {
+  font-size: .915em;
+}
+
+.label {
+  display: inline-block;
+}
+
+.label--error {
+  background-color: #ffdce6;
+  padding: 4px 8px;
+}
+
+.label--solution {
+  background-color: #e3ffdc;
+  padding: 4px 8px;
+}
+

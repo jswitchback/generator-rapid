@@ -1,0 +1,118 @@
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  @include box-sizing(border-box);
+}
+
+#main,
+#header,
+#footer,
+#page-title,
+.region__bottom {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $viewport-max;
+}
+
+#header,
+#content,
+.region__sidebar-first,
+.region__sidebar-second,
+#footer {
+  padding-left: $horiz-gutter/2;
+  padding-right: $horiz-gutter/2;
+}
+
+.block {
+  margin-bottom: $vert-gutter;
+  margin-top: 0;
+}
+
+/*
+ * Containers for grid items and flow items.
+ */
+
+#header,
+#main,
+.region__highlighted,
+.page__title,
+.region__footer .region__inner {
+  @include micro-clearfix;
+}
+
+
+/**
+ * The layout when there is only one sidebar, the left one.
+ */
+.sidebar-first {
+
+  #content {
+    @include grid-span(16, 9);
+  }
+
+  .region__sidebar-first {
+    @include grid-span(8, 1);
+  }
+}
+
+/**
+ * The layout when there is only one sidebar, the right one.
+ */
+.sidebar-second {
+
+  #content {
+    @include grid-span(16, 1);
+  }
+
+  .region__sidebar-second {
+    @include grid-span(8, 17);
+  }
+}
+
+/**
+ * The layout when there are two sidebars.
+ */
+.two-sidebars {
+
+  #content {
+    @include grid-span(12, 7);
+  }
+
+  .region__sidebar-first {
+    @include grid-span(6, 1);
+  }
+
+  .region__sidebar-second {
+    @include grid-span(6, 19);
+  }
+}
+
+
+/* Debug wireframes. Toggled at admin/appearance settings.
+   ========================================================================== */
+
+.with-wireframes {
+  #header,
+  #main,
+  #content,
+  #navigation,
+  .region__sidebar-first,
+  .region__sidebar-second,
+  #footer,
+  .region__bottom {
+    outline: 1px solid #ccc;
+  }
+}

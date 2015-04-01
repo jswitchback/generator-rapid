@@ -1,0 +1,13 @@
+.js #to-top {
+  display: none;
+}
+
+#to-top {
+  z-index: 1;
+}
+
+#to-top {
+  position: fixed;
+  right: 0;
+  bottom: 10px;
+}

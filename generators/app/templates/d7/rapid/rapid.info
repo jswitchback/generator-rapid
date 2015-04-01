@@ -1,0 +1,49 @@
+name        = Rapid
+description = Rapid parent theme. Not intended to be the active theme. Please create a sub-theme.
+screenshot  = rapid-internals/screenshot.png
+
+core        = 7.x
+engine      = phptemplate
+
+; Removes Drupal core CSS. Rapid subtheme handles this.
+stylesheets[all][] = system.menus.css
+stylesheets[all][] = system.messages.css
+stylesheets[all][] = system.theme.css
+
+regions[header]           = Header
+regions[navigation]       = Navigation bar
+regions[highlighted]      = Highlighted Pre-content
+regions[help]             = Help
+regions[content_pre]      = Content top
+regions[content]          = Content
+regions[content_post]     = Content bottom
+regions[highlighted_post] = Highlighted Post-content
+regions[sidebar_first]    = First sidebar
+regions[sidebar_second]   = Second sidebar
+regions[footer]           = Footer
+regions[bottom]           = Page bottom
+regions[page_bottom]    = Page bottom
+regions[dev_region] = Theming & Development sidebar region
+
+
+; Set the default values of settings on the theme-settings.php form.
+settings[rapid_breadcrumb]           = yes
+settings[rapid_breadcrumb_separator] = ' › '
+settings[rapid_breadcrumb_home]      = 1
+settings[rapid_breadcrumb_trailing]  = 1
+settings[rapid_breadcrumb_title]     = 0
+settings[rapid_skip_link_anchor]     = main-menu
+settings[rapid_skip_link_text]       = Jump to navigation
+settings[rapid_html5_respond_meta][] = respond
+settings[rapid_html5_respond_meta][] = html5
+settings[rapid_html5_respond_meta][] = meta
+settings[rapid_html5_respond_meta][] = enquire
+settings[rapid_rebuild_registry]     = 1
+settings[rapid_wireframes]           = 0
+
+settings[rapid_to_top] = 0
+settings[rapid_toggle_front_page_content] = 1
+settings[rapid_conditional_classes_html] = 1
+
+plugins[panels][layouts] = panels-layouts
+

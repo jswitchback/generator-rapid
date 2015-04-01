@@ -1,0 +1,298 @@
+
+
+
+// =============================================================================
+// SUPPORT VARIABLES (IE and others... compass/support variable)
+// =============================================================================
+
+
+
+// These variables are used by many mixins to add additional CSS to support
+// specific versions of IE or specific vendor prefixes.
+// 
+// To turn on support for IE6 or IE7, set those variables to true.
+//
+// Zen does not require special handling for IE8 or later. But Compass uses that
+// variable for a couple edge cases. We include it for completeness sake. See
+// the documentation at http://compass-style.org/reference/compass/support/
+// Variable source: Zen 
+$legacy-support-for-ie6: false;
+$legacy-support-for-ie7: false;
+// Variable source: Compass (deprecated)
+$legacy-support-for-ie8: true;
+
+
+
+// =============================================================================
+// TYPOGRAPHY
+// =============================================================================
+
+
+
+// Adjust with copy paste of pixel css code from http://www.gridlover.net/app/
+$base-font-size:   16px; // The font size set on the root html element.
+$measure: 760px;
+
+$h1-font-size: 68px;
+$h1-line: 24px;
+$h1-lines: 3;
+$h1-line-height: $h1-line * $h1-lines;
+$h1-margin-top: 2 * $h1-line;
+$h1-margin-bottom: 1 * $h1-line;
+
+$h2-font-size: 42px;
+$h2-line: 24px;
+$h2-lines: 2;
+$h2-line-height: $h2-line * $h2-lines;
+$h2-margin-top: 2 * $h2-line;
+$h2-margin-bottom: 1 * $h2-line;
+
+$h3-font-size: 26px;
+$h3-line: 24px;
+$h3-lines: 2;
+$h3-line-height: $h3-line * $h3-lines;
+$h3-margin-top: 1 * $h3-line;
+$h3-margin-bottom: 1 * $h3-line;
+
+$h4-font-size: 16px;
+$h4-line: 24px;
+$h4-lines: 1;
+$h4-line-height: $h4-line * $h4-lines;
+$h4-margin-top: 1 * $h4-line;
+$h4-margin-bottom: 1 * $h4-line;
+
+// Variables are rounded to pixels
+// It's safe to multiply with integers
+// eg. h1 {margin: 2*$h1-line 0;}
+// The grid will stay aligned
+
+// **** END GRID LOVER VARIABLES ******
+
+// Recalculating line-heights to remove units
+$h1-line-height: ($h1-line * $h1-lines) / $h1-font-size;
+$h2-line-height: ($h2-line * $h2-lines) / $h2-font-size;
+$h3-line-height: 1.4; // Magic numbers
+$h4-line-height: 1.5; // Magic numbers
+
+// NOTE: $base-font-size & $base-line-height are also Compass variables that have default values. 
+// http://compass-style.org/reference/compass/typography/vertical_rhythm/
+$base-line-height: $base-font-size * 1.5; // Typically 1.2-1.5 dependant upon size of font characters. 
+$body-line-height: $base-line-height / $base-font-size;
+
+// Example use
+// Use (@include h1;) to match font size, margin and line height. 
+@mixin h1 {
+  @include rem('font-size', $h1-font-size);
+  line-height: $h1-line-height;
+  @include rem('margin-bottom', $h1-margin-bottom);
+  @include rem('margin-top', $h1-margin-top);
+}
+@mixin h2 {
+  @include rem('font-size', $h2-font-size);
+  line-height: $h2-line-height;
+  @include rem('margin-bottom', $h2-margin-bottom);
+  @include rem('margin-top', $h2-margin-top);
+}
+@mixin h3 {
+  @include rem('font-size', $h3-font-size);
+  line-height: $h3-line-height;
+  @include rem('margin-bottom', $h3-margin-bottom);
+  @include rem('margin-top', $h3-margin-top);
+}
+@mixin h4 {
+  @include rem('font-size', $h4-font-size);
+  line-height: $h4-line-height;
+  @include rem('margin-bottom', $h4-margin-bottom);
+  @include rem('margin-top', $h4-margin-top);
+}
+
+// The following font family declarations are based on the Microsoft core web
+// fonts which are common fonts available on most computer systems. The DejaVu
+// and Nimbus Sans fonts are commonly available on Linux systems where the MS
+// fonts are less common. Tahoma and Helvetica are also widely available.
+//
+// A user's web browser will look at the comma-separated list and will
+// attempt to use each font in turn until it finds one that is available
+// on the user's computer. The final "generic" font (sans-serif, serif or
+// monospace) hints at what type of font to use if the web browser doesn't
+// find any of the fonts in the list.
+
+// Common font stacks
+$times-new-roman: "Times New Roman", Times, Georgia, "DejaVu Serif", serif;
+$times:           Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
+$georgia:         Georgia, "Times New Roman", "DejaVu Serif", serif;
+
+$verdana:         Verdana, Tahoma, "DejaVu Sans", sans-serif;
+$tahoma:          Tahoma, Verdana, "DejaVu Sans", sans-serif;
+$arial:           Arial, Helvetica, "Nimbus Sans L", sans-serif;
+$sans-serif:     "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+$webfont-normal:      Arial, Helvetica, sans-serif;
+$webfont-bold:        Arial, Helvetica, sans-serif;
+
+$courier:         monospace, "Courier New", "DejaVu Sans Mono", sans-serif;
+
+// Now create some variables for the font stacks we want to use on this site.
+$header-font: $webfont-bold; 
+$page-title-font: $sans-serif;
+$block-title-font: $webfont-bold;
+$body-font: $sans-serif;
+$font-monospace:   $courier;
+
+
+
+// =============================================================================
+// THEME COLORS
+// =============================================================================
+
+
+
+// UI THEME VARIABLES
+$page-title-color: #739bc7; 
+$block-title-color: $page-title-color;
+$body-font-color: #3c3b3b;
+$body-bgrd-color: #ffffff;
+
+$primary-color: #739bc7;
+$delete-color: #e02443;
+$error-color: $delete-color;
+
+$disabled-background-color: #eeeeee;
+$disabled-font-color: #888888;
+
+
+
+// LINKS
+$link-color: $primary-color;
+$link-color-visited: darken($link-color, 10%);
+$link-color-hover: darken($link-color, 5%);
+$link-color-focus: darken($link-color, 10%);
+$link-color-active: darken($link-color, 10%); 
+$link-text-decoration: none;
+
+
+
+// =============================================================================
+// FORM ELEMENTS
+// =============================================================================
+
+
+
+// GENERAL FORM/FIELDSET VARIABLES
+$ui-border-color: lighten($link-color, 28%);
+$ui-background-color: lighten($link-color, 32%);
+$ui-padding: $base-line-height;
+$ui-border-radius: .083333  * $base-line-height;
+
+$fieldset-background-color: $ui-background-color;
+$fieldset-border-color: $ui-border-color;
+$fieldset-border-radius: $ui-border-radius;
+$fieldset-padding: $ui-padding;
+$fieldset-border-style: solid;
+$legend-font-weight: bold;
+
+$horizontal-rule-border: $ui-border-color;
+
+// FORM ITEMS
+$form-item-margin: 0 0 $horiz-gutter 0;
+
+$form-item-label-font-weight: bold;
+$form-item-label-font-size: 13px;
+$form-item-label-margin: 0 0 0 0;
+
+$form-item-description-font-size: 13px;
+
+
+// FORM INPUTS, BUTTONS, SUBMITS & PAGERS
+$input-padding: 8px 16px;
+$input-font-family: inherit;
+$input-font-color: $body-font-color;
+$input-font-size: 14px;
+
+$input-background-color: #fff;
+$input-backgroud-color-focus: #fff;
+
+$input-border-color: $ui-border-color;
+$input-border-color-focus: $link-color;
+$input-border-radius: $ui-border-radius;
+
+$input-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+$input-box-shadow-focus: 0 0 2px $link-color;
+$input-transition-duration: .1s;
+
+$input-disabled-background-color: $disabled-background-color;
+$input-disabled-font-color: $disabled-font-color;
+
+$width-xsmall: 60px;
+$width-small: 120px;
+$width-medium: 180px;
+$width-large: 240px;
+$width-xlarge: 300px;
+$width-xxlarge: 100%;
+$inline-field-gutter: .5em;
+$inline-field-gutter: .5em;
+
+$placeholder-color: #999999;
+$placeholder-focus-color: $input-background-color;
+
+$pager-color: $link-color;
+$pager-color-hover: $link-color-hover;
+
+$button-color: $link-color;
+$button-border: #DDDDDD;
+$button-border-radius: $ui-border-radius;
+
+
+// TABLES
+$table-tbody-border-style: solid;  
+$table-tbody-border-width: 1px 1px 1px 1px;
+$table-tbody-border-color: darken($body-bgrd-color, 2%) transparent transparent transparent;
+
+$table-th-border-style: solid;
+$table-th-border-width: 1px 1px 1px 1px;
+$table-th-border-color: transparent transparent darken($body-bgrd-color, 2%) transparent;
+
+$table-tr-even-background: lighten($body-bgrd-color, 2%);
+$table-tr-even-border-style: solid;
+$table-tr-even-border-width: 1px 1px 1px 1px;
+$table-tr-even-border-color: darken($body-bgrd-color, 2%) transparent darken($body-bgrd-color, 2%) transparent;
+
+$table-tr-odd-background: transparent;
+$table-tr-odd-border-style: solid;
+$table-tr-odd-border-width: 1px 1px 1px 1px;
+$table-tr-odd-border-color: darken($body-bgrd-color, 2%) transparent transparent transparent;
+
+$table-tr-drag-background: $table-tr-odd-border-color;
+$table-td-padding: .25em .5em;
+$table-td-disabled-background: #ccc;
+
+// Darken table when in a ui-block
+$ui-table-th-border-color: darken($ui-background-color, 3%);
+$ui-table-tbody-border-color: darken($ui-background-color, 3%);
+$ui-table-tr-even-background: darken($ui-background-color, 3%);
+$ui-table-tr-even-border-color: darken($ui-background-color, 3%);
+$ui-table-tr-odd-background: transparent;
+$ui-table-tr-odd-border-color: darken($ui-background-color, 3%);
+$ui-table-tr-drag-background: $ui-table-tr-odd-border-color;
+
+
+// DRUPAL VERTICAL & HORIZONTAL TABS
+$tabs-display-background-color: $ui-background-color;
+$tabs-display-border-color: $ui-border-color; 
+$tabs-display-active-border-color: $link-color;
+$tabs-display-active-content-color: lighten($tabs-display-border-color, 20%);
+$tabs-display-border-radius: $ui-border-radius;
+
+
+// DRUPAL EDIT TABS
+$tabs-edit-container-background-color: #ffffff;
+$tabs-edit-background-color: $ui-background-color; 
+$tabs-edit-border-color: $ui-border-color;
+$tabs-edit-border-radius: $ui-border-radius;
+
+
+// LISTS, BLOCKQUOTES & COMMENTS
+$indent-amount: 1.5 * $base-line-height;
+$blockquote-border-color: $ui-border-color;
+$list-item-margin-bottom: $vert-gutter/2;
+

@@ -1,0 +1,545 @@
+// @file
+// Custom sass mixins
+//
+// Define the custom mixins for your project here.
+// http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#defining_a_mixin
+
+
+//////////////////////////////////////
+// BASE MIXINS - (originally from Zen)
+//////////////////////////////////////
+
+
+// Makes an element visually hidden, but accessible.
+// @see http://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+@mixin element-invisible {
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+}
+
+// Turns off the element-invisible effect.
+@mixin element-invisible-off {
+  position: static !important;
+  clip: auto;
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+// Makes an element visually hidden by default, but visible when focused.
+@mixin element-focusable {
+  @include element-invisible;
+
+  &:active,
+  &:focus {
+    @include element-invisible-off;
+  }
+}
+
+// The word "Unpublished" displayed underneath unpublished nodes and comments.
+@mixin unpublished-div {
+  height: 0;
+  overflow: visible;
+  color: #d8d8d8;
+  font-size: 75px;
+  line-height: 1;
+  font-family: Impact, "Arial Narrow", Helvetica, sans-serif;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  word-wrap: break-word; // A very nice CSS3 property
+
+  @if $legacy-support-for-ie6 or $legacy-support-for-ie7 {
+    .lt-ie8 &>* {
+      position: relative; // Otherwise these elements will appear below the "Unpublished" text.
+    }
+  }
+}
+
+
+////////////////////////////
+// DEBUG LAYOUT
+////////////////////////////
+
+
+// Add outlines around elements to fix shotty layout.
+@mixin debug-layout {
+  * { outline: 2px dotted red }
+  * * { outline: 2px dotted green }
+  * * * { outline: 2px dotted orange }
+  * * * * { outline: 2px dotted blue }
+  * * * * * { outline: 1px solid red }
+  * * * * * * { outline: 1px solid green }
+  * * * * * * * { outline: 1px solid orange }
+  * * * * * * * * { outline: 1px solid blue }
+}
+
+
+////////////////////////////
+// PIXELS TO REM UNITS
+////////////////////////////
+
+
+// Baseline, measured in pixels
+// The value should be the same as the font-size value for the html element
+// If the html element's font-size is set to 62.5% (of the browser's default font-size of 16px),
+// then the variable below would be 10px.
+// Example:
+// .element {
+//   @include rem('padding',10px 0 2px 5px);
+// }
+$baseline-px: $base-font-size;
+
+@mixin rem($property, $px-values) {
+  // Convert the baseline into rems
+  $baseline-rem: $baseline-px / 1rem * 1;
+  // Print the first line in pixel values
+  #{$property}: $px-values;
+  // If there is only one (numeric) value, return the property/value line for it.
+  @if type-of($px-values) == "number" {
+    #{$property}: $px-values / $baseline-rem; }
+  @else {
+    // Create an empty list that we can dump values into
+    $rem-values: ();
+    @each $value in $px-values {
+      // If the value is zero or not a number, return it
+      @if $value == 0 or type-of( $value ) != "number" {
+        $rem-values: append($rem-values, $value); }
+      @else {
+        $rem-values: append($rem-values, $value / $baseline-rem); } }
+    // Return the property and its list of converted values
+    #{$property}: $rem-values; } }
+
+
+////////////////////////////
+// TEXT OVERFLOW
+////////////////////////////
+
+
+@mixin text-overflow($method: ellipsis) {
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: $method;
+  text-overflow: $method;
+  .ie & {
+    width: 100%;
+  }
+}
+
+
+////////////////////////////
+// ABSOLUTE PSEUDO ELEMENTS
+////////////////////////////
+
+
+// $side: can be 'before', 'after', or 'both'
+@mixin pseudo($side: "before") {
+  position: relative;
+  @if $side == "both" {
+    &:before, &:after {
+      position: absolute;
+    }
+  }
+  @else {
+    &:#{$side} {
+      position: absolute;
+    }
+  }
+}
+
+
+////////////////////////////
+// UNORDERED LISTS
+////////////////////////////
+
+
+@mixin no-bullets {
+  li {
+    list-style-type: none;
+    list-style-image: none;
+  }
+}
+
+@mixin clean-list {
+  @include no-bullets;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+@mixin horizontal-list($list-margin: 1em, $list-item-margin: .25em) {
+    list-style-type:none;
+    padding:0;
+    margin: $list-margin;
+    overflow:hidden;
+    > li{
+        display:block;
+        float:left;
+        margin-right: $list-item-margin;
+        &:last-child{
+            margin-right:0px;
+        }
+    }
+}
+
+
+////////////////////////////
+// MICRO-CLEARFIX
+////////////////////////////
+
+
+// Similar to Compass pie-clearfix
+@mixin micro-clearfix {
+  &:before, &:after {
+    content: "";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+
+////////////////////////////
+// TABS
+////////////////////////////
+
+
+// create simple tabs from <a> unside <ul>
+// $dir is 'bottom' for standard tabs
+// 'top' for hanging tabs
+// assumes placement on UL
+
+@mixin tabs(
+  $dir: top,
+  $border-color: $link-color,
+  $border-color-active: darken($link-color, 30%),
+  $background-color: $link-color,
+  $background-color-active: darken($link-color, 20%),
+  $list-margin: 1em,
+  $list-item-margin: .25em,
+  $link-padding: 0 1em,
+  $radius: 3px) {
+  $from-the: bottom;
+  @if $dir == bottom {
+    $from-the: top;
+  }
+  @include horizontal-list($list-margin, $list-item-margin);
+  position: relative;
+  li {
+    border-#{$from-the}: 1px solid $border-color;
+    margin-top: 1px;
+    &.active {
+      a {
+        border-#{$from-the}: 1px solid $border-color-active;
+        background-color: $background-color-active;
+      }
+    }
+    a {
+      padding: $link-padding;
+      border: {
+        width: 1px;
+        style: solid;
+        color: $border-color;
+      };
+      background-color: $background-color;
+      border-#{$from-the}-width: 0;
+      position: relative;
+      bottom: -0.25em;
+      @if $from-the == bottom {
+        @include border-top-radius($radius);
+      }
+      @else {
+        @include border-bottom-radius($radius);
+      }
+      &:hover {
+        background-color: $background-color-active;
+        border-#{$from-the}: 1px solid $border-color-active;
+      }
+    }
+  }
+}
+
+
+////////////////////////////
+// IMAGE REPLACEMENT
+////////////////////////////
+
+
+// Hide text of an element to replace by backgorund image
+// Note: ffect pseudo-elements
+@mixin hide-text() {
+  border:0;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: transparent;
+}
+
+
+////////////////////////////
+// TYPOGRAPHY
+////////////////////////////
+
+
+// Embossed ui-box... http://sachagreif.com/useful-sass-mixins/
+@mixin box-emboss($opacity, $opacity2){
+    box-shadow:white($opacity) 0 1px 0, inset black($opacity2) 0 1px 0;
+}
+
+// Embossed text... http://sachagreif.com/useful-sass-mixins/
+@mixin letterpress($opacity){
+    text-shadow:white($opacity) 0 1px 0;
+}
+
+
+////////////////////////////
+// SHADOW BORDER
+////////////////////////////
+
+// !!! DEPENDANT UPON MODERNIZR no-boxshadow class for fallback
+@mixin shadow-border($position:"top", $offset-margin: 44px, $offset-padding: 44px, $shadowColor:#000000, $fallbackBorderColor: grey) {
+  position: relative;
+  overflow: hidden;
+
+  // Shadow width/height
+  @if $position == "top" or $position == "bottom" {
+    &:before,
+    &:after {
+      position: absolute;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+    }
+  } @else if $position == "left" or $position == "right" {
+    &:before,
+    &:after {
+      position: absolute;
+      top: 1%;
+      bottom: 1%;
+      width: 1px;
+    }
+  } @else {
+    @warn "Shadow-border mixin has incorrect $position ('#{$position}') argumment. Must be top, bottom, left or right";
+  }
+
+  // Position shadow
+  @if $position == "top" {
+
+    margin-top: $offset-margin;
+    padding-top: $offset-padding;
+    &:before {
+      content: '';
+      @include box-shadow($shadowColor 0 0 16px);
+      @include border-radius(60px);
+      top: -3px;
+    }
+    .no-boxshadow & {
+      border-top: 1px solid $fallbackBorderColor;
+    }
+
+  } @else if $position == "bottom" {
+
+    margin-bottom: $offset-margin;
+    padding-bottom: $offset-padding;
+    &:after {
+      content: '';
+      @include box-shadow($shadowColor 0 0 16px);
+      bottom: -3px;
+    }
+    .no-boxshadow & {
+      border-bottom: 1px solid $fallbackBorderColor;
+    }
+
+  } @else if $position == "left" {
+
+    margin-left:  $offset-margin;
+    padding-left:  $offset-padding;
+    &:before {
+      content: '';
+      @include box-shadow($shadowColor 0 0 16px);
+      @include border-radius(60px);
+      left: -3px;
+    }
+    .no-boxshadow & {
+      border-left: 1px solid $fallbackBorderColor;
+    }
+
+
+  } @else if $position == "right" {
+
+    margin-right:  $offset-margin;
+    padding-right:  $offset-padding;
+    &:after {
+      content: '';
+      @include box-shadow($shadowColor 0 0 16px);
+      @include border-radius(60px);
+      right: -3px;
+    }
+    .no-boxshadow & {
+      border-right: 1px solid $fallbackBorderColor;
+    }
+  }
+}
+// @include shadow-border($position:"top", $offset-margin: 44px, $offset-padding: 44px, $shadowColor:#000000, $fallbackBorderColor: grey);
+
+
+
+
+////////////////////////////
+// TRIANGLES
+////////////////////////////
+
+
+
+// Used to create equilateral triangles
+@mixin css-triangle($triangle-size, $triangle-color, $triangle-direction) {
+  content: "";
+  display: block;
+  width: 0;
+  height: 0;
+  border: inset $triangle-size;
+  @if ($triangle-direction == top) {
+    border-color: $triangle-color transparent transparent transparent;
+    border-top-style: solid;
+  }
+  @if ($triangle-direction == bottom) {
+    border-color: transparent transparent $triangle-color transparent;
+    border-bottom-style: solid;
+  }
+  @if ($triangle-direction == left) {
+    border-color: transparent transparent transparent $triangle-color;
+    border-left-style: solid;
+  }
+  @if ($triangle-direction == right) {
+    border-color: transparent $triangle-color transparent transparent;
+    border-right-style: solid;
+  }
+}
+
+
+
+////////////////////////////
+// LINK STYLE
+////////////////////////////
+
+
+
+@mixin theme-link ($inactive-color: $body-font-color, $active-color: $link-color, $hover-decoration: none) {
+  color: $inactive-color;
+  &:visited {
+    color: $inactive-color;
+  }
+  &:hover, &:active, &:focus {
+    color: $active-color;
+    text-decoration: $hover-decoration;
+  }
+}
+
+
+
+////////////////////////////
+// MEDIA QUERY
+////////////////////////////
+
+
+// Warning: ie8 sees this code with respond.js.
+// Add ie8 specific 1x images back in.
+// Example with conditional class found on html element (html.tpl)
+// @include query-2x {
+//   .logo {
+//     background-image: url( ....@2x.png);
+//     background-size: XXpx XXpx;
+//   }
+//   .ie-8 .logo {
+//     background-image: url( ....@1x.png);
+//   }
+// }
+
+
+@mixin query-2x {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin query-3x {
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 3),
+  only screen and (   min--moz-device-pixel-ratio: 3),
+  only screen and (     -o-min-device-pixel-ratio: 3/1),
+  only screen and (        min-device-pixel-ratio: 3),
+  only screen and (                min-resolution: 288dpi),
+  only screen and (                min-resolution: 3dppx) {
+    @content;
+  }
+}
+
+
+////////////////////////////
+// BUTTONS
+////////////////////////////
+
+
+@mixin btn--submit($btn-color: #000000, $btn-radius: $button-border-radius, $btn-padding: $input-padding) {
+  background-color: $btn-color;
+  color: lighten($btn-color, 60%);
+  font-weight: normal;
+  border: 1px solid darken($btn-color, 10%);
+  @include border-radius($btn-radius);
+  @include box-shadow(rgba(255, 255, 255, 0.2) 0 0 8px inset, rgba(0, 0, 0, 0.05) 0 1px 2px);
+  @include rem('font-size', 13px);
+  text-transform: uppercase;
+  text-shadow: 0 1px 1px darken($btn-color, 20%);
+  text-align: center;
+  display: inline-block;
+  line-height: 1;
+  padding: $btn-padding;
+  &:hover {
+    text-decoration: none;
+    color: lighten($btn-color, 60%);
+    background-color: darken($btn-color, 10%);
+    @include background-image(linear-gradient(center top, darken($btn-color, 10%), $btn-color));
+  }
+  &:active, &:focus {
+    text-decoration: none;
+    color: lighten($btn-color, 60%);
+    background-color: darken($btn-color, 30%);
+  }
+  &:visited {
+    color: lighten($btn-color, 60%);
+  }
+}
+
+
+////////////////////////////
+// RESPONSIVE
+////////////////////////////
+
+/**
+ * Intrinsic Ratio Helper Function
+ * Used for responsive embed videos, etc...
+ */
+
+@mixin intrinsicRatioContainer($width, $height) {
+  height: 0;
+  position: relative;
+  padding-bottom: percentage( $height / $width);
+}
+
+@mixin intrinsicRatioElement() {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+

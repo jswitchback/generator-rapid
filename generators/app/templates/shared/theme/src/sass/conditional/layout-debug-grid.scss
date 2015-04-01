@@ -1,0 +1,33 @@
+// Import Sass mixins, variables, Compass modules, etc.
+@import "../_base.scss";
+@import "../_layout.scss";
+@import "../_theme.scss";   
+@import "../_mixins.scss";
+
+
+// COMPASS
+body[data-development-grid="show"] {
+
+	// 1.) Add just the baseline grid to an element's background
+  // @include baseline-grid-background;
+  // Customize by setting arguments passed in: baseline-grid-background($baseline, $color);
+  
+  // 2.) Add just the horizontal grid to an element's background
+  // @include column-grid-background(960, 40, 10, 0, #d1d1d1, #f1f1f1, true);
+  // Customize by setting arguments passed in:: column-grid-background($total, $column, $gutter, $offset, $column-color, $gutter-color, $force-fluid)
+
+  // 3.) Add both horizontal and baseline grids to an element's background
+  @include grid-background();
+  // Customize by setting arguments passed in:
+  // grid-background($total, $column, $gutter, $baseline, $offset, $column-color, $gutter-color, $baseline-color, $force-fluid)
+
+  #page, #content {
+  	background-color: transparent;
+  }
+}
+
+// Check variables via command line output
+// @warn 'Singularity grid count' $grids;
+// @warn 'Singularity gutter size' $gutters;
+
+

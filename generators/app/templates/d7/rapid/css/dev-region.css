@@ -1,0 +1,81 @@
+#region__dev {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  border-right: 5px solid #ffffff;
+  border-right-radius: 6px;
+  -moz-transform: translateX(-280px);
+  -ms-transform: translateX(-280px);
+  -webkit-transform: translateX(-280px);
+  transform: translateX(-280px);
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.15s;
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -moz-transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  -webkit-transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition-timing-function: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  width: 280px;
+  padding: 36px;
+  background-color: #ffffff;
+  background-color: rgba(255,255,255,0.95);
+}
+
+#region__dev:hover {
+  -moz-transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  -webkit-transform: translateX(0px);
+  transform: translateX(0px);
+}
+
+
+.no-csstransforms #region__dev {
+  left: -280px;
+}
+.no-csstransforms #region__dev:hover {
+  left: 0;
+}
+
+.no-js #region__dev--tab {
+  display: none;
+}
+.no-js #region__dev {
+  position: static;
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  width: auto;
+}
+
+#region__dev--tab {
+  display: block;
+  position: absolute;
+  right: -26px;
+  top: 140px;
+  -moz-transition-property: all;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -moz-transition-duration: 0.15s;
+  -webkit-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -moz-transition-timing-function: ease-in-out;
+  -webkit-transition-timing-function: ease-in-out;
+  transition-timing-function: ease-in-out;
+  height: 32px;
+  width: 22px;
+  cursor: pointer;
+  -moz-border-radius-topright: 30px;
+  -webkit-border-top-right-radius: 30px;
+  border-top-right-radius: 30px;
+  -moz-border-radius-bottomright: 30px;
+  -webkit-border-bottom-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  background: #000000;
+  background: rgba(0,0,0,0.25);
+}
+
+#region__dev h2,h3{font-size: 16px;}

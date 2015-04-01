@@ -1,0 +1,203 @@
+/* partial _main-menu.scss */
+
+
+/* All menus in navigaton region
+   ========================================================================== */
+
+
+.navigation {
+  .block {
+    margin-bottom: 0;
+  }
+
+  .block-menu .block__title,
+  .block-menu-block .block__title {
+    @extend %element-invisible;
+  }
+
+  /* Main menu and secondary menu links and menu block links. */
+  .links,
+  .menu {
+    margin: 0;
+    padding: 0;
+    text-align: left; /* LTR */
+
+    li {
+      /* A simple method to get navigation links to appear in one line. */
+      float: left; /* LTR */
+      padding: 0 10px 0 0; /* LTR */
+      margin: 0 0 $vert-gutter/4 0; /* LTR */
+      list-style-type: none;
+      list-style-image: none;
+      &.last {
+        margin-bottom: 0;
+      }
+    }
+
+  }
+}
+
+
+/* Behavior
+   ========================================================================= */
+
+.js .region-navigation {
+  @include breakpoint($tablet-portrait-max) {
+    overflow: hidden;
+    @include transition(max-height .5s cubic-bezier(.17,.67,.66,1.04));
+    max-height: 0;
+  }
+}
+
+.show-nav .region-navigation {
+  max-height: 30em;
+}
+
+#toggle-nav {
+  float: right;
+  @include breakpoint($tablet-portrait-min) {
+    display: none;
+  }
+}
+
+$nav-color: $link-color;
+
+/* Theme
+   ========================================================================= */
+
+/*
+ * Toggle Button
+ */
+
+.nav-button {
+  display: block;
+  width: 36px;
+  height: 32px;
+  cursor: pointer;
+}
+
+
+.nav-button {
+  background-color: transparent;
+  color: $nav-color;
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 7px 5px;
+  @include border-radius($ui-border-radius);
+  line-height: 18px;
+  margin-bottom: 0;
+  text-align: center;
+  &:hover, &:active {
+    color: lighten($nav-color, 20%);
+    .toggle-bar {
+      background-color: lighten($nav-color, 20%);
+    }
+  }
+}
+
+.nav-button .bar {
+  background-color: $nav-color;
+  @include border-radius(1px);
+  display: block;
+  margin-top: 0;
+  height: 3px;
+  width: 24px;
+  line-height: 14px;
+  vertical-align: text-top;
+}
+
+.nav-button .bar + .bar {
+  margin-top: 3px;
+}
+
+/*
+ * Navigation Links
+ */
+
+.navigation {
+  clear: both;
+  float: none;
+  background: $nav-color;
+  margin-left: -$horiz-gutter/2;
+  margin-right: -$horiz-gutter/2;
+  .block {
+    margin-bottom: 0;
+  }
+  ul.menu{
+    li {
+      float: none;
+      text-align: center;
+      border-bottom: 1px solid darken($nav-color, 10%);
+      margin-bottom: 0;
+      &.last a {
+        border-bottom: 1px solid $nav-color;
+      }
+      a {
+        padding: .5em;
+        display: block;
+        text-align: center;
+        color: #fff;
+        @include single-text-shadow(darken($nav-color, 20%) 0 0 1px);
+        &:hover {
+          background: darken($nav-color, 5%);
+        }
+        &:active {
+          @include box-shadow(darken($nav-color, 5%) 0 0 10px inset);
+          background: lighten($nav-color, 5%);
+        }
+
+      }
+    }
+  }
+}
+
+/*
+ * Desktop Styles
+ */
+
+@include breakpoint($tablet-portrait-min) {
+  .navigation {
+    margin-left: 0;
+    margin-right: 0;
+    float: right;
+    clear: none;
+    background: none;
+
+    .block-menu .block-title,
+    .block-menu-block .block-title {
+      @include element-invisible();
+    }
+
+    ul.links, /* Main menu and secondary menu links */
+    ul.menu { /* Menu block links */
+      margin: 0;
+      padding: 0;
+      text-align: left; /* LTR */
+
+      li { /* A simple method to get navigation links to appear in one line. */
+        float: left; /* LTR */
+        padding: 0 10px 0 0; /* LTR */
+        list-style-type: none;
+        list-style-image: none;
+        border-bottom: none;
+        &.last a {
+          border: none;
+        }
+        a {
+          color: $link-color;
+          background: none;
+        &:hover {
+          background: darken($nav-color, 5%);
+          color: #fff;
+        }
+        &:active {
+          @include box-shadow(darken($nav-color, 5%) 0 0 10px inset);
+          background: lighten($nav-color, 5%);
+          color: #fff;
+        }
+        }
+      }
+    }
+  }
+}

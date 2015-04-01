@@ -1,0 +1,96 @@
+// Import Sass mixins, variables, Compass modules, etc.
+@import "../_base.scss";
+@import "../_layout.scss";
+@import "../_theme.scss";   
+@import "../_mixins.scss";
+
+
+$dev-region-width: 280px;
+
+/* Behavior
+   ========================================================================= */
+
+#region__dev {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 200;
+  @include translateX(-280px);
+  @include transition-property(all);
+  @include transition-duration(.15s);
+  @include transition-timing-function(cubic-bezier(.455,.03,.515,.955));
+  width: $dev-region-width;
+  &:hover {
+    @include translateX(0px);
+  }
+}
+
+.no-csstransforms {
+  #region-dev {
+    left: -$dev-region-width;
+    &:hover {
+      left: 0;
+    }
+  }
+}
+
+.no-js {
+  #dev-tab {
+    display: none;
+  }
+  #region--dev {
+    position: static;
+    @include translateX(0);
+    width: auto;
+  }
+}
+
+#dev-tab {
+  display: block;
+  position: absolute;
+  right: -24px;
+  top: 140px;
+  @include transition-property(all);
+  @include transition-duration(.15s);
+  @include transition-timing-function(ease-in-out);
+  height: 32px;
+  width: 22px;
+  cursor: pointer;
+}
+
+
+
+
+
+
+/* Theme
+   ========================================================================= */
+
+
+#region__dev {
+  background: #fff;
+  background: rgba(255,255,255,.95);
+  border-right: 5px solid $link-color;
+  border-right-radius: 6px;
+  padding: 46px 20px 20px 20px;
+  &:hover {
+    #links-toggle {
+      border-top: 1px solid $link-color;
+      border-right: 1px solid $link-color;
+      border-bottom: 1px solid $link-color;
+    }
+  }
+} 
+
+
+#dev-tab {
+  display: block;
+  color: #fff;
+  @include border-right-radius(30px);
+  background: $link-color;
+  height: 32px;
+  width: 22px;
+  &:hover {
+    background: lighten($link-color, 10%);
+  }
+}
