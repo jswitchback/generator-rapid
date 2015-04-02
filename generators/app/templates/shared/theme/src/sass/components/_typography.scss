@@ -19,7 +19,7 @@
  * 2. Prevent iOS text size adjust after orientation change, without disabling
  *    user zoom.
  * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
- *    `em` units. 
+ *    `em` units.
  */
 html {
   font-family: $body-font; /* 1 */
@@ -139,7 +139,7 @@ strong {
 blockquote {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
   margin: $vert-gutter $indent-amount;
-  border-left: (.2 * $base-font-size) solid $blockquote-border-color; 
+  border-left: (.2 * $base-font-size) solid $blockquote-border-color;
   padding: (.5 * $base-font-size) $base-font-size;
 }
 
@@ -166,17 +166,12 @@ mark {
 
 pre {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
-  margin: rhythm(2) 0;
+  margin: $vert-gutter 0;
 }
 
 p {
-  margin: 0;
+  margin: 0 0 $vert-gutter 0;
 }
-
-p + p {
-  margin-top: $vert-gutter;
-}
- 
 
 /*
  * Corrects font family set oddly in IE6, S4/5, Chrome
@@ -205,7 +200,7 @@ p {
     margin: 0;
     padding: 0;
     color: $body-font-color;
-    background: transparent;  
+    background: transparent;
   }
 }
 
