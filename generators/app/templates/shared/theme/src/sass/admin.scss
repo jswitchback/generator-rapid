@@ -2,7 +2,7 @@
 // Import Sass mixins, variables, Compass modules, etc.
 @import "_base.scss";
 @import "_layout.scss";
-@import "_theme.scss";   
+@import "_theme.scss";
 @import "_mixins.scss";
 
 
@@ -12,7 +12,7 @@
 
 
 @import "components/_forms.admin.scss";
-@import "components/_vertical-tabs.scss";
-@import "components/_horizontal-tabs.scss";
+@import "components/_vertical-tabs.admin.scss";
+@import "components/_horizontal-tabs.admin.scss";
 
 

@@ -272,7 +272,7 @@ function <%= themeMachineName %>_preprocess_node(&$variables, $hook) {
     $variables['submitted'] =  t('by !username on !datetime',
           array(
           '!username' => '<span class="author">'. $variables['name'] . '</span>',
-          '!datetime' => '<span class="list-date"><time>' . format_date($variables['created'], 'custom', 'F t, Y') . '</span>',
+          '!datetime' => '<span class="list-date"><time>' . format_date($variables['created'], 'custom', 'F j, Y') . '</span>',
     ));
 }
 

@@ -21,12 +21,11 @@
 
     // Enquire Variables
     var breakMobile = 'screen and (max-width:47.499em)';
-    var breakDesktop = 'screen and (min-width:47.5em)';
 
     // Functions to be executed on all breakpoints
     // ...place code here ...
 
-    enquire.register('screen and (max-width:47.9375em)', {
+    enquire.register(breakMobile, {
 
       // OPTIONAL
       // If supplied, triggered when a media query matches.

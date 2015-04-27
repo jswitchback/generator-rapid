@@ -213,7 +213,7 @@ module.exports = function(grunt) {
               files: [{
                   expand: true,
                   cwd: 'src/images/',
-                  src: ['*.{png,jpg,gif}', 'sprite/*.{png,jpg,gif}'],
+                  src: ['*.{png,jpg,gif}', 'sprites/*.{png,jpg,gif}'],
                   dest: 'build/images/'
               }]
             }
@@ -236,7 +236,7 @@ module.exports = function(grunt) {
         basic: {
 
           expand : true,
-          cwd : 'src/images/sprite/svg',
+          cwd : 'src/images/sprites/svg',
           src : ['**/*.svg'],
           dest : 'build',
 
@@ -250,14 +250,14 @@ module.exports = function(grunt) {
                 render : {
                   // css : true,  // Activate CSS output (with default options)
                   scss : {
-                    dest : '../../src/sass/components/sprites/_sprite1.scss'
+                    dest : '../../src/sass/components/sprites/_sprites1.scss'
                   }
                 },
                 dimensions: true,
                 prefix: '.icon-%s', // CSS Selector
-                sprite: '../images/sprite/css/icon-sprite1.css.svg', // Relative path from the stylesheet resource to the SVG sprite. Used in css url().
+                sprite: '../images/sprites/css/icon-sprite1.css.svg', // Relative path from the stylesheet resource to the SVG sprite. Used in css url().
                 example: {
-                  dest : '../../.docs/sprite/icon-sprite.css.html'
+                  dest : '../../.docs/sprites/icon-sprite.css.html'
                 },
                 common : 'icon', // Base selector for background image. If removed every selector will get background-image rule
                 layout : 'packed' // "vertical", "horizontal", "diagonal" or "packed"
@@ -277,9 +277,9 @@ module.exports = function(grunt) {
               // https://css-tricks.com/svg-symbol-good-choice-icons/
               symbol : {
                 bust : false,
-                sprite : '../images/sprite/symbol/sprite.symbol.svg',
+                sprite : '../images/sprites/symbol/sprite.symbol.svg',
                 example: {
-                  dest : '../../.docs/sprite/icon-sprite.symbol.html'
+                  dest : '../../.docs/sprites/icon-sprite.symbol.html'
                 },
               }
             }
@@ -302,7 +302,7 @@ module.exports = function(grunt) {
               // specify files in array format with multiple src-dest mapping
               files: [
                   // rasterize all SVG files in "build/sprite" and its subdirectories to "build/sprite"
-                  { cwd: 'build/images/sprite/css/', src: ['*.svg'], dest: 'build/images/sprite/css/' }
+                  { cwd: 'build/images/sprites/css/', src: ['*.svg'], dest: 'build/images/sprite/css/' }
               ]
           }
       },
@@ -317,6 +317,7 @@ module.exports = function(grunt) {
           windows_dest: 'build/images/app-icons/windows',
           firefox_prefix: 'firefox-icon-',
           firefox_dest: 'build/images/app-icons/firefox',
+
           src_image_favicon: 'src/images/app-icons/favicon.png',
           favicon_prefix: 'favicon-',
           favicon_dest: 'build/images/app-icons/favicon',
@@ -777,7 +778,7 @@ module.exports = function(grunt) {
     // IMAGES
     //////////////////////////////////
 
-    grunt.registerTask('build.sprite', ['svg_sprite:basic', 'svg2png', 'copy:png_spritelets']);
+    grunt.registerTask('build.sprites', ['svg_sprite:basic', 'svg2png']);
 
     grunt.registerTask('watch.images', ['watch:images']);
 

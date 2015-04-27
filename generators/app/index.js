@@ -29,7 +29,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
 
     this.installDependencies({
 
-    // Runs npm install, bower install by default. 
+    // Runs npm install, bower install by default.
     // Grunt commands ran in callback.
       skipInstall: skippingInstall,
       // bower: false,
@@ -53,7 +53,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
     // // Change working directory to 'libraries' for final Bower dependency install
     // https://github.com/yeoman/generator/issues/559
     process.chdir('../../libraries/');
-    this.spawnCommand('bower', ['install']);    
+    this.spawnCommand('bower', ['install']);
 
     // Reset terminal directory back to current working directory.
     // Prevent "cd .." from ending up in trash can directory.
@@ -235,7 +235,7 @@ DrupalthemeGenerator.prototype.themeTemplates = function themeTemplates() {
       this.template('d7/_template.php', 'template.php');
       this.directory('shared/theme/templates', 'templates');
       break;
-      
+
     // Drupal 8
     case '8':
       this.template('d8/_theme.theme', themeMachineName + '.theme');
@@ -243,7 +243,7 @@ DrupalthemeGenerator.prototype.themeTemplates = function themeTemplates() {
 
     default:
       console.log('No Drupal version detected');
-  }  
+  }
 
 };
 
@@ -253,11 +253,8 @@ DrupalthemeGenerator.prototype.themeDevFiles = function themeTemplates() {
   this.copy('shared/theme/config.rb', 'config.rb');
   this.copy('shared/theme/Gemfile', 'Gemfile');
   this.copy('shared/theme/Gemfile.lock', 'Gemfile.lock');
-  this.copy('shared/theme/god.god', 'god.god');
   this.copy('shared/theme/gruntfile.js', 'gruntfile.js');
-  this.copy('shared/theme/Guardfile', 'Guardfile');
-  this.copy('shared/theme/README--GLOBAL-DEV.txt', 'README-GLOBAL-DEV.txt');
-
+  this.directory('shared/theme/.docs', '.docs');
 };
 
 

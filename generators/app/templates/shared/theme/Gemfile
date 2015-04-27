@@ -17,21 +17,6 @@ gem 'compass-css-arrow'              # Easy css3 arrows
 #gem 'toolkit'                       # Compass utility from the fabulous Snugug.
 #gem 'css_parser'                    # Helps `compass stats` output statistics.
 
-# RDG Drush compiling workflow 
-gem 'guard'
-gem 'guard-livereload', '~> 2.2.0'
-gem 'guard-compass'
-gem 'growl'
-gem 'terminal-notifier'
-gem 'terminal-notifier-guard'
-
-# RDG Bundler, Compass and Gaurd commands
-# 'drush PROJECTNAME.local bundle' installs necessary gems on per project basis
-# 'drush PROJECTNAME.local compass start' compiles and watches project without success messages.
-# 'drush PROJECTNAME.local compass watch' compiles and watches project with success and error messages in terminal. 
-# 'drush PROJECTNAME.local compass watch --compass-options="sourcemap"' To add sourcemap to the Compass output
-# Also, you can run these without the RDG aliasing (PROJECTNAME.local) directly inside the drupal project folders 'drush compass...'
-
 # General Bundler commands
 # Run 'bundle install' to create Gemfile.lock and download gems to your local machine.
 # OR Run 'bundle install --path .bundle' to place the needed gems right inside your project. To achieve this run bundle install with the path option.

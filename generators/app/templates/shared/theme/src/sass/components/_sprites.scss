@@ -1,7 +1,8 @@
-// /* @partial sprites */
-@import "sprites/_sprite1.scss";
+/* @partial sprites */
+@import "sprites/_sprites1.scss";
 
-// _sprite1.scss is built by a grunt task. DO NOT EDIT because it will likely get overridden. PUT ALL OVERRIDES HERE
+// PUT SPRITE CSS OVERRIDES HERE
+// sass/components/sprites/*.scss files are built by a grunt task.
 
 .no-svg .icon {
   background-image: url(icon-sprite1.css.png);
