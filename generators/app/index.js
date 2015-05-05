@@ -178,6 +178,7 @@ DrupalthemeGenerator.prototype.app = function app() {
 
   this.mkdir('build/js');
   this.mkdir('build/css');
+  this.mkdir('build/images');
   this.mkdir('src/js');
   this.mkdir('src/js/vendor');
   this.mkdir('src/sass');
