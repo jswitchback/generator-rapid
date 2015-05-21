@@ -160,7 +160,7 @@ module.exports = function(grunt) {
           },
           image: {
               files: 'src/images/*',
-              tasks: ['newer:imagemin:all', 'copy:create_favicon_ext', 'copy:svg', 'build.sprites']
+              tasks: ['build.images']
           },
       },
 
@@ -780,23 +780,17 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build.sprites', ['svg_sprite:basic', 'svg2png']);
 
-    grunt.registerTask('watch.images', ['watch:images']);
+    grunt.registerTask('watch.images', ['build.images']);
 
     grunt.registerTask('minify.images', [
         'newer:imagemin:all'
     ]);
 
-
     grunt.registerTask('build.images', [
-         'build.images.apple',
-         'build.images.android',
-         'build.images.firefox',
-         'build.images.favicon',
-         'build.images.windows',
-         'build.images.itunes',
-         'minify.images',
+         'newer:imagemin:all',
          'copy:create_favicon_ext',
-         'copy:svg'
+         'copy:svg',
+         'build.sprites'
     ]);
 
     grunt.registerTask('build.images.web', [
