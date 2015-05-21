@@ -135,6 +135,7 @@
  *   this function to have consistent variables.
  */
 function <%= themeMachineName %>_preprocess_html(&$variables, $hook) {
+  $variables['app_icons'] = theme_get_setting('<%= themeMachineName %>_app_icons');
   $variables['compass_grid'] = theme_get_setting('<%= themeMachineName %>_compass_grid');
   $variables['add_to_top'] = theme_get_setting('<%= themeMachineName %>_to_top');
   $variables['path_to_theme'] = drupal_get_path('theme', '<%= themeMachineName %>'); // Reset path used in parent theme's html.tpl.php to our theme path. Used in linking app icons

@@ -158,11 +158,11 @@ settings[<%= themeMachineName %>_wireframes]           = 0
 settings[<%= themeMachineName %>_to_top] = 0
 settings[<%= themeMachineName %>_toggle_front_page_content] = 1
 settings[<%= themeMachineName %>_conditional_classes_html] = 1
-settings[<%= themeMachineName %>_ms_tile_color] = 24A8DE
 
 ; Set the default values of settings on the Rapid subtheme theme-settings.php form.
 settings[<%= themeMachineName %>_compass_grid] = 0
-
+settings[<%= themeMachineName %>_app_icons] = 0
+settings[<%= themeMachineName %>_ms_tile_color] = 24A8DE
 
 ;--------------------- BREAKPOINTS ------------------------
 
