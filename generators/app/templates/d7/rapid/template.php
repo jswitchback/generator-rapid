@@ -469,7 +469,7 @@ function rapid_preprocess_region(&$variables, $hook) {
   // BEM Classes to regions
   foreach ($classes as $key => &$class) {
     if (strpos($class, 'region-') === 0) {
-      $variables['classes_array'][$key] = str_replace('region-','region--', $class);
+      $variables['classes_array'][$key] = str_replace('region-','region__', $class);
     }
   }
 }

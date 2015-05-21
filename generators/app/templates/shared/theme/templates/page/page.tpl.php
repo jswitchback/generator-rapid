@@ -86,7 +86,7 @@
 
  <header id= "header-wrapper">
     <div id="header" role="banner">
-      <div class="region--header region">
+      <div class="region__header region">
 
         <?php if ($logo): ?>
           <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
