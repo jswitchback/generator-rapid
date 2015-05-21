@@ -9,21 +9,21 @@ $plugin = array(
   'category'    => t('Columns: 1'),
   'icon'        => 'icon.png',
 
-  'theme'       => 'zen_no_wrapper',
+  'theme'       => 'rapid_no_wrapper',
 
   'regions'     => array(
     'main'      => t('Main'),
   ),
 
-  'settings form'     => 'zen_no_wrapper_settings_form',
-  'settings validate' => 'zen_no_wrapper_settings_validate',
-  'settings submit'   => 'zen_no_wrapper_settings_submit',
+  'settings form'     => 'rapid_no_wrapper_settings_form',
+  'settings validate' => 'rapid_no_wrapper_settings_validate',
+  'settings submit'   => 'rapid_no_wrapper_settings_submit',
 );
 
 /**
  * Form for layout settings.
  */
-function zen_no_wrapper_settings_form(&$display, $layout, $settings) {
+function rapid_no_wrapper_settings_form(&$display, $layout, $settings) {
   $form = array();
 
   $form['layout_settings'] = array(
@@ -50,7 +50,7 @@ function zen_no_wrapper_settings_form(&$display, $layout, $settings) {
 /**
  * Form validation for layout settings.
  */
-function zen_no_wrapper_settings_validate(&$form_state, $form, &$display, $layout, $settings) {
+function rapid_no_wrapper_settings_validate(&$form_state, $form, &$display, $layout, $settings) {
   // Since we allow underscores, change the css filter from Drupal's default.
   $filter = array(' ' => '-', '/' => '-', '[' => '-', ']' => '');
   foreach (array_keys($layout['regions']) as $region) {
@@ -69,7 +69,7 @@ function zen_no_wrapper_settings_validate(&$form_state, $form, &$display, $layou
 /**
  * Form submit handler for layout settings.
  */
-function zen_no_wrapper_settings_submit(&$form_state, &$display, $layout, $settings) {
+function rapid_no_wrapper_settings_submit(&$form_state, &$display, $layout, $settings) {
   // Move the settings out of the 'layout_settings' array.
   foreach (array_keys($form_state['layout_settings']) as $key) {
     $form_state[$key] = $form_state['layout_settings'][$key];
@@ -80,7 +80,7 @@ function zen_no_wrapper_settings_submit(&$form_state, &$display, $layout, $setti
 /**
  * Implements hook_preprocess_HOOK().
  */
-function template_preprocess_zen_no_wrapper(&$variables, $hook) {
+function template_preprocess_rapid_no_wrapper(&$variables, $hook) {
   foreach (array_keys($variables['layout']['regions']) as $region) {
     // Pull out the region classes to easy-to-handle variables.
     $variables[$region . '_classes'] = !empty($variables['settings'][$region . '_classes']) ? ' ' . $variables['settings'][$region . '_classes'] : '';

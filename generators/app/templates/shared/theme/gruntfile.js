@@ -160,7 +160,7 @@ module.exports = function(grunt) {
           },
           image: {
               files: 'src/images/*',
-              tasks: ['newer:imagemin:all', 'copy:create_favicon_ext', 'copy:svg', 'build.sprite']
+              tasks: ['newer:imagemin:all', 'copy:create_favicon_ext', 'copy:svg', 'build.sprites']
           },
       },
 
