@@ -158,6 +158,10 @@ module.exports = function(grunt) {
               livereload: true
             }
           },
+          fonts: {
+              files: ['src/fonts/**/*'],
+              tasks: ['copy:fonts']
+          },
           image: {
               files: 'src/images/*',
               tasks: ['build.images']
@@ -190,6 +194,12 @@ module.exports = function(grunt) {
             cwd: 'src/images/',
             src: '*.svg',
             dest: 'build/images/',
+        },
+        fonts: {
+          expand: true,
+          cwd: 'src/fonts/',
+          src: '**/*',
+          dest: 'build/fonts/',
         },
         create_favicon_ext: {
           files: [{

@@ -1,13 +1,4 @@
-// Import Sass mixins, variables, Compass modules, etc.
-@import "_base.scss";
-
-/**
- * @file
- * Print styling
- *
- * We provide some sane print styling for Drupal using Zen's layout method.
- */
-
+/* @partial _print.scss */
 
 @media print {
 
@@ -18,8 +9,8 @@
     #site-name & { /* Don't underline header */
       text-decoration: none !important;
     }
-  } 
- 
+  }
+
   #content {
     a[href]:after { /* Add visible URL after links. */
       content: " (" attr(href) ")";
