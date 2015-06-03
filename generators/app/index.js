@@ -265,7 +265,6 @@ DrupalthemeGenerator.prototype.themeImages = function themeImages() {
   this.copy('shared/theme/logo.png', 'logo.png');
   this.copy('shared/theme/favicon.ico', 'favicon.ico');
   this.directory('shared/theme/src/images', 'src/images');
-
 };
 
 DrupalthemeGenerator.prototype.themeFonts = function themeFonts() {

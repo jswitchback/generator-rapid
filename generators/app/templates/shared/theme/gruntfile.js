@@ -264,12 +264,12 @@ module.exports = function(grunt) {
                   }
                 },
                 dimensions: true,
-                prefix: '.icon-%s', // CSS Selector
-                sprite: '../images/sprites/css/icon-sprite1.css.svg', // Relative path from the stylesheet resource to the SVG sprite. Used in css url().
+                prefix: '.sprite-%s', // CSS Selector
+                sprite: '../images/sprites/css/sprite1.css.svg', // Relative path from the stylesheet resource to the SVG sprite. Used in css url().
                 example: {
-                  dest : '../../.docs/sprites/icon-sprite.css.html'
+                  dest : '../../.docs/sprites/sprite1.css.html'
                 },
-                common : 'icon', // Base selector for background image. If removed every selector will get background-image rule
+                common : 'sprite', // Base selector for background image. If removed every selector will get background-image rule
                 layout : 'packed' // "vertical", "horizontal", "diagonal" or "packed"
               },
               // https://css-tricks.com/svg-fragment-identifiers-work/
@@ -287,9 +287,9 @@ module.exports = function(grunt) {
               // https://css-tricks.com/svg-symbol-good-choice-icons/
               symbol : {
                 bust : false,
-                sprite : '../images/sprites/symbol/sprite.symbol.svg',
+                sprite : '../images/sprites/symbol/sprite1.symbol.svg',
                 example: {
-                  dest : '../../.docs/sprites/icon-sprite.symbol.html'
+                  dest : '../../.docs/sprites/sprite1.symbol.html'
                 },
               }
             }
@@ -312,7 +312,7 @@ module.exports = function(grunt) {
               // specify files in array format with multiple src-dest mapping
               files: [
                   // rasterize all SVG files in "build/sprite" and its subdirectories to "build/sprite"
-                  { cwd: 'build/images/sprites/css/', src: ['*.svg'], dest: 'build/images/sprite/css/' }
+                  { cwd: 'build/images/sprites/css/', src: ['*.svg'], dest: 'build/images/sprites/css/' }
               ]
           }
       },

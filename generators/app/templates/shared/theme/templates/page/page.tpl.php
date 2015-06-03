@@ -201,6 +201,9 @@
       <?php endif; ?>
 
     </div><!-- /#main -->
+
+    <?php print $highlighted_post; ?>
+
   </div><!-- /#main-wrapper -->
 
   <?php print render($page['footer']); ?>

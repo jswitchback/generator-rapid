@@ -4,6 +4,6 @@
 // PUT SPRITE CSS OVERRIDES HERE
 // sass/components/sprites/*.scss files are built by a grunt task.
 
-.no-svg .icon {
-  background-image: url(icon-sprite1.css.png);
+.no-svg .sprite {
+  background-image: url(../build/images/sprites/css/sprite1.css.png);
 }
