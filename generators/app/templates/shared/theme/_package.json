@@ -5,6 +5,15 @@
   "author": "Rapid Development Group",
   "homepage": "http://rapiddg.com",
   "version": "0.1.0",
+  "task_config": {
+    "suffix_1x": "@1x",
+    "suffix_2x": "@2x",
+    "suffix_3x": "@3x"
+  },
+  "path": {
+    "images_source": "src/images",
+    "images_dest": "build/images"
+  },
   "devDependencies": {
     "grunt": "~0.4.4",
     "grunt-browser-sync": "^1.9.1",

@@ -163,7 +163,7 @@ module.exports = function(grunt) {
               tasks: ['copy:fonts']
           },
           image: {
-              files: 'src/images/*',
+              files: '<%= pkg.path.images_source %>/*',
               tasks: ['build.images']
           },
       },
@@ -191,9 +191,9 @@ module.exports = function(grunt) {
         },
         svg: {
             expand: true,
-            cwd: 'src/images/',
+            cwd: '<%= pkg.path.images_source %>/',
             src: '*.svg',
-            dest: 'build/images/',
+            dest: '<%= pkg.path.images_dest %>/',
         },
         fonts: {
           expand: true,
@@ -204,9 +204,9 @@ module.exports = function(grunt) {
         create_favicon_ext: {
           files: [{
               expand: true,
-              cwd: 'build/images/app-icons/favicon/',
+              cwd: '<%= pkg.path.images_dest %>/app-icons/favicon/',
               src: ['*.png'],
-              dest: 'build/images/app-icons/favicon/',
+              dest: '<%= pkg.path.images_dest %>/app-icons/favicon/',
               rename: function(dest, src) {
                   return dest + src.replace(/\.png$/, ".ico");
               }
@@ -216,17 +216,43 @@ module.exports = function(grunt) {
 
       // Image optimization task.
       imagemin: {
-            all: {
-              options: {
-                  optimizationLevel: 3
-              },
-              files: [{
-                  expand: true,
-                  cwd: 'src/images/',
-                  src: ['*.{png,jpg,gif}', 'sprites/*.{png,jpg,gif}'],
-                  dest: 'build/images/'
-              }]
+        all: {
+          options: {
+              optimizationLevel: 3
+          },
+          files: [{
+              expand: true,
+              cwd: '<%= pkg.path.images_source %>/',
+              src: ['*.{png,jpg,gif}', 'sprites/*.{png,jpg,gif}'],
+              dest: '<%= pkg.path.images_dest %>/'
+          }]
+        },
+        copy_resize_source_2x_images: {
+          files: [{
+            expand: true,
+            cwd: '<%= pkg.path.images_source %>/resize/2x',
+            src: ['{,*/}*.{gif,jpeg,jpg,png}'],
+            dest: '<%= pkg.path.images_dest %>',
+            rename: function(dest, src) {
+              var extension = src.substr(src.lastIndexOf('.')+1),
+                  name = src.replace('.' + extension, '');
+              return dest + '/' + name + '<%= pkg.task_config.suffix_2x %>' + '.' + extension;
             }
+          }]
+        },
+        copy_resize_source_3x_images: {
+          files: [{
+            expand: true,
+            cwd: '<%= pkg.path.images_source %>/resize/3x',
+            src: ['{,*/}*.{gif,jpeg,jpg,png}'],
+            dest: '<%= pkg.path.images_dest %>',
+            rename: function(dest, src) {
+              var extension = src.substr(src.lastIndexOf('.')+1),
+                  name = src.replace('.' + extension, '');
+              return dest + '/' + name + '<%= pkg.task_config.suffix_3x %>' + '.' + extension;
+            }
+          }]
+        },
       },
 
       browserSync: {
@@ -246,7 +272,7 @@ module.exports = function(grunt) {
         basic: {
 
           expand : true,
-          cwd : 'src/images/sprites/svg',
+          cwd : '<%= pkg.path.images_source %>/sprites/svg',
           src : ['**/*.svg'],
           dest : 'build',
 
@@ -312,25 +338,80 @@ module.exports = function(grunt) {
               // specify files in array format with multiple src-dest mapping
               files: [
                   // rasterize all SVG files in "build/sprite" and its subdirectories to "build/sprite"
-                  { cwd: 'build/images/sprites/css/', src: ['*.svg'], dest: 'build/images/sprites/css/' }
+                  { cwd: '<%= pkg.path.images_dest %>/sprites/css/', src: ['*.svg'], dest: '<%= pkg.path.images_dest %>/sprites/css/' }
               ]
           }
       },
 
       image_resize: {
-          src_image_icons: 'src/images/app-icons/app-icon.png',
+          src_image_icons: '<%= pkg.path.images_source %>/app-icons/app-icon.png',
           apple_prefix: 'apple-touch-icon-precomposed-',
-          apple_dest: 'build/images/app-icons/apple',
+          apple_dest: '<%= pkg.path.images_dest %>/app-icons/apple',
           android_prefix: 'android-icon-',
-          android_dest: 'build/images/app-icons/android',
+          android_dest: '<%= pkg.path.images_dest %>/app-icons/android',
           windows_prefix: 'ms-application-icon-',
-          windows_dest: 'build/images/app-icons/windows',
+          windows_dest: '<%= pkg.path.images_dest %>/app-icons/windows',
           firefox_prefix: 'firefox-icon-',
-          firefox_dest: 'build/images/app-icons/firefox',
-
-          src_image_favicon: 'src/images/app-icons/favicon.png',
+          firefox_dest: '<%= pkg.path.images_dest %>/app-icons/firefox',
+          src_image_favicon: '<%= pkg.path.images_source %>/app-icons/favicon.png',
           favicon_prefix: 'favicon-',
-          favicon_dest: 'build/images/app-icons/favicon',
+          favicon_dest: '<%= pkg.path.images_dest %>/app-icons/favicon',
+
+
+          resize_2x: {
+            options: {
+              width: '50%',
+              quality: 1,
+              overwrite: true
+            },
+            files: [{
+              expand: true,
+              cwd: '<%= pkg.path.images_source %>/resize/2x',
+              src: ['{,*/}*.{gif,jpeg,jpg,png}'],
+              dest: '<%= pkg.path.images_dest %>',
+              rename: function(dest, src) {
+                var extension = src.substr(src.lastIndexOf('.')+1),
+                    name = src.replace('.' + extension, '');
+                return dest + '/' + name + '<%= pkg.task_config.suffix_1x %>' + '.' + extension;
+              },
+            }]
+          },
+          resize_3x_to_1x: {
+            options: {
+              width: '33.33333333%',
+              quality: 1,
+              overwrite: true
+            },
+            files: [{
+              expand: true,
+              cwd: '<%= pkg.path.images_source %>/resize/3x',
+              src: ['{,*/}*.{gif,jpeg,jpg,png}'],
+              dest: '<%= pkg.path.images_dest %>',
+              rename: function(dest, src) {
+                var extension = src.substr(src.lastIndexOf('.')+1),
+                    name = src.replace('.' + extension, '');
+                return dest + '/' + name + '<%= pkg.task_config.suffix_1x %>' + '.' + extension;
+              },
+            }]
+          },
+          resize_3x_to_2x: {
+            options: {
+              width: '66.66666666%',
+              quality: 1,
+              overwrite: true
+            },
+            files: [{
+              expand: true,
+              cwd: '<%= pkg.path.images_source %>/resize/3x',
+              src: ['{,*/}*.{gif,jpeg,jpg,png}'],
+              dest: '<%= pkg.path.images_dest %>',
+              rename: function(dest, src) {
+                var extension = src.substr(src.lastIndexOf('.')+1),
+                    name = src.replace('.' + extension, '');
+                return dest + '/' + name + '<%= pkg.task_config.suffix_2x %>' + '.' + extension;
+              },
+            }]
+          },
 
           /**** APPLE ****/
 
@@ -788,9 +869,17 @@ module.exports = function(grunt) {
     // IMAGES
     //////////////////////////////////
 
-    grunt.registerTask('build.sprites', ['svg_sprite:basic', 'svg2png']);
-
     grunt.registerTask('watch.images', ['build.images']);
+
+    grunt.registerTask('build.images.sprites', ['svg_sprite:basic', 'svg2png']);
+
+    grunt.registerTask('build.images.resize', [
+         'image_resize:resize_2x',
+         'image_resize:resize_3x_to_2x',
+         'image_resize:resize_3x_to_1x',
+         'imagemin:copy_resize_source_2x_images',
+         'imagemin:copy_resize_source_3x_images'
+    ]);
 
     grunt.registerTask('minify.images', [
         'newer:imagemin:all'
@@ -800,7 +889,8 @@ module.exports = function(grunt) {
          'newer:imagemin:all',
          'copy:create_favicon_ext',
          'copy:svg',
-         'build.sprites'
+         'build.images.sprites',
+         'build.images.resize'
     ]);
 
     grunt.registerTask('build.images.web', [
