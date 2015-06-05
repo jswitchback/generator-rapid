@@ -183,7 +183,7 @@ DrupalthemeGenerator.prototype.app = function app() {
   this.mkdir('src/js');
   this.mkdir('src/js/vendor');
   this.mkdir('src/sass');
-  this.mkdir('src/images');
+
 };
 
 DrupalthemeGenerator.prototype.themeStyles = function themeStyles() {
@@ -265,6 +265,8 @@ DrupalthemeGenerator.prototype.themeImages = function themeImages() {
   this.copy('shared/theme/logo.png', 'logo.png');
   this.copy('shared/theme/favicon.ico', 'favicon.ico');
   this.directory('shared/theme/src/images', 'src/images');
+  this.mkdir('src/images/resize/2x');
+  this.mkdir('src/images/resize/3x');
 };
 
 DrupalthemeGenerator.prototype.themeFonts = function themeFonts() {
