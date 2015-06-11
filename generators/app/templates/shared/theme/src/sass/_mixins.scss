@@ -524,11 +524,9 @@ $baseline-px: $base-font-size;
 // RESPONSIVE
 ////////////////////////////
 
-/**
- * Intrinsic Ratio Helper Function
- * Used for responsive embed videos, etc...
- */
 
+// Intrinsic Ratio Helper Function
+// Used for responsive embed videos, etc...
 @mixin intrinsicRatioContainer($width, $height) {
   height: 0;
   position: relative;
