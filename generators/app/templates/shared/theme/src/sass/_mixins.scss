@@ -299,6 +299,7 @@ $baseline-px: $base-font-size;
 // SHADOW BORDER
 ////////////////////////////
 
+
 // !!! DEPENDANT UPON MODERNIZR no-boxshadow class for fallback
 @mixin shadow-border($position:"top", $offset-margin: 44px, $offset-padding: 44px, $shadowColor:#000000, $fallbackBorderColor: grey) {
   position: relative;
@@ -386,12 +387,9 @@ $baseline-px: $base-font-size;
 // @include shadow-border($position:"top", $offset-margin: 44px, $offset-padding: 44px, $shadowColor:#000000, $fallbackBorderColor: grey);
 
 
-
-
 ////////////////////////////
 // TRIANGLES
 ////////////////////////////
-
 
 
 // Used to create equilateral triangles
@@ -420,11 +418,9 @@ $baseline-px: $base-font-size;
 }
 
 
-
 ////////////////////////////
 // LINK STYLE
 ////////////////////////////
-
 
 
 @mixin theme-link ($inactive-color: $body-font-color, $active-color: $link-color, $hover-decoration: none) {
@@ -435,6 +431,48 @@ $baseline-px: $base-font-size;
   &:hover, &:active, &:focus {
     color: $active-color;
     text-decoration: $hover-decoration;
+  }
+}
+
+
+/////////////////////////////
+// INPUT PLACEHOLDER
+/////////////////////////////
+
+
+@mixin theme-placeholder($color: #000000, $color-focus: #ffffff) {
+  &::-webkit-input-placeholder {
+    @include transition-all;
+    color: $color;
+    &:focus {
+     color: $color-focus;
+    }
+  }
+
+  // Make disappear on focus in iOS... This works in Chrome as opposed to the above focus style
+  &:focus::-webkit-input-placeholder{
+    color: $color-focus;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: $color;
+    &:focus {
+     color: $color-focus;
+    }
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: $color;
+    &:focus {
+     color: $color-focus;
+    }
+  }
+
+  &:-ms-input-placeholder {
+    color: $color;
+    &:focus {
+     color: $color-focus;
+    }
   }
 }
 
