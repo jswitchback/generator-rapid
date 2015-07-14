@@ -10,9 +10,11 @@
     "suffix_2x": "@2x",
     "suffix_3x": "@3x"
   },
-  "path": {
+  "paths": {
     "images_source": "src/images",
-    "images_dest": "build/images"
+    "images_dest": "build/images",
+    "css_source": "src/sass",
+    "css_dest": "build/css"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

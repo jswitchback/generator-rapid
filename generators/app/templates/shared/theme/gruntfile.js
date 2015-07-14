@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     // http://gruntjs.com/api/grunt.option
     ////////////////////////////////////////
 
-    // Accept a command line override to the local machine url ... Browsersync task
+    // Accept a command line override to the local machine url ... Browsersync task (grunt sync)
     var url = grunt.option('url') || '<%= pkg.name %>';
 
 
@@ -88,9 +88,9 @@ module.exports = function(grunt) {
               options: {
                   config: 'config.rb', // Local configuration file.
                   // Overriding settings of local config file
-                  sassDir: 'src/sass',
-                  cssDir: 'build/css',
-                  imagesDir: 'build/images',
+                  sassDir: '<%= pkg.paths.css_source %>',
+                  cssDir: '<%= pkg.paths.css_dest %>',
+                  imagesDir: '<%= pkg.paths.images_dest %>',
                   noLineComments: true,
                   bundleExec: true // Execute our compass command with bundle exec.
               }
@@ -99,9 +99,9 @@ module.exports = function(grunt) {
               options: {
                   config: 'config.rb', // Local configuration file.
                   // Overriding settings of local config file
-                  sassDir: 'src/sass',
-                  cssDir: 'build/css',
-                  imagesDir: 'build/images',
+                  sassDir: '<%= pkg.paths.css_source %>',
+                  cssDir: '<%= pkg.paths.css_dest %>',
+                  imagesDir: '<%= pkg.paths.images_dest %>',
                   sourcemap: true,
                   environment: 'development',
                   outputStyle: 'expanded',
@@ -113,9 +113,9 @@ module.exports = function(grunt) {
               options: {
                   config: 'config.rb', // Local configuration file.
                   // Overriding settings of local config file
-                  sassDir: 'src/sass',
-                  cssDir: 'build/css',
-                  imagesDir: 'build/images',
+                  sassDir: '<%= pkg.paths.css_source %>',
+                  cssDir: '<%= pkg.paths.css_dest %>',
+                  imagesDir: '<%= pkg.paths.images_dest %>',
                   sourcemap: false,
                   environment: 'production',
                   outputStyle: 'compressed',
@@ -126,8 +126,8 @@ module.exports = function(grunt) {
           // Deletes css. Otherwise, building prod css after dev won't work because it does not detect a change.
           clean: {
               options: {
-                  sassDir: 'src/sass',
-                  cssDir: 'build/css',
+                  sassDir: '<%= pkg.paths.css_source %>',
+                  cssDir: '<%= pkg.paths.css_dest %>',
                   clean: true
               }
           }
@@ -145,7 +145,7 @@ module.exports = function(grunt) {
           },
           sass: {
               // rebuild if scss files change
-              files: 'src/sass/**/*.scss',
+              files: '<%= pkg.paths.css_source %>/**/*.scss',
               tasks: ['compass:dev']
           },
           css: {
@@ -153,7 +153,7 @@ module.exports = function(grunt) {
               files: ['*.css']
           },
           livereload : {
-            files: ['build/css/**/*.css'],
+            files: ['<%= pkg.paths.css_dest %>/**/*.css'],
             options : {
               livereload: true
             }
@@ -162,8 +162,8 @@ module.exports = function(grunt) {
               files: ['src/fonts/**/*'],
               tasks: ['copy:fonts']
           },
-          image: {
-              files: '<%= pkg.path.images_source %>/*',
+          images: {
+              files: '<%= pkg.paths.images_source %>/*',
               tasks: ['build.images']
           },
       },
@@ -183,6 +183,12 @@ module.exports = function(grunt) {
         //     src: 'src/js/<%= filename %>.js',
         //     dest: 'dist/js/<%= filename %>.js',
         // },
+        gif: { // Just move any svgs over. @TODO use svgmin to minify and copy
+            expand: true,
+            cwd: '<%= pkg.paths.images_source %>/',
+            src: '*.gif',
+            dest: '<%= pkg.paths.images_dest %>/',
+        },
         js: {
           expand: true,
           cwd: 'src/js/',
@@ -191,9 +197,9 @@ module.exports = function(grunt) {
         },
         svg: {
             expand: true,
-            cwd: '<%= pkg.path.images_source %>/',
+            cwd: '<%= pkg.paths.images_source %>/',
             src: '*.svg',
-            dest: '<%= pkg.path.images_dest %>/',
+            dest: '<%= pkg.paths.images_dest %>/',
         },
         fonts: {
           expand: true,
@@ -204,9 +210,9 @@ module.exports = function(grunt) {
         create_favicon_ext: {
           files: [{
               expand: true,
-              cwd: '<%= pkg.path.images_dest %>/app-icons/favicon/',
+              cwd: '<%= pkg.paths.images_dest %>/app-icons/favicon/',
               src: ['*.png'],
-              dest: '<%= pkg.path.images_dest %>/app-icons/favicon/',
+              dest: '<%= pkg.paths.images_dest %>/app-icons/favicon/',
               rename: function(dest, src) {
                   return dest + src.replace(/\.png$/, ".ico");
               }
@@ -215,6 +221,7 @@ module.exports = function(grunt) {
       },
 
       // Image optimization task.
+      // Does not handle gifs ... https://github.com/gruntjs/grunt-contrib-imagemin/issues/29
       imagemin: {
         all: {
           options: {
@@ -222,17 +229,17 @@ module.exports = function(grunt) {
           },
           files: [{
               expand: true,
-              cwd: '<%= pkg.path.images_source %>/',
-              src: ['*.{png,jpg,gif}', 'sprites/*.{png,jpg,gif}'],
-              dest: '<%= pkg.path.images_dest %>/'
+              cwd: '<%= pkg.paths.images_source %>/',
+              src: ['*.{png,jpg}', 'sprites/*.{png,jpg,gif}'],
+              dest: '<%= pkg.paths.images_dest %>/'
           }]
         },
         copy_resize_source_2x_images: {
           files: [{
             expand: true,
-            cwd: '<%= pkg.path.images_source %>/resize/2x',
-            src: ['{,*/}*.{gif,jpeg,jpg,png}'],
-            dest: '<%= pkg.path.images_dest %>',
+            cwd: '<%= pkg.paths.images_source %>/resize/2x',
+            src: ['{,*/}*.{jpeg,jpg,png}'],
+            dest: '<%= pkg.paths.images_dest %>',
             rename: function(dest, src) {
               var extension = src.substr(src.lastIndexOf('.')+1),
                   name = src.replace('.' + extension, '');
@@ -243,9 +250,9 @@ module.exports = function(grunt) {
         copy_resize_source_3x_images: {
           files: [{
             expand: true,
-            cwd: '<%= pkg.path.images_source %>/resize/3x',
-            src: ['{,*/}*.{gif,jpeg,jpg,png}'],
-            dest: '<%= pkg.path.images_dest %>',
+            cwd: '<%= pkg.paths.images_source %>/resize/3x',
+            src: ['{,*/}*.{jpeg,jpg,png}'],
+            dest: '<%= pkg.paths.images_dest %>',
             rename: function(dest, src) {
               var extension = src.substr(src.lastIndexOf('.')+1),
                   name = src.replace('.' + extension, '');
@@ -258,7 +265,7 @@ module.exports = function(grunt) {
       browserSync: {
           dev: {
               bsFiles: {
-                  src : 'build/css/styles.css'
+                  src : '<%= pkg.paths.css_dest %>/styles.css'
               },
               options: {
                   proxy: url,
@@ -272,7 +279,7 @@ module.exports = function(grunt) {
         basic: {
 
           expand : true,
-          cwd : '<%= pkg.path.images_source %>/sprites/svg',
+          cwd : '<%= pkg.paths.images_source %>/sprites/svg',
           src : ['**/*.svg'],
           dest : 'build',
 
@@ -286,7 +293,7 @@ module.exports = function(grunt) {
                 render : {
                   // css : true,  // Activate CSS output (with default options)
                   scss : {
-                    dest : '../../src/sass/components/sprites/_sprites1.scss'
+                    dest : '../../<%= pkg.paths.css_source %>/components/sprites/_sprites1.scss'
                   }
                 },
                 dimensions: true,
@@ -338,24 +345,24 @@ module.exports = function(grunt) {
               // specify files in array format with multiple src-dest mapping
               files: [
                   // rasterize all SVG files in "build/sprite" and its subdirectories to "build/sprite"
-                  { cwd: '<%= pkg.path.images_dest %>/sprites/css/', src: ['*.svg'], dest: '<%= pkg.path.images_dest %>/sprites/css/' }
+                  { cwd: '<%= pkg.paths.images_dest %>/sprites/css/', src: ['*.svg'], dest: '<%= pkg.paths.images_dest %>/sprites/css/' }
               ]
           }
       },
 
       image_resize: {
-          src_image_icons: '<%= pkg.path.images_source %>/app-icons/app-icon.png',
+          src_image_icons: '<%= pkg.paths.images_source %>/app-icons/app-icon.png',
           apple_prefix: 'apple-touch-icon-precomposed-',
-          apple_dest: '<%= pkg.path.images_dest %>/app-icons/apple',
+          apple_dest: '<%= pkg.paths.images_dest %>/app-icons/apple',
           android_prefix: 'android-icon-',
-          android_dest: '<%= pkg.path.images_dest %>/app-icons/android',
+          android_dest: '<%= pkg.paths.images_dest %>/app-icons/android',
           windows_prefix: 'ms-application-icon-',
-          windows_dest: '<%= pkg.path.images_dest %>/app-icons/windows',
+          windows_dest: '<%= pkg.paths.images_dest %>/app-icons/windows',
           firefox_prefix: 'firefox-icon-',
-          firefox_dest: '<%= pkg.path.images_dest %>/app-icons/firefox',
-          src_image_favicon: '<%= pkg.path.images_source %>/app-icons/favicon.png',
+          firefox_dest: '<%= pkg.paths.images_dest %>/app-icons/firefox',
+          src_image_favicon: '<%= pkg.paths.images_source %>/app-icons/favicon.png',
           favicon_prefix: 'favicon-',
-          favicon_dest: '<%= pkg.path.images_dest %>/app-icons/favicon',
+          favicon_dest: '<%= pkg.paths.images_dest %>/app-icons/favicon',
 
 
           resize_2x: {
@@ -366,9 +373,9 @@ module.exports = function(grunt) {
             },
             files: [{
               expand: true,
-              cwd: '<%= pkg.path.images_source %>/resize/2x',
+              cwd: '<%= pkg.paths.images_source %>/resize/2x',
               src: ['{,*/}*.{gif,jpeg,jpg,png}'],
-              dest: '<%= pkg.path.images_dest %>',
+              dest: '<%= pkg.paths.images_dest %>',
               rename: function(dest, src) {
                 var extension = src.substr(src.lastIndexOf('.')+1),
                     name = src.replace('.' + extension, '');
@@ -384,9 +391,9 @@ module.exports = function(grunt) {
             },
             files: [{
               expand: true,
-              cwd: '<%= pkg.path.images_source %>/resize/3x',
+              cwd: '<%= pkg.paths.images_source %>/resize/3x',
               src: ['{,*/}*.{gif,jpeg,jpg,png}'],
-              dest: '<%= pkg.path.images_dest %>',
+              dest: '<%= pkg.paths.images_dest %>',
               rename: function(dest, src) {
                 var extension = src.substr(src.lastIndexOf('.')+1),
                     name = src.replace('.' + extension, '');
@@ -402,9 +409,9 @@ module.exports = function(grunt) {
             },
             files: [{
               expand: true,
-              cwd: '<%= pkg.path.images_source %>/resize/3x',
+              cwd: '<%= pkg.paths.images_source %>/resize/3x',
               src: ['{,*/}*.{gif,jpeg,jpg,png}'],
-              dest: '<%= pkg.path.images_dest %>',
+              dest: '<%= pkg.paths.images_dest %>',
               rename: function(dest, src) {
                 var extension = src.substr(src.lastIndexOf('.')+1),
                     name = src.replace('.' + extension, '');
@@ -869,7 +876,7 @@ module.exports = function(grunt) {
     // IMAGES
     //////////////////////////////////
 
-    grunt.registerTask('watch.images', ['build.images']);
+    grunt.registerTask('watch.images', ['watch:images']);
 
     grunt.registerTask('build.images.sprites', ['svg_sprite:basic', 'svg2png']);
 
@@ -889,6 +896,7 @@ module.exports = function(grunt) {
          'newer:imagemin:all',
          'copy:create_favicon_ext',
          'copy:svg',
+         'copy:gif',
          'build.images.sprites',
          'build.images.resize'
     ]);
