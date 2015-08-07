@@ -45,7 +45,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
   // Now you can bind to the dependencies installed event
   this.on('dependenciesInstalled', function () {
 
-    // Initial build of css/js/images
+    // Initial build of css, js & images
     this.log(yosay('******************** STARTING GRUNT BUILD ********************'));
     this.spawnCommand('grunt', ['build.dev']);
 

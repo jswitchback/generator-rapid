@@ -6,6 +6,8 @@ var assert = require('yeoman-generator').assert;
 var helpers = require('yeoman-generator').test;
 var os = require('os');
 
+var testName = 'test';
+
 describe('rapid:app', function () {
   before(function (done) {
     helpers.run(path.join(__dirname, '../app'))
@@ -13,8 +15,16 @@ describe('rapid:app', function () {
       .withOptions({ 'skip-install': true })
       .withPrompt({
         drupalVersion: 7,
-        themeName: 'test',
-        themeDesc: ''
+        themeName: testName,
+        themeDesc: 'This is a test run',
+        compassBootstrap: false,
+        smoothScroll: false,
+        magnificPopup: false,
+        modernizr: false,
+        enquire: false,
+        fastclick: false,
+        mediaMatch: false,
+        respond: false
       })
       .on('end', done);
   });
@@ -27,10 +37,20 @@ describe('rapid:app', function () {
 
   it('creates sub-theme files', function () {
     assert.file([
-      'test_rapid/bower.json',
-      'test_rapid/package.json',
-      'test_rapid/.editorconfig',
-      'test_rapid/.jshintrc'      
+      testName + '_rapid/build/js',
+      testName + '_rapid/build/css',
+      testName + '_rapid/build/images',
+      testName + '_rapid/build/fonts',
+
+      testName + '_rapid/src/js',
+      testName + '_rapid/src/js/vendor',
+      testName + '_rapid/src/sass',
+
+      testName + '_rapid/gruntfile.js',
+      testName + '_rapid/bower.json',
+      testName + '_rapid/package.json',
+      testName + '_rapid/.editorconfig',
+      testName + '_rapid/.jshintrc'
     ]);
   });
 });
