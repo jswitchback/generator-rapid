@@ -4,6 +4,6 @@
 .DS_Store
 
 # Front-end grunt task related
-# node_modules
+node_modules
 vendor
 .bundle
