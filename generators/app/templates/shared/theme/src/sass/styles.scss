@@ -7,15 +7,23 @@
 @import "components/_normalize.scss";
 @import "components/_sprites.scss";
 @import "components/_typography.scss";
-@import "components/_page-layout.scss";
-@import "components/_page-theme.scss";
+@import "components/_page--layout.scss";
+@import "components/_page--theme.scss";
+@import "components/_page--element__header.scss";
+@import "components/_page--element__footer.scss";
+@import "components/_page--element__mainmenu.scss";
+@import "components/_page--element__messages.scss";
+@import "components/_page--theme__article.scss";
 @import "components/_forms.scss";
 @import "components/_field.scss";
+@import "components/_buttons.scss";
+@import "components/_tables.scss";
+
+
 @import "components/_navigation.scss";
 @import "components/_main-menu.scss";
 @import "components/_modular.scss";
 @import "components/_node-pages.scss";
-@import "components/_views-styles.scss";
 // Add your partials here
 // @import "_jquery-ui-theme";
 
