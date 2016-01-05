@@ -1,11 +1,67 @@
 name: <%= themeName %>
+description: <%= themeDesc %> (Sub theme of Classy)
 type: theme
-description: <%= themeDesc %>
 version: VERSION
 core: 8.x
-stylesheets:
-  all:
-    - css/editor.css
-    - css/style.css
-# stylesheets-remove:
-#  - normalize.css
+# Related docs:
+# https://www.drupal.org/node/2349827
+
+base theme: classy
+
+# Remove Drupal core styles.
+stylesheets-remove:
+  - core/assets/vendor/normalize-css/normalize.css
+  - core/modules/system/css/system.module.css
+  - core/modules/system/css/system.theme.css
+  - core/modules/views/css/views.module.css
+
+# Add styles from rapid.libraries.yml
+libraries:
+  - rapid/global-css
+  - rapid/global-js
+
+# Example from core Classy theme
+# @TODO: find out how these work
+# libraries-extend:
+#   user/drupal.user:
+#     - classy/user
+#   core/drupal.dropbutton:
+#     - classy/dropbutton
+#   core/drupal.dialog:
+#     - classy/dialog
+#   file/drupal.file:
+#     - classy/file
+
+# Example from Seven
+# @TODO: find out how these work
+# libraries-override:
+#   core/drupal.vertical-tabs:
+#     css:
+#       component:
+#         misc/vertical-tabs.css: false
+#   core/jquery.ui:
+#     css:
+#       theme:
+#         assets/vendor/jquery.ui/themes/base/theme.css: false
+#   core/jquery.ui.dialog:
+#     css:
+#       component:
+#         assets/vendor/jquery.ui/themes/base/dialog.css: false
+#   classy/dialog:
+#     seven/seven.drupal.dialog
+
+# Example core regions
+# regions:
+#   header: 'Header'
+#   primary_menu: "'Primary menu"
+#   secondary_menu: 'Secondary menu'
+#   highlighted: 'Highlighted'
+#   help: 'Help'
+#   content: 'Content'
+#   sidebar_first: 'Sidebar first'
+#   sidebar_second: 'Sidebar Second'
+#   footer: 'Footer'
+#   breadcrumb: 'Breadcrumb'
+# Example hidden region
+# regions_hidden:
+#   - REGION_NAME

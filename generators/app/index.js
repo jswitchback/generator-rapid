@@ -18,9 +18,13 @@ _.mixin(_.str.exports());
 var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
+
   this.themeName = this.env.themeName || 'nameless';
   this.themeDesc = this.env.themeDesc || 'nameless theme description';
   this.themeMachineName = this.env.themeMachineName || 'nameless';
+  this.drupalVersion = this.env.drupalVersion;
+  // Drupal 8 has different directory structure
+  this.librariesDirectory = (this.drupalVersion == '7') ? '../../libraries/' : '../../sites/all/libraries/';
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
 
 
@@ -52,6 +56,8 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
     // LIBRARIES INSTALL
     // // Change working directory to 'libraries' for final Bower dependency install
     // https://github.com/yeoman/generator/issues/559
+    process.chdir(librariesDirectory);
+
     process.chdir('../../libraries/');
     this.spawnCommand('bower', ['install']);
 
@@ -116,34 +122,30 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
       type: 'checkbox',
       name: 'features',
       message: 'These will be installed in the Libraries directory. (Select with arrow keys & spacebar)',
-      choices: [/*{
-          name: 'Bootstrap for Sass/Compass',
-          value: 'compassBootstrap',
-          checked: false
-        }, */{
+      choices: [{
           name: 'jQuery Smooth-scroll',
           value: 'smoothScroll',
-          checked: true
+          checked: false
         }, {
           name: 'Modernizr',
           value: 'modernizr',
-          checked: true
+          checked: false
         }, {
           name: 'Enquire',
           value: 'enquire',
-          checked: true
+          checked: false
         }, {
           name: 'Fast Click',
           value: 'fastclick',
-          checked: true
+          checked: false
         }, {
           name: 'Media Match',
           value: 'mediaMatch',
-          checked: true
+          checked: false
         }, {
           name: 'Respond',
           value: 'respond',
-          checked: true
+          checked: false
         }]
       }
     ];
@@ -155,7 +157,8 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
     this.drupalVersion    = props.drupalVersion;
     this.themeName        = props.themeName;
     this.themeDesc        = props.themeDesc;
-    this.themeMachineName = _(_.slugify(props.themeName)).underscored() + '_rapid';
+    this.themeMachineName = String(_(_.slugify(props.themeName)).underscored());
+    if (this.drupalVersion == '7'){this.themeMachineName += '_rapid';}
     this.compassBootstrap = features.indexOf('compassBootstrap') !== -1;
     this.smoothScroll     = features.indexOf('smoothScroll') !== -1;
     this.magnificPopup    = features.indexOf('magnificPopup') !== -1;
@@ -187,17 +190,45 @@ DrupalthemeGenerator.prototype.app = function app() {
 };
 
 DrupalthemeGenerator.prototype.themeStyles = function themeStyles() {
+  var drupalVersion = this.drupalVersion;
+
   this.directory('shared/theme/src/sass', 'src/sass');
+
+  switch (drupalVersion) {
+    case '7':
+      // Pull in css used for Drupal 7's features not shared by 8.
+      this.directory('d7/sass/conditional', 'src/sass/conditional');
+      break;
+
+    case '8':
+      break;
+
+    default:
+      console.log('No Drupal version detected while ading theme styles.');
+  }
   // this.template('_style.css', 'css/style.css');
 };
 
 DrupalthemeGenerator.prototype.themeScripts = function themeScripts() {
-  var themeMachineName = this.themeMachineName;
+  var themeMachineName = this.themeMachineName,
+      drupalVersion = this.drupalVersion;
 
   this.template('shared/theme/src/js/_scripts.js', 'src/js/' + themeMachineName + '.js');
   this.copy('shared/theme/src/js/responsive.js', 'src/js/responsive.js');
   this.copy('shared/theme/src/js/ckeditor-extended-styles.js', 'src/js/ckeditor-extended-styles.js');
-  this.directory('shared/theme/src/js/conditional', 'src/js/conditional');
+
+  switch (drupalVersion) {
+    case '7':
+      // Pull in js used for Drupal 7's features not shared by 8.
+      this.directory('d7/js/conditional', 'src/js/conditional');
+      break;
+
+    case '8':
+      break;
+
+    default:
+      console.log('No Drupal version detected while ading theme styles.');
+  }
 
 };
 
@@ -219,11 +250,13 @@ DrupalthemeGenerator.prototype.themeFiles = function themeInfo() {
     // Drupal 8
     case '8':
       this.template('d8/_theme.info.yml', themeMachineName + '.info.yml');
+      this.template('d8/_theme.libraries.yml', themeMachineName + '.libraries.yml');
+      this.template('d8/_theme.breakpoints.yml', themeMachineName + '.breakpoints.yml');
 
       break;
 
     default:
-      console.log('No Drupal version detected');
+      console.log('No Drupal version detected while adding theme files.');
   }
 };
 
@@ -241,10 +274,12 @@ DrupalthemeGenerator.prototype.themeTemplates = function themeTemplates() {
     // Drupal 8
     case '8':
       this.template('d8/_theme.theme', themeMachineName + '.theme');
+      this.directory('d8/templates', 'templates');
+
       break;
 
     default:
-      console.log('No Drupal version detected');
+      console.log('No Drupal version detected while adding templates');
   }
 
 };
@@ -252,13 +287,11 @@ DrupalthemeGenerator.prototype.themeTemplates = function themeTemplates() {
 DrupalthemeGenerator.prototype.themeDevFiles = function themeTemplates() {
   this.copy('shared/theme/.gitignore', '.gitignore');
   this.copy('shared/theme/.jshintrc', '.jshintrc');
-  this.copy('shared/theme/config.rb', 'config.rb');
-  this.copy('shared/theme/Gemfile', 'Gemfile');
-  this.copy('shared/theme/Gemfile.lock', 'Gemfile.lock');
   this.copy('shared/theme/gruntfile.js', 'gruntfile.js');
+  this.directory('shared/theme/grunt-tasks', 'grunt-tasks');
+  this.directory('shared/theme/sass-dependencies', 'sass-dependencies');
   this.directory('shared/theme/.docs', '.docs');
 };
-
 
 DrupalthemeGenerator.prototype.themeImages = function themeImages() {
   this.copy('shared/theme/screenshot.png', 'screenshot.png');
@@ -279,12 +312,12 @@ DrupalthemeGenerator.prototype.bowerFilesTheme = function bowerFiles() {
 };
 
 DrupalthemeGenerator.prototype.bowerFilesLibraries = function bowerFiles() {
-  this.template('shared/libraries/_bower.json', '../../libraries/bower.json');
+  this.template('shared/libraries/_bower.json', this.librariesDirectory + '/bower.json');
 
   // Make Libraries directory in case it's not there.
-  this.mkdir('../../libraries');
-  this.copy('shared/libraries/README.txt', '../../libraries/README.txt');
-  this.template('shared/libraries/_bowerrc', '../../libraries/.bowerrc');
+  this.mkdir(this.librariesDirectory);
+  this.copy('shared/libraries/README.txt', this.librariesDirectory + '/README.txt');
+  this.template('shared/libraries/_bowerrc', this.librariesDirectory + '/.bowerrc');
 };
 
 DrupalthemeGenerator.prototype.packageFiles = function packageFiles() {

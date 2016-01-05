@@ -1,0 +1,22 @@
+# Related docs:
+# https://www.drupal.org/node/2216195
+
+global-css:
+  css:
+    theme:
+      build/css/styles.css: {}
+      # Example passing <link> attribute
+      # build/css/print.css: { media: print }
+
+global-js:
+  js:
+    build/js/responsive.js: {}
+    build/js/rapid.js: {}
+
+  dependencies:
+   - core/jquery
+
+# Example added in <%= themeMachineName %>.theme (preprocess function)
+# fancy-effect:
+#   js:
+#     build/js/fancy.js: {}

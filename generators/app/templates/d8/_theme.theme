@@ -5,3 +5,89 @@
  * Functions to support theming in the <%= themeMachineName %> theme.
  */
 use Drupal\Core\Template\RenderWrapper;
+use Drupal\Core\Template\Attribute;
+
+function <%= themeMachineName %>_preprocess_page(&$variables) {
+
+  // Example: adds js from libraries,yaml file
+  // if ($variables['is_front']) {
+  //   $variables['#attached']['library'][] = 'rapid/fancy-effect';
+  // }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for node.html.twig.
+ */
+function <%= themeMachineName %>_preprocess_node(&$variables) {
+  // Remove the "Add new comment" link on teasers or when the comment form is
+  // displayed on the page.
+  if ($variables['teaser'] || !empty($variables['content']['comments']['comment_form'])) {
+    unset($variables['content']['links']['comment']['#links']['comment-add']);
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for block.html.twig.
+ */
+function <%= themeMachineName %>_preprocess_block(&$variables) {
+  // Add a clearfix class to system branding blocks.
+  if ($variables['plugin_id'] == 'system_branding_block') {
+    $variables['attributes']['class'][] = 'clearfix';
+  }
+}
+
+/**
+ * Implements hook_preprocess_HOOK() for menu.html.twig.
+ */
+function <%= themeMachineName %>_preprocess_menu(&$variables) {
+  $variables['attributes']['class'][] = 'clearfix';
+}
+
+/**
+ * Implements hook_theme_suggestions_HOOK_alter() for form templates.
+ */
+function <%= themeMachineName %>_theme_suggestions_form_alter(array &$suggestions, array $variables) {
+  // if ($variables['element']['#form_id'] == 'search_block_form') {
+  //   $suggestions[] = 'form__search_block_form';
+  // }
+}
+
+/**
+ * Override or insert variables into the comment templates.
+ *
+ * @param $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered ("comment" in this case.)
+ */
+function <%= themeMachineName %>_preprocess_comment(&$variables, $hook) {
+  // If comment subjects are disabled, don't display them.
+  // if (variable_get('comment_subject_field_' . $variables['node']->type, 1) == 0) {
+  //   $variables['title'] = '';
+  // }
+
+  // // Add pubdate to submitted variable.
+  // $variables['pubdate'] = '<time pubdate datetime="' . format_date($variables['comment']->created, 'custom', 'c') . '">' . $variables['created'] . '</time>';
+  // $variables['submitted'] = t('!username replied on !datetime', array('!username' => $variables['author'], '!datetime' => $variables['pubdate']));
+
+  // // Zebra striping.
+  // if ($variables['id'] == 1) {
+  //   $variables['classes_array'][] = 'first';
+  // }
+  // if ($variables['id'] == $variables['node']->comment_count) {
+  //   $variables['classes_array'][] = 'last';
+  // }
+  // $variables['classes_array'][] = $variables['zebra'];
+
+  // $variables['title_attributes_array']['class'][] = 'comment__title';
+}
+
+
+/**
+ * Implements hook_form_alter().
+ */
+function <%= themeMachineName %>_form_alter(&$form, \Drupal\Core\Form\FormStateInterface &$form_state, $form_id) {
+  // Duplicate the form ID as a class so we can reduce specificity in our CSS.
+  // $form['#attributes']['class'][] = drupal_clean_css_identifier($form['#id']);
+}
+

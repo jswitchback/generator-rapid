@@ -1,0 +1,56 @@
+/* @partial _messages.scss */
+
+// Not sure classesare the same.
+// .messages {
+//   margin: $vert-gutter 0;
+//   padding: 10px 10px 10px 50px; /* LTR */
+//   background-image: inline-image("message-24-ok.png");
+//   background-position: 8px 8px; /* LTR */
+//   background-repeat: no-repeat;
+//   border: 1px solid #be7;
+// }
+// .messages__status {
+//   @extend .messages;
+//   @extend %ok;
+// }
+// .messages__warning {
+//   @extend .messages;
+//   @extend %warning;
+//   background-image: inline-image("message-24-warning.png");
+//   border-color: #ed5;
+// }
+// .messages__error {
+//   @extend .messages;
+//   @extend %error;
+//   background-image: inline-image("message-24-error.png");
+//   border-color: #ed541d;
+
+// }
+// .messages--list {
+//   margin: 0;
+// }
+// .messages--item {
+//   list-style-image: none;
+// }
+
+// /* Core/module installation error messages. */
+// .messages__error  p.error {
+//   color: #333;
+// }
+
+// /* System status report. */
+// .ok,
+// %ok {
+//   background-color: #f8fff0;
+//   color: #234600;
+// }
+// .warning,
+// %warning {
+//   background-color: #fffce5;
+//   color: #840;
+// }
+// .error,
+// %error {
+//   background-color: #fef5f1;
+//   color: #8c2e0b;
+// }

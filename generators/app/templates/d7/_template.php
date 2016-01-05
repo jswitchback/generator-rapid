@@ -270,6 +270,9 @@ function <%= themeMachineName %>_preprocess_node(&$variables, $hook) {
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['view_mode'];
     $variables['theme_hook_suggestions'][] = 'node__' . $variables['type'] . '__' . $variables['view_mode'];
 
+    // Remove Back end based classes
+    // $variables['classes_array'] = array_diff($variables['classes_array'], array('node', 'node-promoted'));
+
     $variables['submitted'] =  t('by !username on !datetime',
           array(
           '!username' => '<span class="author">'. $variables['name'] . '</span>',
@@ -328,6 +331,14 @@ function <%= themeMachineName %>_preprocess_block(&$variables, $hook) {
   //    //     break;
   //     break;
   // }
+
+  if (!empty($variables['block_html_id'])) {
+    $patterns = array();
+    $patterns[0] = '/^block-block-/';
+    $patterns[1] = '/^block-/';
+
+    $variables['classes_array'][] = preg_replace( $patterns, '', $variables['block_html_id']);
+  }
 
 }
 
@@ -402,6 +413,27 @@ function <%= themeMachineName %>_form_user_login_alter(&$form, &$form_state, $fo
     );
 
     $form['actions'][] = $register_link;
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function <%= themeMachineName %>_preprocess_field(&$variables) {
+  // Remove all of core's default classes.
+  $variables['classes_array'] = array_diff($variables['classes_array'], array(
+    // 'field',
+    'field-name-' . $variables['field_name_css'],
+    'field-type-' . $variables['field_type_css'],
+    'field-label-' . $variables['element']['#label_display'],
+  ));
+
+  // Add our lean field class.
+  if (strpos($variables['field_name_css'], 'field-') === 0) {
+    $variables['classes_array'][] = $variables['field_name_css'];
+  }
+  else {
+    $variables['classes_array'][] = 'field__' . $variables['field_name_css'];
   }
 }
 

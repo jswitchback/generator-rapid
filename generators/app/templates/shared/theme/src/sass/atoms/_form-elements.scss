@@ -1,0 +1,292 @@
+/* @partial _form-elements.scss */
+
+
+/**
+ * 1. Correct font family not being inherited in all browsers.
+ * 2. Keep form elements constrained in their containers.
+ */
+button,
+input,
+select,
+textarea {
+  font-family: $input-font-family; /* 1 */
+  &:focus, &:active {
+    /* for Opera */
+    z-index: 1;
+  }
+  max-width: 100%; /* 2 */
+}
+
+textarea,
+input {
+  background: $input-background-color;
+  border: 1px solid $input-border-color;
+  @include box-shadow($input-box-shadow);
+  padding: $input-padding;
+  @include border-radius($input-border-radius);
+  @include box-sizing(border-box);
+  // Avoiding "all" because Drupal Ajax throbber is effected by background-position transitioning
+  // & iOS7 has trouble painting elements added via ajax
+  @include transition-property(border, box-shadow, color, background-color);
+  @include transition-duration($input-transition-duration);
+  @include transition-timing-function(ease-in);
+  color: $input-font-color;
+  font-size: $input-font-size;
+  max-width: 100%; /* fixed overflow of input fields in drupal 6 layouts */
+  &:focus, &:active {
+    border: 1px solid $input-border-color-focus;
+    background: $input-backgroud-color-focus;
+   // @include box-shadow($input-box-shadow-focus);
+   outline: none;
+  }
+}
+
+/**
+ * Address Firefox 4+ setting `line-height` on `input` using `!important` in
+ * the UA stylesheet.
+ */
+button,
+input {
+  line-height: normal;
+}
+
+/**
+ * Address inconsistent `text-transform` inheritance for `button` and `select`.
+ * All other form control elements do not inherit `text-transform` values.
+ * Correct `button` style inheritance in Chrome, Safari 5+, and IE 8+.
+ * Correct `select` style inheritance in Firefox 4+ and Opera.
+ */
+button,
+select {
+  text-transform: none;
+}
+
+/**
+ * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
+ *    and `video` controls.
+ * 2. Correct inability to style clickable `input` types in iOS.
+ * 3. Improve usability and consistency of cursor style between image-type
+ *    `input` and others.
+ * 4. Remove inner spacing in IE 7 without affecting normal text inputs.
+ *    Known issue: inner spacing remains in IE 6.
+ */
+button,
+html input[type="button"], /* 1 */
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button; /* 2 */
+  cursor: pointer; /* 3 */
+}
+
+/**
+ * Re-set default cursor for disabled elements.
+ */
+button[disabled],
+html input[disabled] {
+  cursor: default;
+}
+
+/**
+ * 1. Address box sizing set to `content-box` in IE 8/9.
+ * 2. Remove excess padding in IE 8/9.
+ * 3. Remove excess padding in IE 7.
+ *    Known issue: excess padding remains in IE 6.
+ */
+input[type="checkbox"],
+input[type="radio"] {
+  @include box-sizing(border-box); /* 1 */
+  padding: 0; /* 2 */
+}
+
+/**
+ * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
+ * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
+ *    (include `-moz` to future-proof).
+ */
+input[type="search"] {
+  -webkit-appearance: textfield; /* 1 */
+  @include box-sizing(content-box); /* 2 */
+}
+
+/**
+ * Remove inner padding and search cancel button in Safari 5 and Chrome
+ * on OS X.
+ */
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+
+/* Remove inner padding and border in Firefox 4+. */
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+
+button,
+input[type="submit"] {
+  @include box-sizing(border-box);
+  @include btn--submit($button-color);
+}
+
+input[value="Delete"],
+input[value="Remove"] {
+  @include btn--submit($delete-color);
+}
+
+// textarea, /* Every input field known to css. work in progress */
+// input[type="date"],
+// input[type="datetime"],
+// input[type="datetime-local"],
+// input[type="email"],
+// input[type="month"],
+// input[type="number"],
+// input[type="password"],
+// input[type="search"],
+// input[type="tel"],
+// input[type="text"],
+// input[type="time"],
+// input[type="url"],
+// input[type="week"]
+// input[type="text"],
+// input[type="email"],
+// input[type="password"]
+
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="text"],
+input[type="time"],
+input[type="week"],
+input[type="text"] {
+  width: $width-medium;
+}
+
+input[type="email"] {
+  width: $width-xlarge;
+}
+
+input[type="number"] {
+  width:  $width-xsmall;
+}
+
+/* Correct height of image inputs like inputs found in Paypal forms */
+input[type="image"] {
+  height: auto;
+}
+
+/* Highlight the form elements that caused a form submission error. */
+input.error,
+textarea.error,
+select.error {
+ border: 1px solid $error-color;
+}
+
+/**
+ * 1. Fix cascading border from iput selector above in ie8
+ */
+
+input[type="radio"],
+input[type="checkbox"] {
+   margin-right: $horiz-gutter/4;
+   background: none;
+   border: none; /* 1 */
+   @include box-shadow(none);
+}
+
+// Fix positioning of throbber after adding height to inputs. Original css found in systems
+html.js input.form-autocomplete {
+   background-position: 99% 5px;
+}
+html.js input.throbbing {
+   background-position: 99% -15px;
+}
+
+
+/*
+ * 1. Improves usability and consistency of cursor style between image-type 'input' and others
+ * 2. Corrects inability to style clickable 'input' types in iOS
+ * 3. Removes inner spacing in IE7 without affecting normal text inputs
+ *    Known issue: inner spacing remains in IE6
+ */
+
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  cursor: pointer; /* 1 */
+  -webkit-appearance: button; /* 2 */
+  &:focus {
+    background-color: $link-color-hover;
+  }
+}
+
+button,
+input[type="button"],
+input[type="reset"] {
+  padding: 2px 10px;
+}
+
+textarea[disabled],
+select[disabled],
+input[disabled] {
+  background-color: $input-disabled-background-color;
+  color: $input-disabled-font-color;
+}
+
+/*
+ * 1. Removes default vertical scrollbar in IE6/7/8/9
+ * 2. Improves readability and alignment in all browsers
+ */
+
+textarea {
+  overflow: auto; /* 1 */
+  vertical-align: top; /* 2 */
+}
+
+
+/* Input placeholder color
+  ========================================================================== */
+
+
+::-webkit-input-placeholder {
+  color: $placeholder-color;
+  &:focus {
+   color: $placeholder-focus-color;
+  }
+}
+
+// Make disappear on focus in iOS... This works in Chrome as opposed to the above focus style
+:focus::-webkit-input-placeholder{
+  color: $placeholder-focus-color;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: $placeholder-color;
+  &:focus {
+   color: $placeholder-focus-color;
+  }
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: $placeholder-color;
+  &:focus {
+   color: $placeholder-focus-color;
+  }
+}
+
+:-ms-input-placeholder {
+  color: $placeholder-color;
+  &:focus {
+   color: $placeholder-focus-color;
+  }
+}
+
+
+
+

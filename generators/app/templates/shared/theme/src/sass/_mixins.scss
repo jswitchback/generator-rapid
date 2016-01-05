@@ -294,6 +294,13 @@ $baseline-px: $base-font-size;
     text-shadow:white($opacity) 0 1px 0;
 }
 
+@mixin heading($font-size:16px, $line-height: 1.5, $margin-top: 24px, $margin-bottom: 24px) {
+  @include rem('font-size', $font-size);
+  line-height: $line-height;
+  @include rem('margin-bottom', $margin-bottom);
+  @include rem('margin-top', $margin-top);
+}
+
 
 ////////////////////////////
 // SHADOW BORDER
@@ -578,4 +585,20 @@ $baseline-px: $base-font-size;
   height: 100%;
   position: absolute;
 }
+
+
+/////////////////////////////////////////
+// SILENT CLASSES (@extend %CLASSNAME)
+
+
+%divider-top {
+  padding-top: $vert-gutter;
+  border-top: 1px solid $horizontal-rule-border;
+}
+
+%divider-bottom {
+  padding-bottom: $vert-gutter;
+  border-bottom: 1px solid $horizontal-rule-border;
+}
+
 

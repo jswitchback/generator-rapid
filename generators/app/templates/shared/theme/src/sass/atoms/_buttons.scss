@@ -1,0 +1,6 @@
+/* @partial _buttons.scss */
+
+
+.button {
+  @include btn--submit($button-color);
+}
