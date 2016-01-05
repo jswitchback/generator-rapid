@@ -58,7 +58,6 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
     // https://github.com/yeoman/generator/issues/559
     process.chdir(this.librariesDirectory);
 
-    process.chdir('../../libraries/');
     this.spawnCommand('bower', ['install']);
 
     // Reset terminal directory back to current working directory.
