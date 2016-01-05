@@ -290,6 +290,9 @@ DrupalthemeGenerator.prototype.themeDevFiles = function themeTemplates() {
   this.copy('shared/theme/gruntfile.js', 'gruntfile.js');
   this.directory('shared/theme/grunt-tasks', 'grunt-tasks');
   this.directory('shared/theme/sass-dependencies', 'sass-dependencies');
+
+  // @TODO Pull Pattern Lab from Git and drop our custom source folder into it
+  // git clone https://github.com/pattern-lab/edition-php-twig-standard
   this.directory('shared/theme/.docs', '.docs');
 };
 
