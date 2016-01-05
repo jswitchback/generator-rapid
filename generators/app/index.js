@@ -56,7 +56,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
     // LIBRARIES INSTALL
     // // Change working directory to 'libraries' for final Bower dependency install
     // https://github.com/yeoman/generator/issues/559
-    process.chdir(librariesDirectory);
+    process.chdir(this.librariesDirectory);
 
     process.chdir('../../libraries/');
     this.spawnCommand('bower', ['install']);
