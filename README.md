@@ -28,8 +28,11 @@ After npm is done, you'll be able to call:
 yo rapid
 ```
 
-This will scaffold a project for you.
+This will scaffold a theme for you. There is also a generator for scaffolding a module (beta).
 
+```bash
+yo rapid:module
+```
 
 
 ######################## YEOMAN README
