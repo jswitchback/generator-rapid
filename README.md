@@ -3,7 +3,7 @@
 > [Yeoman](http://yeoman.io) generator
 
 
-######################## RAPID GENERATOR README 
+######################## RAPID GENERATOR README
 
 
 To run this generator locally:
@@ -12,17 +12,27 @@ This is not yet available as a global npm module. npm allows you to create a glo
 
 From the root of your generator project (in generator-rapid/ folder). Open a terminal and type:
 
+```bash
 npm link
+```
 
-That'll install your project dependencies and symlink a global module to your local file. After npm is done, you'll be able to call:
+That'll install your project dependencies and symlink a global module to your local file. Next install the generators dependancies:
 
+```bash
+npm install
+```
+
+After npm is done, you'll be able to call:
+
+```bash
 yo rapid
+```
 
 This will scaffold a project for you.
 
 
 
-######################## YEOMAN README 
+######################## YEOMAN README
 
 
 
@@ -46,17 +56,19 @@ npm install -g yo
 
 Yeoman travels light. He didn't pack any generators when he moved in. You can think of a generator like a plug-in. You get to choose what type of application you wish to create, such as a Backbone application or even a Chrome extension.
 
-To install generator-rapid from npm, run:
+To install GENERATOR-NAME-HERE from npm, run:
 
 ```bash
-npm install -g generator-rapid
+npm install -g GENERATOR-NAME-HERE
 ```
 
 Finally, initiate the generator:
 
 ```bash
-yo rapid
+yo GENERATOR-NAME-HERE
 ```
+
+<a href="http://yeoman.io/generators/">Search for more generators</a>
 
 ### Getting To Know Yeoman
 

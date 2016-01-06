@@ -1,0 +1,13 @@
+<%= moduleName %>.content:
+  path: '/enter/path/here'
+  defaults:
+addBlockClass
+  <% if (addBlockClass) { %>
+    _form: '\Drupal\<%= moduleName %>\Form\<%= moduleClassName %>'
+    _title: 'FORM TITLE HERE'
+  <% } else { %>
+    _controller: '\Drupal\<%= moduleName %>\Controller\<%=  moduleClassName %>Controller::content'
+    _title: 'TITLE HERE'
+  <% } %>
+  requirements:
+    _permission: 'access content'

@@ -1,0 +1,6 @@
+{
+    "name": "drupal/<%= moduleName %>",
+    "description": "<%= moduleDesc %>",
+    "type": "drupal-module",
+    "license": "GPL-2.0+"
+}

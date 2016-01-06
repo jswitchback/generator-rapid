@@ -1,0 +1,6 @@
+<%= moduleName %>.admin:
+  title: 'Custom module settings'
+  description: '<%= moduleDesc %>'
+  parent: system.admin_config_development
+  route_name: <%= moduleName %>.content
+  weight: 100

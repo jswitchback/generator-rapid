@@ -1,0 +1,11 @@
+<%= moduleName %>_assets:
+  version: 1.x
+  css:
+    css/<%= moduleName %>.css: {}
+  js:
+    js/<%= moduleName %>.js: {}
+  dependencies:
+    # jQuery not included by default
+    #- core/jquery
+    # Add to Drupal settings javascript object
+    #- core/drupalSettings

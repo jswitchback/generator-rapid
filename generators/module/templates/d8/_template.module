@@ -1,0 +1,10 @@
+<?php
+// function <% moduleName %>_page_attachments(array &$page) {
+
+//   // Example from <% moduleName %>.libraries.yml
+//   $page['#attached']['library'][] = '<% moduleName %>/<% moduleName %>_assets';
+//   // Add to Drupal settings javascript object
+//   $page['#attached']['drupalSettings']['<% moduleName %>']['<% moduleName %>_assets']['foo'] = 'bar';
+
+// }
+

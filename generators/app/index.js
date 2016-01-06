@@ -8,11 +8,9 @@ _.str = require('underscore.string');
 
 // Mix in non-conflicting functions to Underscore namespace and
 // Generators.
-
 // Examples
 //    this._.humanize('stuff-dash')
 //    this._.classify('hello-model');
-
 _.mixin(_.str.exports());
 
 var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, options, config) {
@@ -158,7 +156,6 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
     this.themeDesc        = props.themeDesc;
     this.themeMachineName = String(_(_.slugify(props.themeName)).underscored());
     if (this.drupalVersion == '7'){this.themeMachineName += '_rapid';}
-    this.compassBootstrap = features.indexOf('compassBootstrap') !== -1;
     this.smoothScroll     = features.indexOf('smoothScroll') !== -1;
     this.magnificPopup    = features.indexOf('magnificPopup') !== -1;
     this.modernizr        = features.indexOf('modernizr') !== -1;

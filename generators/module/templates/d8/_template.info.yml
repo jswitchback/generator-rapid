@@ -1,0 +1,19 @@
+name: <%= moduleName %>
+description: <%= moduleDesc %>
+package: <%= modulePackage %>
+
+type: module
+core: 8.x
+
+# If there is a module config form,
+# this allows it to be accessed on the module admin page (/admin/modules):
+# configure: <%= moduleName %>.settings
+
+<%= dependencies %>
+
+<% if (addCssJs) { %>
+# Add styles from <%= moduleName %>.libraries.yml
+libraries:
+  - <%= moduleName %>_assets
+<% } %>
+
