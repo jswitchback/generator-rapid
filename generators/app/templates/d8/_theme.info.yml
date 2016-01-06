@@ -15,10 +15,10 @@ stylesheets-remove:
   - core/modules/system/css/system.theme.css
   - core/modules/views/css/views.module.css
 
-# Add styles from rapid.libraries.yml
+# Add styles from <%= themeName %>.libraries.yml
 libraries:
-  - rapid/global-css
-  - rapid/global-js
+  - <%= themeName %>/<%= themeName %>_global-css
+  - <%= themeName %>/<%= themeName %>_global-js
 
 # Example from core Classy theme
 # @TODO: find out how these work
