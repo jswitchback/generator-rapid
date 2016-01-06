@@ -21,8 +21,6 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
   this.themeDesc = this.env.themeDesc || 'nameless theme description';
   this.themeMachineName = this.env.themeMachineName || 'nameless';
   this.drupalVersion = this.env.drupalVersion;
-  // Drupal 8 has different directory structure
-  this.librariesDirectory = (this.drupalVersion == '7') ? '../../libraries/' : '../../sites/all/libraries/';
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
 
 
@@ -48,7 +46,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
   this.on('dependenciesInstalled', function () {
 
     // Initial build of css, js & images
-    this.log(yosay('******************** STARTING GRUNT BUILD ********************'));
+    this.log(yosay('******** SCAFFOLDING COMPLETE. RUNNING INITIAL GRUNT TASKS ********'));
     this.spawnCommand('grunt', ['build.dev']);
 
     // LIBRARIES INSTALL
@@ -81,15 +79,15 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
       name: 'drupalVersion',
       message: 'Which Drupal version?',
       type: 'list',
-      default: '7',
+      default: 7,
       choices: [
         {
           name: 'Drupal 7',
-          value: '7'
+          value: 7
         },
         {
           name: 'Drupal 8',
-          value: '8'
+          value: 8
         }
       ]
     },
@@ -155,7 +153,8 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
     this.themeName        = props.themeName;
     this.themeDesc        = props.themeDesc;
     this.themeMachineName = String(_(_.slugify(props.themeName)).underscored());
-    if (this.drupalVersion == '7'){this.themeMachineName += '_rapid';}
+    if (this.drupalVersion === 7){this.themeMachineName += '_rapid';}
+    this.librariesDirectory = (this.drupalVersion === 7) ? '../../libraries/' : '../../sites/all/libraries/';
     this.smoothScroll     = features.indexOf('smoothScroll') !== -1;
     this.magnificPopup    = features.indexOf('magnificPopup') !== -1;
     this.modernizr        = features.indexOf('modernizr') !== -1;
@@ -191,12 +190,12 @@ DrupalthemeGenerator.prototype.themeStyles = function themeStyles() {
   this.directory('shared/theme/src/sass', 'src/sass');
 
   switch (drupalVersion) {
-    case '7':
+    case 7:
       // Pull in css used for Drupal 7's features not shared by 8.
       this.directory('d7/sass/conditional', 'src/sass/conditional');
       break;
 
-    case '8':
+    case 8:
       break;
 
     default:
@@ -214,12 +213,12 @@ DrupalthemeGenerator.prototype.themeScripts = function themeScripts() {
   this.copy('shared/theme/src/js/ckeditor-extended-styles.js', 'src/js/ckeditor-extended-styles.js');
 
   switch (drupalVersion) {
-    case '7':
+    case 7:
       // Pull in js used for Drupal 7's features not shared by 8.
       this.directory('d7/js/conditional', 'src/js/conditional');
       break;
 
-    case '8':
+    case 8:
       break;
 
     default:
@@ -234,7 +233,7 @@ DrupalthemeGenerator.prototype.themeFiles = function themeInfo() {
 
   switch (drupalVersion) {
     // Drupal 7
-    case '7':
+    case 7:
       // Pull in parent theme
       this.directory('d7/rapid', '../rapid');
 
@@ -244,7 +243,7 @@ DrupalthemeGenerator.prototype.themeFiles = function themeInfo() {
 
       break;
     // Drupal 8
-    case '8':
+    case 8:
       this.template('d8/_theme.info.yml', themeMachineName + '.info.yml');
       this.template('d8/_theme.libraries.yml', themeMachineName + '.libraries.yml');
       this.template('d8/_theme.breakpoints.yml', themeMachineName + '.breakpoints.yml');
@@ -262,13 +261,13 @@ DrupalthemeGenerator.prototype.themeTemplates = function themeTemplates() {
 
   switch (drupalVersion) {
     // Drupal 7
-    case '7':
+    case 7:
       this.template('d7/_template.php', 'template.php');
       this.directory('shared/theme/templates', 'templates');
       break;
 
     // Drupal 8
-    case '8':
+    case 8:
       this.template('d8/_theme.theme', themeMachineName + '.theme');
       this.directory('d8/templates', 'templates');
 
@@ -289,6 +288,7 @@ DrupalthemeGenerator.prototype.themeDevFiles = function themeTemplates() {
 
   // @TODO Pull Pattern Lab from Git and drop our custom source folder into it
   // git clone https://github.com/pattern-lab/edition-php-twig-standard
+  // spawnCommand not working to clone repository
   this.directory('shared/theme/.docs', '.docs');
 };
 
