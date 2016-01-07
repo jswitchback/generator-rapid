@@ -6,7 +6,11 @@ core: 8.x
 # Related docs:
 # https://www.drupal.org/node/2349827
 
+
+
 base theme: classy
+
+
 
 # Remove Drupal core styles.
 stylesheets-remove:
@@ -15,30 +19,41 @@ stylesheets-remove:
   - core/modules/system/css/system.theme.css
   - core/modules/views/css/views.module.css
 
+
+
 # Add styles from <%= themeName %>.libraries.yml
 libraries:
   - <%= themeName %>/<%= themeName %>_global-css
   - <%= themeName %>/<%= themeName %>_global-js
 
-# Example from core Classy theme
-# @TODO: find out how these work
-# libraries-extend:
-#   user/drupal.user:
-#     - classy/user
-#   core/drupal.dropbutton:
-#     - classy/dropbutton
-#   core/drupal.dialog:
-#     - classy/dialog
-#   file/drupal.file:
-#     - classy/file
 
-# Example from Seven
-# @TODO: find out how these work
+
+# Example extend
+# Extend drupal.dialog: add assets from <%= themeName %>'s user libraries.
+# libraries-extend:
+#   core/drupal.dialog:
+#     - <%= themeName %>/dialog
+#   file/drupal.file:
+#     - <%= themeName %>/file
+
+
+
+# Example override
 # libraries-override:
-#   core/drupal.vertical-tabs:
+#   # Replace an entire library.
+#   core/drupal.collapse: mytheme/collapse
+
+#   # Replace an asset with another.
+#   THEMEORMODULEMACHINENAME/LIBRARYNAME:
 #     css:
-#       component:
-#         misc/vertical-tabs.css: false
+#       theme:
+#         css/layout.css: css/my-layout.css
+
+#   # Remove an asset.
+#   drupal/dialog:
+#     css:
+#       theme:
+#         dialog.theme.css: false
 #   core/jquery.ui:
 #     css:
 #       theme:
@@ -47,8 +62,11 @@ libraries:
 #     css:
 #       component:
 #         assets/vendor/jquery.ui/themes/base/dialog.css: false
-#   classy/dialog:
-#     seven/seven.drupal.dialog
+
+#   # Remove an entire library.
+#   core/modernizr: false
+
+
 
 # Example core regions
 # regions:

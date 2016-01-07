@@ -247,6 +247,7 @@ DrupalthemeGenerator.prototype.themeFiles = function themeInfo() {
       this.template('d8/_theme.info.yml', themeMachineName + '.info.yml');
       this.template('d8/_theme.libraries.yml', themeMachineName + '.libraries.yml');
       this.template('d8/_theme.breakpoints.yml', themeMachineName + '.breakpoints.yml');
+      this.template('d8/_theme.settings.yml', 'config/install/' + themeMachineName + '.settings.yml');
 
       break;
 

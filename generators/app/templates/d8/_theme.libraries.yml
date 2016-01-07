@@ -10,11 +10,48 @@
 
 <%= themeName %>_global-js:
   js:
+    # header: true # Uncomment to load in header
     build/js/responsive.js: {}
     build/js/<%= themeName %>.js: {}
 
   dependencies:
    - core/jquery
+   # - core/modernizr # Tests inputtypes & touchevents. Include those when overrriding
+   # - core/html5shiv
+  # Core js in core/assets/
+  # backbone
+  # ckeditor
+  # classList
+  # domready
+  # farbtastic
+  # html5shiv
+  # jquery
+  # jquery-form
+  # jquery-joyride
+  # jquery-once
+  # jquery-ui-touch-punch
+  # jquery.cookie
+  # jquery.ui
+  # matchMedia
+  # modernizr
+  # normalize-css
+  # picturefill
+  # underscore
+
+# Example extend
+# dialog:
+#   version: VERSION
+#   css:
+#     component:
+#       build/css/dialog.css: { weight: -10 }
+# file:
+#   version: VERSION
+#   css:
+#     component:
+#       build/css/file.css: { weight: -10 }
+
+
+
 
 # Example added in <%= themeMachineName %>.theme (preprocess function)
 # fancy-effect:
