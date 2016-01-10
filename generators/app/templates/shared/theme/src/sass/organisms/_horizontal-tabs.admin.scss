@@ -12,7 +12,7 @@ div.horizontal-tabs {
 .horizontal-tabs-panes {
   border: 1px solid $tabs-display-border-color;
   margin-top: -9px;
-  @include border-bottom-radius($tabs-display-border-radius); 
+  border-bottom-radius: $tabs-display-border-radius;
 }
 
 .horizontal-tabs ul.horizontal-tabs-list {
@@ -31,9 +31,9 @@ div.horizontal-tabs {
 
 fieldset.field-group-htab {
   margin: 0;
-  @include border-top-left-radius(0);
+  border-top-left-radius: 0;
 }
- 
+
 .horizontal-tabs fieldset.horizontal-tabs-pane {
   padding: 1em;
   border: 0;
@@ -51,7 +51,7 @@ fieldset.field-group-htab {
   border-top: 1px solid $tabs-display-border-color;
   border-bottom: 1px solid $tabs-display-border-color;
   padding: 1px;
-  padding-top: 0; 
+  padding-top: 0;
   margin: 0;
   min-width: 5em; /* IE7 */
   float: left;
@@ -61,7 +61,7 @@ fieldset.field-group-htab {
   &.selected {
     border-bottom: 1px solid #fff;
     background-color: #fff;
-    padding: 0 0 1px 0;  
+    padding: 0 0 1px 0;
     a {
       border-top: .25em solid $tabs-display-active-border-color;
       color: #000;
@@ -101,7 +101,7 @@ fieldset.field-group-htab {
       }
     }
   }
-  &:hover, 
+  &:hover,
   &:focus {
     outline: none;
   }
@@ -118,9 +118,9 @@ fieldset.field-group-htab {
 }
 
 /**
- * tab content 
+ * tab content
  */
-div.field-group-htabs-wrapper .field-group-format-wrapper { 
+div.field-group-htabs-wrapper .field-group-format-wrapper {
   clear: both;
   padding: 0 0 0.6em;
 }

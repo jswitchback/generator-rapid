@@ -15,17 +15,14 @@
 
 
 /**
- * 1. Set default font family to sans-serif.
- * 2. Prevent iOS text size adjust after orientation change, without disabling
- *    user zoom.
- * 3. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
- *    `em` units.
+ * 1. Prevent iOS and IE text size adjust after device orientation change,
+ *    without disabling user zoom.
  */
+
 html {
   font-family: $body-font; /* 1 */
-  font-size: 100% * ($base-font-size / 16px); /* 3 */
-  -ms-text-size-adjust: 100%; /* 2 */
-  -webkit-text-size-adjust: 100%; /* 2 */
+  -ms-text-size-adjust: 100%; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 1 */
   // Establish a vertical rhythm unit using $base-line-height.
   line-height: $body-line-height;
 }
@@ -114,16 +111,29 @@ mark {
 }
 
 /*
- * Addresses margins set differently in IE6/7
+ * 1. Contain overflow in all browsers.
+ * 2. Improves readability of pre-formatted text in all browsers
  */
 
 pre {
+  overflow: auto; /* 1 */
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
   margin: $vert-gutter 0;
+  white-space: pre; /* 2 */
+  white-space: pre-wrap; /* 2 */
+  word-wrap: break-word; /* 2 */
 }
 
 p {
   margin: 0 0 $vert-gutter 0;
+}
+
+/**
+ * Address inconsistent and variable font size in all browsers.
+ */
+
+small {
+  font-size: 80%;
 }
 
 /*
@@ -138,57 +148,6 @@ samp,
 tt,
 var {
   font-family: $font-monospace; /* The $font-monospace value ends with ", serif". */
-  @if $legacy-support-for-ie6 {
-    _font-family: 'courier new', monospace;
-  }
-}
-
-p {
-  pre,
-  code,
-  kbd,
-  samp,
-  tt,
-  var {
-    margin: 0;
-    padding: 0;
-    color: $body-font-color;
-    background: transparent;
-  }
-}
-
-/*
- * Improves readability of pre-formatted text in all browsers
- */
-
-pre {
-  white-space: pre;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-/*
- * 1. Addresses CSS quotes not supported in IE6/7
- * 2. Addresses quote property not supported in S4
- */
-
-/* 1 */
-
-q {
-  quotes: none;
-}
-
-/* 2 */
-
-q:before,
-q:after {
-  content: '';
-  content: none;
-}
-
-/* @todo Determine how big element affects vertical rhythm. */
-small {
-  font-size: 75%;
 }
 
 /*

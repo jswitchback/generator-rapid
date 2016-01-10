@@ -9,7 +9,7 @@
 }
 %pager__item {
   list-style-type: none;
-  @include border-radius($ui-border-radius);
+  border-radius: $ui-border-radius;
   color: lighten($pager-color, 100%);
   text-transform: uppercase;
   padding: 4px 8px;
@@ -28,7 +28,7 @@
     background-color: $pager-color;
     &:hover, :active {
       background-color: $pager-color-hover;
-      @include border-radius($ui-border-radius);
+      border-radius: $ui-border-radius;
       text-transform: uppercase;
       color: lighten($pager-color, 100%);
       text-decoration: none;

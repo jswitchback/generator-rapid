@@ -21,7 +21,7 @@
     display: block;
     font-weight: $form-item-label-font-weight;
     margin: $form-item-label-margin;
-    @include rem('font-size', $form-item-label-font-size);
+    font-size: $form-item-label-font-size;
   }
 
   /* The descriptive help text (separate from the label). */

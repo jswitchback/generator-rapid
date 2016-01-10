@@ -9,6 +9,12 @@ module.exports = {
       src: '*.gif',
       dest: '<%= package.paths.images_dest %>/',
   },
+  sourcemaps: {
+    expand: true,
+    cwd: '<%= package.paths.css_temp_dest %>',
+    src: '*.map',
+    dest: '<%= package.paths.css_dest %>',
+  },
   js: {
     expand: true,
     cwd: 'src/js/',

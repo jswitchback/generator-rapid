@@ -7,7 +7,7 @@
 /******* START VARIABLES *********/
 
 
-/* Target a widget type. Add class name found on wrapping div. For example, Datepicker classes are "ui-datepicker ui-widget ui.widget-content..."" So the widget specific class would be ui-datepicker.  */ 
+/* Target a widget type. Add class name found on wrapping div. For example, Datepicker classes are "ui-datepicker ui-widget ui.widget-content..."" So the widget specific class would be ui-datepicker.  */
 $widgetClass: ui-datepicker;
 
 /* All knowing base color -- Imported from theme _base.scss */
@@ -33,8 +33,8 @@ $highlight--fontColor: $active--fontColor;
 
 
 $default--borderColor: lighten($base-color, 40%);
-$hover--backgroundColor: $default--borderColor; 
-$focus--backgroundColor: $default--borderColor; 
+$hover--backgroundColor: $default--borderColor;
+$focus--backgroundColor: $default--borderColor;
 
 
 $hover--fontColor: lighten($base-color, 6%);
@@ -98,16 +98,16 @@ $state-default--background-image: none;
 $state-default--font-color: $default--fontColor;
 $state-default--link-color: $default--fontColor;
 
-$state-hover--border-color: $hover--borderColor; 
-$state-hover--background-color: $hover--backgroundColor; 
+$state-hover--border-color: $hover--borderColor;
+$state-hover--background-color: $hover--backgroundColor;
 $state-hover--background-image: none;
-$state-hover--font-color: $hover--fontColor; 
+$state-hover--font-color: $hover--fontColor;
 $state-hover--link-hover-visited--font-color: $hover--link-hover-visited--fontColor;
 
-$state-focus--border-color: $focus--borderColor; 
-$state-focus--background-color: $focus--backgroundColor; 
+$state-focus--border-color: $focus--borderColor;
+$state-focus--background-color: $focus--backgroundColor;
 $state-focus--background-image: none;
-$state-focus--font-color: $focus--fontColor; 
+$state-focus--font-color: $focus--fontColor;
 
 $state-active--border-color: $active--borderColor;
 $state-active--background-color: $active--backgroundColor;
@@ -304,42 +304,42 @@ $datepicker-div--table-head--background: $datepickerTableHeadBackgroundColor;
 .ui-widget-overlay {
   background: $widget-overlay--background-color url(../images/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x;
   opacity: .3;
-	filter:Alpha(Opacity=30);
+  filter:Alpha(Opacity=30);
 }
 
 .ui-widget-shadow {
   background: $widget-shadow--background-color url(../images/jquery-ui/ui-bg_flat_0_aaaaaa_40x100.png) 50% 50% repeat-x;
   opacity: .3;
-	filter:Alpha(Opacity=30);
-	padding: 8px; 
-	margin: -8px 0 0 -8px; 
-	@include border-radius($widget-shadow--border-radius);
+  filter:Alpha(Opacity=30);
+  padding: 8px;
+  margin: -8px 0 0 -8px;
+  border-radius: $widget-shadow--border-radius;
 }
 
 /* Corner radius */
 .ui-corner-tl {
-	@include border-top-left-radius($ui-corner-tl-radius);
+  border-top-left-radius: $ui-corner-tl-radius;
 }
 .ui-corner-tr {
-	@include border-top-right-radius($ui-corner-tr-radius);
+  border-top-right-radius: $ui-corner-tr-radius;
 }
 .ui-corner-bl {
-	@include border-bottom-left-radius($ui-corner-bl-radius);
+  border-bottom-left-radius: $ui-corner-bl-radius;
 }
-.ui-corner-br { 
-	@include border-bottom-right-radius($ui-corner-br-radius);
+.ui-corner-br {
+  border-bottom-right-radius: $ui-corner-br-radius;
 }
 .ui-corner-top {
-	@include border-top-radius($ui-corner-t-radius);
+  border-top-radius: $ui-corner-t-radius;
 }
 .ui-corner-bottom {
-	@include border-bottom-radius($ui-corner-b-radius);
+  border-bottom-radius: $ui-corner-b-radius;
 }
 .ui-corner-right {
-	@include border-right-radius($ui-corner-r-radius);
+  border-right-radius: $ui-corner-r-radius;
 }
-.ui-corner-left { 
-	@include border-left-radius($ui-corner-l-radius);
+.ui-corner-left {
+  border-left-radius: $ui-corner-l-radius;
 }
 
 
@@ -349,9 +349,9 @@ $datepicker-div--table-head--background: $datepickerTableHeadBackgroundColor;
 #ui-datepicker-div {
   background: $datepicker-div--background;
   border: $datepicker-div--border;
-	 -widget--fontebkit-box-shadow: $datepicker-div--shadow;
-	 -moz-box-shadow: $datepicker-div--shadow;
-	 box-shadow: $datepicker-div--shadow;
+   -widget--fontebkit-box-shadow: $datepicker-div--shadow;
+   -moz-box-shadow: $datepicker-div--shadow;
+   box-shadow: $datepicker-div--shadow;
   thead th {
     font-size: .9em;
   }
@@ -767,9 +767,9 @@ $datepicker-div--table-head--background: $datepickerTableHeadBackgroundColor;
 // #ui-datepicker-div {
 //   background: $datepicker-div--background;
 //   border: $datepicker-div--border;
-//	 -widget--fontebkit-box-shadow: $datepicker-div--shadow;
-//	 -moz-box-shadow: $datepicker-div--shadow;
-//	 box-shadow: $datepicker-div--shadow;
+//   -widget--fontebkit-box-shadow: $datepicker-div--shadow;
+//   -moz-box-shadow: $datepicker-div--shadow;
+//   box-shadow: $datepicker-div--shadow;
 //   thead th {
 //     font-size: .9em;
 //   }

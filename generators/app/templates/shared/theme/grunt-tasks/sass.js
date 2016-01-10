@@ -9,7 +9,7 @@ module.exports = {
       expand: true,
       cwd: '<%= package.paths.css_source %>',
       src: ['*.scss'],
-      dest: '<%= package.paths.css_dest %>',
+      dest: '<%= package.paths.css_temp_dest %>',
       ext: '.css'
     }]
   },
@@ -23,7 +23,7 @@ module.exports = {
       expand: true,
       cwd: '<%= package.paths.css_source %>',
       src: ['*.scss'],
-      dest: '<%= package.paths.css_dest %>',
+      dest: '<%= package.paths.css_temp_dest %>',
       ext: '.css'
     }]
   },

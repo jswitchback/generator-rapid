@@ -13,12 +13,8 @@ module.exports = {
     // Watches all scss files.
     files: ['<%= package.paths.css_source %>/**/*.scss'],
     // runs the task `sass` whenever any watched file changes
-    tasks: ['sass:dev', 'concat:styleguide_css']
+    tasks: ['sass:dev', 'concat:styleguide_css', 'postcss', 'copy:sourcemaps']
   },
-  // css: {
-  //     // rebuild if css files change
-  //     files: ['*.css']
-  // },
   livereload : {
     files: ['<%= package.paths.css_dest %>/**/*.css'],
     options : {

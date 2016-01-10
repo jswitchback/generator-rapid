@@ -26,9 +26,9 @@ module.exports = {
 
   'watch.css': ['watch:sass'],
   'watch.sass': ['watch:sass'],
-  'build.css': ['minify.js'],
-  'build.css.dev': ['sass:dev'],
-  'build.css.prod': ['sass:prod'],
+  'build.css': ['sass:dev', 'concat:styleguide_css', 'postcss:modern', 'copy:sourcemaps'],
+  'build.css.dev': ['sass:dev', 'concat:styleguide_css', 'postcss:modern', 'copy:sourcemaps'],
+  'build.css.prod': ['sass:prod', 'concat:styleguide_css', 'postcss:modern', 'copy:sourcemaps'],
 
 
   //////////////////////////////////
@@ -184,6 +184,8 @@ module.exports = {
       'concat:styleguide_css',
       'concat:styleguide_js'
   ],
+
+  'build.sg': ['build.styleguide'],
 
   'serve.styleguide': ['shell:patternlab_serve'],
 

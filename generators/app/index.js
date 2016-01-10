@@ -49,16 +49,18 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
     this.log(yosay('******** SCAFFOLDING COMPLETE. RUNNING INITIAL GRUNT TASKS ********'));
     this.spawnCommand('grunt', ['build.dev']);
 
-    // LIBRARIES INSTALL
+    // DRUPAL 7 LIBRARIES INSTALL
     // // Change working directory to 'libraries' for final Bower dependency install
     // https://github.com/yeoman/generator/issues/559
-    process.chdir(this.librariesDirectory);
+    if (this.drupalVersion === 7) {
+      process.chdir(this.librariesDirectory);
 
-    this.spawnCommand('bower', ['install']);
+      this.spawnCommand('bower', ['install']);
 
-    // Reset terminal directory back to current working directory.
-    // Prevent "cd .." from ending up in trash can directory.
-    process.chdir(process.cwd());
+      // Reset terminal directory back to current working directory.
+      // Prevent "cd .." from ending up in trash can directory.
+      process.chdir(process.cwd());
+    }
 
   });
 
@@ -154,7 +156,7 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
     this.themeDesc        = props.themeDesc;
     this.themeMachineName = String(_(_.slugify(props.themeName)).underscored());
     if (this.drupalVersion === 7){this.themeMachineName += '_rapid';}
-    this.librariesDirectory = (this.drupalVersion === 7) ? '../../libraries/' : '../../sites/all/libraries/';
+    this.librariesDirectory = '../../libraries/';
     this.smoothScroll     = features.indexOf('smoothScroll') !== -1;
     this.magnificPopup    = features.indexOf('magnificPopup') !== -1;
     this.modernizr        = features.indexOf('modernizr') !== -1;
@@ -180,7 +182,7 @@ DrupalthemeGenerator.prototype.app = function app() {
   this.mkdir('build/fonts');
   this.mkdir('src/js');
   this.mkdir('src/js/vendor');
-  this.mkdir('src/sass');
+  this.mkdir('src/sass/.tmp/sass');
 
 };
 
@@ -312,12 +314,29 @@ DrupalthemeGenerator.prototype.bowerFilesTheme = function bowerFiles() {
 };
 
 DrupalthemeGenerator.prototype.bowerFilesLibraries = function bowerFiles() {
-  this.template('shared/libraries/_bower.json', this.librariesDirectory + '/bower.json');
+  var drupalVersion = this.drupalVersion;
 
-  // Make Libraries directory in case it's not there.
-  this.mkdir(this.librariesDirectory);
-  this.copy('shared/libraries/README.txt', this.librariesDirectory + '/README.txt');
-  this.template('shared/libraries/_bowerrc', this.librariesDirectory + '/.bowerrc');
+  switch (drupalVersion) {
+    // Drupal 7
+    case 7:
+      this.template('shared/libraries/_bower.json', this.librariesDirectory + '/bower.json');
+      // Make Libraries directory in case it's not there.
+      this.mkdir(this.librariesDirectory);
+      this.copy('d7/libraries/README.txt', this.librariesDirectory + '/README.txt');
+      this.template('d7/libraries/_bowerrc', this.librariesDirectory + '/.bowerrc');
+      break;
+
+    // Drupal 8
+    case 8:
+
+      break;
+
+    default:
+      console.log('No Drupal version detected while adding bower files');
+  }
+
+
+
 };
 
 DrupalthemeGenerator.prototype.packageFiles = function packageFiles() {

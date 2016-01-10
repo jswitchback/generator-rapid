@@ -11,7 +11,7 @@ div.vertical-tabs {
   margin: 2em 0 1em 15em; /* LTR */
   border: 1px solid $tabs-display-border-color;
   background-color: $tabs-display-active-content-color;
-  position: relative; /* IE6/7 */ 
+  position: relative; /* IE6/7 */
 }
 .vertical-tabs ul.vertical-tabs-list {
   width: 15em;
@@ -102,17 +102,17 @@ fieldset.vertical-tabs-pane fieldset legend {
 /* ADDED */
 
 .vertical-tab-button.first {
-  @include border-top-left-radius($tabs-display-border-radius);
+  border-top-left-radius: $tabs-display-border-radius;
 }
 
 .vertical-tab-button.last {
-  @include border-bottom-left-radius($tabs-display-border-radius);
+  border-bottom-left-radius: $tabs-display-border-radius;
 }
 
 .vertical-tabs-pane {
-  @include border-top-right-radius($tabs-display-border-radius);
-  @include border-bottom-right-radius($tabs-display-border-radius);
-  @include border-bottom-left-radius($tabs-display-border-radius);
+  border-top-right-radius: $tabs-display-border-radius;
+  border-bottom-right-radius: $tabs-display-border-radius;
+  border-bottom-left-radius: $tabs-display-border-radius;
 }
 
 .vertical-tabs-pane fieldset {
