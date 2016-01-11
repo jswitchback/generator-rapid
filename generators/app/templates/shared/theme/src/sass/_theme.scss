@@ -1,8 +1,10 @@
 
 
+
 // =============================================================================
 // TYPOGRAPHY
 // =============================================================================
+
 
 
 // Adjust with copy paste of pixel css code from http://www.gridlover.net/app/
@@ -80,7 +82,6 @@ $webfont-bold:        'FONTFACENAMEHERE', Arial, Helvetica, sans-serif;
 
 
 
-
 // =============================================================================
 // COLOR PALLETE
 // =============================================================================
@@ -101,6 +102,7 @@ $green: #25db4c; // Success
 // =============================================================================
 // GLOBAL VARIABLES
 // =============================================================================
+
 
 
 // SHARED FORM VARIABLES
@@ -170,8 +172,8 @@ $width-medium: 180px;
 $width-large: 240px;
 $width-xlarge: 300px;
 $width-xxlarge: 100%;
-$inline-field-gutter: .5em;
-$inline-field-gutter: .5em;
+$inline-field-gutter: .5rem;
+$inline-field-gutter: .5rem;
 
 $placeholder-color: #999999;
 $placeholder-focus-color: $input-background-color;
@@ -251,7 +253,7 @@ $table-tr-odd-border-width: 1px 1px 1px 1px;
 $table-tr-odd-border-color: darken($body-bgrd-color, 2%) transparent transparent transparent;
 
 $table-tr-drag-background: $table-tr-odd-border-color;
-$table-td-padding: .25em .5em;
+$table-td-padding: .25rem .5rem;
 $table-td-disabled-background: #ccc;
 
 
