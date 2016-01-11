@@ -266,14 +266,13 @@ DrupalthemeGenerator.prototype.themeTemplates = function themeTemplates() {
     // Drupal 7
     case 7:
       this.template('d7/_template.php', 'template.php');
-      this.directory('shared/theme/templates', 'templates');
+      this.directory('d7/templates', 'templates');
       break;
 
     // Drupal 8
     case 8:
       this.template('d8/_theme.theme', themeMachineName + '.theme');
       this.directory('d8/templates', 'templates');
-
       break;
 
     default:
