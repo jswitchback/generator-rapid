@@ -52,6 +52,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
     // DRUPAL 7 LIBRARIES INSTALL
     // // Change working directory to 'libraries' for final Bower dependency install
     // https://github.com/yeoman/generator/issues/559
+    // DRUPAL 8 will install these in the theme since the Libraries api is not ported to 8
     if (this.drupalVersion === 7) {
       process.chdir(this.librariesDirectory);
 
@@ -115,7 +116,37 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
         return true;
       }
     },
+    // d8
     {
+      when: function (response) {
+        return (response.drupalVersion === 8) ? true : false;
+      },
+      type: 'checkbox',
+      name: 'features',
+      message: 'These will be installed in the theme vendor directory. (Select with arrow keys & spacebar)',
+      choices: [{
+          name: 'jQuery Smooth-scroll',
+          value: 'smoothScroll',
+          checked: false
+        }, {
+          name: 'Modernizr',
+          value: 'modernizr',
+          checked: false
+        }, {
+          name: 'Enquire',
+          value: 'enquire',
+          checked: false
+        }, {
+          name: 'Fast Click (Touch)',
+          value: 'fastclick',
+          checked: false
+        }]
+    },
+    // d7
+    {
+      when: function (response) {
+        return (response.drupalVersion === 7) ? true : false;
+      },
       type: 'checkbox',
       name: 'features',
       message: 'These will be installed in the Libraries directory. (Select with arrow keys & spacebar)',
@@ -132,15 +163,15 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
           value: 'enquire',
           checked: false
         }, {
-          name: 'Fast Click',
+          name: 'Fast Click (Touch)',
           value: 'fastclick',
           checked: false
         }, {
-          name: 'Media Match',
+          name: 'Media Match (IE8/9)',
           value: 'mediaMatch',
           checked: false
         }, {
-          name: 'Respond',
+          name: 'Respond (IE8/9)',
           value: 'respond',
           checked: false
         }]

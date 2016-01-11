@@ -93,8 +93,8 @@ $green: #25db4c; // Success
 
 
 // SHARED FORM VARIABLES
-$ui-border-color: lighten($link-color, 28%);
-$ui-background-color: lighten($link-color, 32%);
+$ui-border-color: lighten($blue-gray, 28%);
+$ui-background-color: lighten($blue-gray, 32%);
 $ui-padding: ($vert-gutter/2) ($horiz-gutter/2);
 $ui-border-radius: 2px;
 
@@ -126,10 +126,10 @@ $body-bgrd-color: #ffffff;
 
 // LINKS
 $link-color: $blue-gray;
-$link-color-visited: darken($link-color, 10%);
-$link-color-hover: darken($link-color, 5%);
-$link-color-focus: darken($link-color, 10%);
-$link-color-active: darken($link-color, 10%);
+$link-color-visited: darken($blue-gray, 10%);
+$link-color-hover: darken($blue-gray, 5%);
+$link-color-focus: darken($blue-gray, 10%);
+$link-color-active: darken($blue-gray, 10%);
 $link-text-decoration: none;
 
 

@@ -16,29 +16,90 @@
 
   dependencies:
    - core/jquery
-   # - core/modernizr # Tests inputtypes & touchevents. Include those when overrriding
-   # - core/html5shiv
-  # Core js in core/assets/
-  # backbone
-  # ckeditor
-  # classList
-  # domready
-  # farbtastic
-  # html5shiv
-  # jquery
-  # jquery-form
-  # jquery-joyride
-  # jquery-once
-  # jquery-ui-touch-punch
-  # jquery.cookie
-  # jquery.ui
-  # matchMedia
-  # modernizr
-  # normalize-css
-  # picturefill
-  # underscore
+   # Other core js from core/assets/
+   # -backbone
+   # ckeditor
+   # classList
+   # domready
+   # farbtastic
+   # html5shiv
+   # jquery
+   # jquery-form
+   # jquery-joyride
+   # jquery-once
+   # jquery-ui-touch-punch
+   # jquery.cookie
+   # jquery.ui
+   # matchMedia
+   # modernizr
+   # normalize-css
+   # picturefill
+   # underscore
 
-# Example extend
+<% if (modernizr) { %>
+
+modernizr:
+  css:
+    theme:
+      vendor/path/to/css.css: {}
+  js:
+    vendor/path/to/js.js: {}
+
+<% } %>
+<% if (enquire) { %>
+
+enquire:
+  css:
+    theme:
+      vendor/path/to/css.css: {}
+  js:
+    vendor/path/to/js.js: {}
+
+<% } %>
+<% if (fastclick) { %>
+
+
+fastclick:
+  css:
+    theme:
+      vendor/path/to/css.css: {}
+  js:
+    vendor/path/to/js.js: {}
+
+<% } %>
+<% if (respond) { %>
+
+respond:
+  css:
+    theme:
+      vendor/path/to/css.css: {}
+  js:
+    vendor/path/to/js.js: {}
+
+<% } %>
+<% if (smoothScroll) { %>
+
+jquery-smooth-scroll:
+  css:
+    theme:
+      vendor/path/to/css.css: {}
+  js:
+    vendor/path/to/js.js: {}
+
+<% } %>
+<% if (magnificPopup) { %>
+
+magnific-popup:
+  css:
+    theme:
+      vendor/path/to/css.css: {}
+  js:
+    vendor/path/to/js.js: {}
+
+<% } %>
+
+
+# Example: "extend"
 # dialog:
 #   version: VERSION
 #   css:
@@ -52,8 +113,7 @@
 
 
 
-
-# Example added in <%= themeMachineName %>.theme (preprocess function)
+# Example: Added in <%= themeMachineName %>.theme (preprocess function)
 # fancy-effect:
 #   js:
 #     build/js/fancy.js: {}
