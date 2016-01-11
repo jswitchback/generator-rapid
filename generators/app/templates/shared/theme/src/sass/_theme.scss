@@ -262,17 +262,8 @@ $tabs-background-color: $ui-background-color;
 $tabs-background-color--active: $link-color;
 $tabs-border-color: $ui-border-color;
 $tabs-border-color--active: $link-color;
-$tabs-content-color--active: lighten($tabs-border-color, 20%);
+$tabs-content-color--active: #ffffff;
 $tabs-border-radius: $ui-border-radius;
 $tabs-font-size: 1rem;
-
-
-// DRUPAL EDIT TABS
-$tabs-edit-container-background-color: #ffffff;
-$tabs-edit-background-color: $ui-background-color;
-$tabs-edit-border-color: $ui-border-color;
-$tabs-edit-border-radius: $ui-border-radius;
-
-
 
 
