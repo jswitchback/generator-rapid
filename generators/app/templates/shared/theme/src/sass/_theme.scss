@@ -103,19 +103,13 @@ $green: #25db4c; // Success
 // =============================================================================
 
 
+// SHARED FORM VARIABLES
+$ui-border-color: lighten($link-color, 28%);
+$ui-background-color: lighten($link-color, 32%);
+$ui-padding: ($vert-gutter/2) ($horiz-gutter/2);
+$ui-border-radius: 2px;
 
-// MESSAGES
-$success-background: $green;
-$success-border: darken($success-background, 25%);
-$success-text: $success-border;
-$warning-background: $yellow;
-$warning-border: darken($warning-background, 25%);
-$warning-text: $warning-border;
-$error-background: $red;
-$error-border: darken($error-background, 25%);
-$error-text: $error-border;
-
-// MISC
+// SHARED STATES
 $delete-color: $red; // delete & remove buttons / inputs
 $disabled-background-color: $gray-lighter;
 $disabled-font-color: $gray-light;
@@ -123,7 +117,7 @@ $disabled-font-color: $gray-light;
 
 
 // =============================================================================
-// ELEMENT VARIABLES
+// ATOM (element) VARIABLES
 // =============================================================================
 
 
@@ -150,35 +144,7 @@ $link-color-active: darken($link-color, 10%);
 $link-text-decoration: none;
 
 
-// GENERAL FORM
-$ui-border-color: lighten($link-color, 28%);
-$ui-background-color: lighten($link-color, 32%);
-$ui-padding: ($vert-gutter/2) ($horiz-gutter/2);
-$ui-border-radius: 2px;
-
-
-// FIELDSET
-$fieldset-background-color: $ui-background-color;
-$fieldset-border-color: $ui-border-color;
-$fieldset-border-radius: $ui-border-radius;
-$fieldset-padding: $ui-padding;
-$fieldset-border-style: solid;
-$legend-font-weight: bold;
-
-$horizontal-rule-border: $ui-border-color;
-
-
-// FORM ITEMS
-$form-item-margin: 0 0 $horiz-gutter 0;
-
-$form-item-label-font-weight: bold;
-$form-item-label-font-size: 13px;
-$form-item-label-margin: 0 0 0 0;
-
-$form-item-description-font-size: 13px;
-
-
-// FORM INPUTS, BUTTONS, SUBMITS & PAGERS
+// FORM INPUTS, BUTTONS & SUBMITS
 $input-padding: 8px 16px;
 $input-font-family: inherit;
 $input-font-color: $body-font-color;
@@ -210,12 +176,59 @@ $inline-field-gutter: .5em;
 $placeholder-color: #999999;
 $placeholder-focus-color: $input-background-color;
 
-$pager-color: $link-color;
-$pager-color-hover: $link-color-hover;
 
+// BUTTONS
 $button-color: $link-color;
 $button-border: #DDDDDD;
 $button-border-radius: $ui-border-radius;
+
+
+// BLOCKQUOTES
+$blockquote-border-color: $ui-border-color;
+
+// HORIZONTAL RULE
+$horizontal-rule-border: $ui-border-color;
+
+
+
+// =============================================================================
+// MOLECULE / ORGANISM (module / components) VARIABLES
+// =============================================================================
+
+
+
+// MESSAGES
+$success-background: $green;
+$success-border: darken($success-background, 25%);
+$success-text: $success-border;
+$warning-background: $yellow;
+$warning-border: darken($warning-background, 25%);
+$warning-text: $warning-border;
+$error-background: $red;
+$error-border: darken($error-background, 25%);
+$error-text: $error-border;
+
+
+// PAGER
+$pager-color: $link-color;
+$pager-color-hover: $link-color-hover;
+
+
+// FIELDSET
+$fieldset-background-color: $ui-background-color;
+$fieldset-border-color: $ui-border-color;
+$fieldset-border-radius: $ui-border-radius;
+$fieldset-padding: $ui-padding;
+$fieldset-border-style: solid;
+$legend-font-weight: bold;
+
+
+// FORM ITEMS
+$form-item-margin: 0 0 $horiz-gutter 0;
+$form-item-label-font-weight: bold;
+$form-item-label-font-size: 13px;
+$form-item-label-margin: 0 0 0 0;
+$form-item-description-font-size: 13px;
 
 
 // TABLES
@@ -257,6 +270,5 @@ $tabs-edit-border-color: $ui-border-color;
 $tabs-edit-border-radius: $ui-border-radius;
 
 
-// BLOCKQUOTES
-$blockquote-border-color: $ui-border-color;
+
 
