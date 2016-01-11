@@ -3,9 +3,11 @@
 // http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#defining_a_mixin
 
 
+
 ////////////////////////////
 // LINK STYLE
 ////////////////////////////
+
 
 
 @mixin theme-link ($inactive-color: $body-font-color, $active-color: $link-color, $hover-decoration: none) {
@@ -20,9 +22,11 @@
 }
 
 
+
 ////////////////////////////
 // BUTTONS
 ////////////////////////////
+
 
 
 @mixin button--submit($btn-color: #000000, $btn-radius: $button-border-radius, $btn-padding: $input-padding) {
@@ -56,9 +60,11 @@
 }
 
 
+
 //////////////////////////////////////
 // MISC MIXINS
 //////////////////////////////////////
+
 
 
 // Makes an element visually hidden, but accessible.
@@ -111,9 +117,11 @@
 }
 
 
+
 ////////////////////////////
 // DEBUG LAYOUT
 ////////////////////////////
+
 
 
 // Add outlines around elements to fix shotty layout.
@@ -129,9 +137,11 @@
 }
 
 
+
 ////////////////////////////
 // TEXT OVERFLOW
 ////////////////////////////
+
 
 
 @mixin text-overflow($method: ellipsis) {
@@ -145,9 +155,11 @@
 }
 
 
+
 ////////////////////////////
 // UNORDERED LISTS
 ////////////////////////////
+
 
 
 @mixin no-bullets {
@@ -179,9 +191,11 @@
 }
 
 
+
 ////////////////////////////
 // MICRO-CLEARFIX
 ////////////////////////////
+
 
 
 // Similar to Compass pie-clearfix
@@ -196,9 +210,11 @@
 }
 
 
+
 ////////////////////////////
 // TABS
 ////////////////////////////
+
 
 
 // create simple tabs from <a> unside <ul>
@@ -206,60 +222,62 @@
 // 'top' for hanging tabs
 // assumes placement on UL
 
-@mixin tabs(
-  $dir: top,
-  $border-color: $link-color,
-  $border-color-active: darken($link-color, 30%),
-  $background-color: $link-color,
-  $background-color-active: darken($link-color, 20%),
-  $list-margin: 1em,
-  $list-item-margin: .25em,
-  $link-padding: 0 1em,
-  $radius: 3px) {
-  $from-the: bottom;
-  @if $dir == bottom {
-    $from-the: top;
-  }
-  @include horizontal-list($list-margin, $list-item-margin);
-  position: relative;
-  li {
-    border-#{$from-the}: 1px solid $border-color;
-    margin-top: 1px;
-    &.active {
-      a {
-        border-#{$from-the}: 1px solid $border-color-active;
-        background-color: $background-color-active;
-      }
-    }
-    a {
-      padding: $link-padding;
-      border: {
-        width: 1px;
-        style: solid;
-        color: $border-color;
-      };
-      background-color: $background-color;
-      border-#{$from-the}-width: 0;
-      position: relative;
-      bottom: -0.25em;
-      @if $from-the == bottom {
-        @include border-top-radius($radius);
-      }
-      @else {
-        @include border-bottom-radius($radius);
-      }
-      &:hover {
-        background-color: $background-color-active;
-        border-#{$from-the}: 1px solid $border-color-active;
-      }
-    }
-  }
-}
+// @mixin tabs(
+//   $dir: top,
+//   $border-color: $link-color,
+//   $border-color-active: darken($link-color, 30%),
+//   $background-color: $link-color,
+//   $background-color-active: darken($link-color, 20%),
+//   $list-margin: 1em,
+//   $list-item-margin: .25em,
+//   $link-padding: 0 1em,
+//   $radius: 3px) {
+//   $from-the: bottom;
+//   @if $dir == bottom {
+//     $from-the: top;
+//   }
+//   @include horizontal-list($list-margin, $list-item-margin);
+//   position: relative;
+//   li {
+//     border-#{$from-the}: 1px solid $border-color;
+//     margin-top: 1px;
+//     &.active {
+//       a {
+//         border-#{$from-the}: 1px solid $border-color-active;
+//         background-color: $background-color-active;
+//       }
+//     }
+//     a {
+//       padding: $link-padding;
+//       border: {
+//         width: 1px;
+//         style: solid;
+//         color: $border-color;
+//       };
+//       background-color: $background-color;
+//       border-#{$from-the}-width: 0;
+//       position: relative;
+//       bottom: -0.25em;
+//       @if $from-the == bottom {
+//         @include border-top-radius($radius);
+//       }
+//       @else {
+//         @include border-bottom-radius($radius);
+//       }
+//       &:hover {
+//         background-color: $background-color-active;
+//         border-#{$from-the}: 1px solid $border-color-active;
+//       }
+//     }
+//   }
+// }
+
 
 
 ////////////////////////////
 // IMAGE REPLACEMENT
 ////////////////////////////
+
 
 
 // Hide text of an element to replace by backgorund image
@@ -273,9 +291,11 @@
 }
 
 
+
 ////////////////////////////
 // TYPOGRAPHY
 ////////////////////////////
+
 
 
 @mixin heading($font-size:16px, $line-height: 1.5, $margin-top: 24px, $margin-bottom: 24px) {
@@ -285,10 +305,42 @@
   @include rem('margin-top', $margin-top);
 }
 
+// Example use
+// Use (@include h1;) to match font size, margin and line height.
+@mixin h1 {
+  @include heading($h1-font-size, $h1-line-height, $h1-margin-bottom, $h1-margin-top);
+}
+@mixin h2 {
+  @include heading($h2-font-size, $h2-line-height, $h2-margin-bottom, $h2-margin-top);
+}
+@mixin h3 {
+  @include heading($h3-font-size, $h3-line-height, $h3-margin-bottom, $h3-margin-top);
+}
+@mixin h4 {
+  @include heading($h4-font-size, $h4-line-height, $h4-margin-bottom, $h4-margin-top);
+}
+
+
+// MIMIC AN <hr>
+@mixin divider-top {
+  margin-top: $vert-gutter;
+  padding-top: $vert-gutter;
+  border-top: 1px solid $horizontal-rule-border;
+}
+
+// MIMIC AN <hr>
+@mixin divider-bottom {
+  margin-top: $vert-gutter;
+  padding-bottom: $vert-gutter;
+  border-bottom: 1px solid $horizontal-rule-border;
+}
+
+
 
 ////////////////////////////
 // TRIANGLES
 ////////////////////////////
+
 
 
 // Used to create equilateral triangles
@@ -317,9 +369,11 @@
 }
 
 
+
 /////////////////////////////
 // INPUT PLACEHOLDER
 /////////////////////////////
+
 
 
 @mixin theme-placeholder($color: #000000, $color-focus: #ffffff) {
@@ -365,6 +419,7 @@
 ////////////////////////////
 
 
+
 // Warning: ie8 sees this code with respond.js.
 // Add ie8 specific 1x images back in.
 // Example with conditional class found on html element (html.tpl)
@@ -404,9 +459,11 @@
 }
 
 
+
 ////////////////////////////
 // RESPONSIVE
 ////////////////////////////
+
 
 
 // Intrinsic Ratio Helper Function
@@ -424,20 +481,3 @@
   height: 100%;
   position: absolute;
 }
-
-
-/////////////////////////////////////////
-// SILENT CLASSES (@extend %CLASSNAME)
-
-
-%divider-top {
-  padding-top: $vert-gutter;
-  border-top: 1px solid $horizontal-rule-border;
-}
-
-%divider-bottom {
-  padding-bottom: $vert-gutter;
-  border-bottom: 1px solid $horizontal-rule-border;
-}
-
-
