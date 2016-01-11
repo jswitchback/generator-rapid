@@ -88,7 +88,7 @@ strong {
 
 blockquote {
   /* Sets 1 unit of vertical rhythm on the top and bottom margin. */
-  margin: $vert-gutter $indent-amount;
+  margin: $vert-gutter $horiz-gutter;
   border-left: (.2 * $base-font-size) solid $blockquote-border-color;
   padding: (.5 * $base-font-size) $base-font-size;
 }

@@ -1,4 +1,5 @@
 
+
 // =============================================================================
 // TYPOGRAPHY
 // =============================================================================
@@ -74,44 +75,74 @@ $body-line-height: $base-line-height / $base-font-size;
 $serif:           Times, "Times New Roman", Georgia, "DejaVu Serif", serif;
 $sans-serif:     "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 $courier:         monospace, "Courier New", "DejaVu Sans Mono", sans-serif;
+$webfont-normal:      'FONTFACENAMEHERE', Arial, Helvetica, sans-serif;
+$webfont-bold:        'FONTFACENAMEHERE', Arial, Helvetica, sans-serif;
 
-// Add webfont here
-$webfont-normal:      Arial, Helvetica, sans-serif;
-$webfont-bold:        Arial, Helvetica, sans-serif;
-
-
-// Now create some variables for the font stacks we want to use on this site.
-$header-font: $webfont-bold;
-$page-title-font: $sans-serif;
-$block-title-font: $webfont-bold;
-$body-font: $sans-serif;
-$font-monospace:   $courier;
 
 
 
 // =============================================================================
-// COLORS VARIABLES
+// COLOR PALLETE
 // =============================================================================
 
 
 
-// UI THEME VARIABLES
-$page-title-color: #739bc7;
+$gray-dark: #292929; // Headings
+$gray-darker: #3c3b3b; // Body text
+$gray-lighter: #eeeeee; // Disabled background
+$gray-light:  #888888; // Disabled font
+$blue-gray: #739bc7; // Links & Buttons
+$red: #e02443; // Error / delete
+$yellow: #dadd25; // Warning
+$green: #25db4c; // Success
+
+
+
+// =============================================================================
+// GLOBAL VARIABLES
+// =============================================================================
+
+
+
+// MESSAGES
+$success-background: $green;
+$success-border: darken($success-background, 25%);
+$success-text: $success-border;
+$warning-background: $yellow;
+$warning-border: darken($warning-background, 25%);
+$warning-text: $warning-border;
+$error-background: $red;
+$error-border: darken($error-background, 25%);
+$error-text: $error-border;
+
+// MISC
+$delete-color: $red; // delete & remove buttons / inputs
+$disabled-background-color: $gray-lighter;
+$disabled-font-color: $gray-light;
+
+
+
+// =============================================================================
+// ELEMENT VARIABLES
+// =============================================================================
+
+
+
+// TEXT
+$header-font: $sans-serif;
+$page-title-color: $gray-dark;
 $block-title-color: $page-title-color;
-$body-font-color: #3c3b3b;
+$body-font: $sans-serif;
+$font-monospace: $courier; // <pre>, <code> tags
+
+
+// BODY
+$body-font-color: $gray-darker;
 $body-bgrd-color: #ffffff;
-
-$primary-color: #739bc7;
-$delete-color: #e02443;
-$error-color: $delete-color;
-
-$disabled-background-color: #eeeeee;
-$disabled-font-color: #888888;
-
 
 
 // LINKS
-$link-color: $primary-color;
+$link-color: $blue-gray;
 $link-color-visited: darken($link-color, 10%);
 $link-color-hover: darken($link-color, 5%);
 $link-color-focus: darken($link-color, 10%);
@@ -119,17 +150,14 @@ $link-color-active: darken($link-color, 10%);
 $link-text-decoration: none;
 
 
-// =============================================================================
-// ELEMENTS (ATOM) VARIABLES
-// =============================================================================
-
-
-// GENERAL FORM/FIELDSET VARIABLES
+// GENERAL FORM
 $ui-border-color: lighten($link-color, 28%);
 $ui-background-color: lighten($link-color, 32%);
-$ui-padding: $base-line-height;
-$ui-border-radius: .083333  * $base-line-height;
+$ui-padding: ($vert-gutter/2) ($horiz-gutter/2);
+$ui-border-radius: 2px;
 
+
+// FIELDSET
 $fieldset-background-color: $ui-background-color;
 $fieldset-border-color: $ui-border-color;
 $fieldset-border-radius: $ui-border-radius;
@@ -229,8 +257,6 @@ $tabs-edit-border-color: $ui-border-color;
 $tabs-edit-border-radius: $ui-border-radius;
 
 
-// LISTS, BLOCKQUOTES & COMMENTS
-$indent-amount: 1.5 * $base-line-height;
+// BLOCKQUOTES
 $blockquote-border-color: $ui-border-color;
-$list-item-margin-bottom: $vert-gutter/2;
 

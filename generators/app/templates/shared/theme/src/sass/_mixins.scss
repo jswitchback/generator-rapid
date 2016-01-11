@@ -1,12 +1,63 @@
-// @file
 // Custom sass mixins
-//
 // Define the custom mixins for your project here.
 // http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#defining_a_mixin
 
 
+////////////////////////////
+// LINK STYLE
+////////////////////////////
+
+
+@mixin theme-link ($inactive-color: $body-font-color, $active-color: $link-color, $hover-decoration: none) {
+  color: $inactive-color;
+  &:visited {
+    color: $inactive-color;
+  }
+  &:hover, &:active, &:focus {
+    color: $active-color;
+    text-decoration: $hover-decoration;
+  }
+}
+
+
+////////////////////////////
+// BUTTONS
+////////////////////////////
+
+
+@mixin btn--submit($btn-color: #000000, $btn-radius: $button-border-radius, $btn-padding: $input-padding) {
+  background-color: $btn-color;
+  color: lighten($btn-color, 60%);
+  font-weight: normal;
+  border: 1px solid darken($btn-color, 10%);
+  border-radius: $btn-radius;
+  box-shadow: rgba(255, 255, 255, 0.2) 0 0 8px inset, rgba(0, 0, 0, 0.05) 0 1px 2px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  text-shadow: 0 1px 1px darken($btn-color, 20%);
+  text-align: center;
+  display: inline-block;
+  line-height: 1;
+  padding: $btn-padding;
+  &:hover {
+    text-decoration: none;
+    color: lighten($btn-color, 60%);
+    background-color: darken($btn-color, 10%);
+    @include background-image(linear-gradient(center top, darken($btn-color, 10%), $btn-color));
+  }
+  &:active, &:focus {
+    text-decoration: none;
+    color: lighten($btn-color, 60%);
+    background-color: darken($btn-color, 30%);
+  }
+  &:visited {
+    color: lighten($btn-color, 60%);
+  }
+}
+
+
 //////////////////////////////////////
-// BASE MIXINS - (originally from Zen)
+// MISC MIXINS
 //////////////////////////////////////
 
 
@@ -79,42 +130,6 @@
 
 
 ////////////////////////////
-// PIXELS TO REM UNITS
-////////////////////////////
-
-
-// Baseline, measured in pixels
-// The value should be the same as the font-size value for the html element
-// If the html element's font-size is set to 62.5% (of the browser's default font-size of 16px),
-// then the variable below would be 10px.
-// Example:
-// .element {
-//   @include rem('padding',10px 0 2px 5px);
-// }
-$baseline-px: $base-font-size;
-
-@mixin rem($property, $px-values) {
-  // Convert the baseline into rems
-  $baseline-rem: $baseline-px / 1rem * 1;
-  // Print the first line in pixel values
-  #{$property}: $px-values;
-  // If there is only one (numeric) value, return the property/value line for it.
-  @if type-of($px-values) == "number" {
-    #{$property}: $px-values / $baseline-rem; }
-  @else {
-    // Create an empty list that we can dump values into
-    $rem-values: ();
-    @each $value in $px-values {
-      // If the value is zero or not a number, return it
-      @if $value == 0 or type-of( $value ) != "number" {
-        $rem-values: append($rem-values, $value); }
-      @else {
-        $rem-values: append($rem-values, $value / $baseline-rem); } }
-    // Return the property and its list of converted values
-    #{$property}: $rem-values; } }
-
-
-////////////////////////////
 // TEXT OVERFLOW
 ////////////////////////////
 
@@ -126,27 +141,6 @@ $baseline-px: $base-font-size;
   text-overflow: $method;
   .ie & {
     width: 100%;
-  }
-}
-
-
-////////////////////////////
-// ABSOLUTE PSEUDO ELEMENTS
-////////////////////////////
-
-
-// $side: can be 'before', 'after', or 'both'
-@mixin pseudo($side: "before") {
-  position: relative;
-  @if $side == "both" {
-    &:before, &:after {
-      position: absolute;
-    }
-  }
-  @else {
-    &:#{$side} {
-      position: absolute;
-    }
   }
 }
 
@@ -284,114 +278,12 @@ $baseline-px: $base-font-size;
 ////////////////////////////
 
 
-// Embossed ui-box... http://sachagreif.com/useful-sass-mixins/
-@mixin box-emboss($opacity, $opacity2){
-    box-shadow:white($opacity) 0 1px 0, inset black($opacity2) 0 1px 0;
-}
-
-// Embossed text... http://sachagreif.com/useful-sass-mixins/
-@mixin letterpress($opacity){
-    text-shadow:white($opacity) 0 1px 0;
-}
-
 @mixin heading($font-size:16px, $line-height: 1.5, $margin-top: 24px, $margin-bottom: 24px) {
   @include rem('font-size', $font-size);
   line-height: $line-height;
   @include rem('margin-bottom', $margin-bottom);
   @include rem('margin-top', $margin-top);
 }
-
-
-////////////////////////////
-// SHADOW BORDER
-////////////////////////////
-
-
-// !!! DEPENDANT UPON MODERNIZR no-boxshadow class for fallback
-@mixin shadow-border($position:"top", $offset-margin: 44px, $offset-padding: 44px, $shadowColor:#000000, $fallbackBorderColor: grey) {
-  position: relative;
-  overflow: hidden;
-
-  // Shadow width/height
-  @if $position == "top" or $position == "bottom" {
-    &:before,
-    &:after {
-      position: absolute;
-      left: 5%;
-      right: 5%;
-      height: 1px;
-    }
-  } @else if $position == "left" or $position == "right" {
-    &:before,
-    &:after {
-      position: absolute;
-      top: 1%;
-      bottom: 1%;
-      width: 1px;
-    }
-  } @else {
-    @warn "Shadow-border mixin has incorrect $position ('#{$position}') argumment. Must be top, bottom, left or right";
-  }
-
-  // Position shadow
-  @if $position == "top" {
-
-    margin-top: $offset-margin;
-    padding-top: $offset-padding;
-    &:before {
-      content: '';
-      @include box-shadow($shadowColor 0 0 16px);
-      @include border-radius(60px);
-      top: -3px;
-    }
-    .no-boxshadow & {
-      border-top: 1px solid $fallbackBorderColor;
-    }
-
-  } @else if $position == "bottom" {
-
-    margin-bottom: $offset-margin;
-    padding-bottom: $offset-padding;
-    &:after {
-      content: '';
-      @include box-shadow($shadowColor 0 0 16px);
-      bottom: -3px;
-    }
-    .no-boxshadow & {
-      border-bottom: 1px solid $fallbackBorderColor;
-    }
-
-  } @else if $position == "left" {
-
-    margin-left:  $offset-margin;
-    padding-left:  $offset-padding;
-    &:before {
-      content: '';
-      @include box-shadow($shadowColor 0 0 16px);
-      @include border-radius(60px);
-      left: -3px;
-    }
-    .no-boxshadow & {
-      border-left: 1px solid $fallbackBorderColor;
-    }
-
-
-  } @else if $position == "right" {
-
-    margin-right:  $offset-margin;
-    padding-right:  $offset-padding;
-    &:after {
-      content: '';
-      @include box-shadow($shadowColor 0 0 16px);
-      @include border-radius(60px);
-      right: -3px;
-    }
-    .no-boxshadow & {
-      border-right: 1px solid $fallbackBorderColor;
-    }
-  }
-}
-// @include shadow-border($position:"top", $offset-margin: 44px, $offset-padding: 44px, $shadowColor:#000000, $fallbackBorderColor: grey);
 
 
 ////////////////////////////
@@ -421,23 +313,6 @@ $baseline-px: $base-font-size;
   @if ($triangle-direction == right) {
     border-color: transparent $triangle-color transparent transparent;
     border-right-style: solid;
-  }
-}
-
-
-////////////////////////////
-// LINK STYLE
-////////////////////////////
-
-
-@mixin theme-link ($inactive-color: $body-font-color, $active-color: $link-color, $hover-decoration: none) {
-  color: $inactive-color;
-  &:visited {
-    color: $inactive-color;
-  }
-  &:hover, &:active, &:focus {
-    color: $active-color;
-    text-decoration: $hover-decoration;
   }
 }
 
@@ -525,42 +400,6 @@ $baseline-px: $base-font-size;
   only screen and (                min-resolution: 288dpi),
   only screen and (                min-resolution: 3dppx) {
     @content;
-  }
-}
-
-
-////////////////////////////
-// BUTTONS
-////////////////////////////
-
-
-@mixin btn--submit($btn-color: #000000, $btn-radius: $button-border-radius, $btn-padding: $input-padding) {
-  background-color: $btn-color;
-  color: lighten($btn-color, 60%);
-  font-weight: normal;
-  border: 1px solid darken($btn-color, 10%);
-  @include border-radius($btn-radius);
-  @include box-shadow(rgba(255, 255, 255, 0.2) 0 0 8px inset, rgba(0, 0, 0, 0.05) 0 1px 2px);
-  @include rem('font-size', 13px);
-  text-transform: uppercase;
-  text-shadow: 0 1px 1px darken($btn-color, 20%);
-  text-align: center;
-  display: inline-block;
-  line-height: 1;
-  padding: $btn-padding;
-  &:hover {
-    text-decoration: none;
-    color: lighten($btn-color, 60%);
-    background-color: darken($btn-color, 10%);
-    @include background-image(linear-gradient(center top, darken($btn-color, 10%), $btn-color));
-  }
-  &:active, &:focus {
-    text-decoration: none;
-    color: lighten($btn-color, 60%);
-    background-color: darken($btn-color, 30%);
-  }
-  &:visited {
-    color: lighten($btn-color, 60%);
   }
 }
 
