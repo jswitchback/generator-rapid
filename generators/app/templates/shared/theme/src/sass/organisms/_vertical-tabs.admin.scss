@@ -9,15 +9,15 @@
 
 div.vertical-tabs {
   margin: 2em 0 1em 15em; /* LTR */
-  border: 1px solid $tabs-display-border-color;
-  background-color: $tabs-display-active-content-color;
+  border: 1px solid $tabs-border-color;
+  background-color: $tabs-content-color--active;
   position: relative; /* IE6/7 */
 }
 .vertical-tabs ul.vertical-tabs-list {
   width: 15em;
   list-style: none;
   list-style-image: none; /* IE6 */
-  border-top: 1px solid $tabs-display-border-color;
+  border-top: 1px solid $tabs-border-color;
   padding: 0;
   position: relative; /* IE6 */
   margin: -1px 0 -1px -15em; /* LTR */
@@ -37,8 +37,8 @@ fieldset.vertical-tabs-pane fieldset legend {
 
 /* Layout of each tab */
 .vertical-tabs ul.vertical-tabs-list li {
-  background: $tabs-display-background-color;
-  border: 1px solid $tabs-display-border-color;
+  background: $tabs-background-color;
+  border: 1px solid $tabs-border-color;
   border-top: 0;
   padding: 0;
   margin: 0;
@@ -66,10 +66,10 @@ fieldset.vertical-tabs-pane fieldset legend {
   color: $body-font-color;
 }
 .vertical-tabs ul.vertical-tabs-list li.selected {
-  background-color: $tabs-display-active-content-color;
+  background-color: $tabs-content-color--active;
   border-right-width: 0; /* LTR */
   a {
-    border-left: .25em solid $tabs-display-active-border-color;
+    border-left: .25em solid $tabs-border-color--active;
   }
 }
 .vertical-tabs ul.vertical-tabs-list .selected strong {
@@ -102,17 +102,17 @@ fieldset.vertical-tabs-pane fieldset legend {
 /* ADDED */
 
 .vertical-tab-button.first {
-  border-top-left-radius: $tabs-display-border-radius;
+  border-top-left-radius: $tabs-border-radius;
 }
 
 .vertical-tab-button.last {
-  border-bottom-left-radius: $tabs-display-border-radius;
+  border-bottom-left-radius: $tabs-border-radius;
 }
 
 .vertical-tabs-pane {
-  border-top-right-radius: $tabs-display-border-radius;
-  border-bottom-right-radius: $tabs-display-border-radius;
-  border-bottom-left-radius: $tabs-display-border-radius;
+  border-top-right-radius: $tabs-border-radius;
+  border-bottom-right-radius: $tabs-border-radius;
+  border-bottom-left-radius: $tabs-border-radius;
 }
 
 .vertical-tabs-pane fieldset {

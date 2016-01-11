@@ -10,9 +10,9 @@ div.horizontal-tabs {
 }
 
 .horizontal-tabs-panes {
-  border: 1px solid $tabs-display-border-color;
+  border: 1px solid $tabs-border-color;
   margin-top: -9px;
-  border-bottom-radius: $tabs-display-border-radius;
+  border-bottom-radius: $tabs-border-radius;
 }
 
 .horizontal-tabs ul.horizontal-tabs-list {
@@ -46,24 +46,24 @@ fieldset.field-group-htab {
 
 /* Layout of each tab */
 .horizontal-tabs ul.horizontal-tabs-list li {
-  background: $tabs-display-background-color;
-  border-right: 1px solid $tabs-display-border-color;
-  border-top: 1px solid $tabs-display-border-color;
-  border-bottom: 1px solid $tabs-display-border-color;
+  background: $tabs-background-color;
+  border-right: 1px solid $tabs-border-color;
+  border-top: 1px solid $tabs-border-color;
+  border-bottom: 1px solid $tabs-border-color;
   padding: 1px;
   padding-top: 0;
   margin: 0;
   min-width: 5em; /* IE7 */
   float: left;
   &.first {
-    border-left: 1px solid $tabs-display-border-color;
+    border-left: 1px solid $tabs-border-color;
   }
   &.selected {
     border-bottom: 1px solid #fff;
     background-color: #fff;
     padding: 0 0 1px 0;
     a {
-      border-top: .25em solid $tabs-display-active-border-color;
+      border-top: .25em solid $tabs-border-color--active;
       color: #000;
       display: block;
       text-decoration: none;

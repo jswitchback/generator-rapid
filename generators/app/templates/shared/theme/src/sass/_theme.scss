@@ -257,12 +257,14 @@ $table-td-padding: .25rem .5rem;
 $table-td-disabled-background: #ccc;
 
 
-// DRUPAL VERTICAL & HORIZONTAL TABS
-$tabs-display-background-color: $ui-background-color;
-$tabs-display-border-color: $ui-border-color;
-$tabs-display-active-border-color: $link-color;
-$tabs-display-active-content-color: lighten($tabs-display-border-color, 20%);
-$tabs-display-border-radius: $ui-border-radius;
+// DRUPAL EDIT, VERTICAL & HORIZONTAL TABS
+$tabs-background-color: $ui-background-color;
+$tabs-background-color--active: $link-color;
+$tabs-border-color: $ui-border-color;
+$tabs-border-color--active: $link-color;
+$tabs-content-color--active: lighten($tabs-border-color, 20%);
+$tabs-border-radius: $ui-border-radius;
+$tabs-font-size: 1rem;
 
 
 // DRUPAL EDIT TABS
