@@ -8,7 +8,7 @@
 
 
 // Adjust with copy paste of pixel css code from http://www.gridlover.net/app/
-$base-font-size:   16px; // The font size set on the root html element.
+$base-font-size: 16px; // The font size set on the root html element & used in rem() mixin calculations
 $measure: 760px;
 
 $h1-font-size: 68px;
