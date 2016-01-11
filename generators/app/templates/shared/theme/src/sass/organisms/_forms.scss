@@ -31,15 +31,8 @@
   }
 }
 
-// .form-type-radio,
-// .form-type-checkbox {
-//   .description {
-//     margin-left: 2.4em;
-//   }
-// }
-
 .form-required { /* The part of the label that indicates a required field */
-   color: $error-color;
+   color: $error-text;
  }
 
 /* Labels for radios and checkboxes. */

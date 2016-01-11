@@ -213,7 +213,7 @@ DrupalthemeGenerator.prototype.app = function app() {
   this.mkdir('build/fonts');
   this.mkdir('src/js');
   this.mkdir('src/js/vendor');
-  this.mkdir('src/sass/.tmp/sass');
+  this.mkdir('src/.tmp/sass');
 
 };
 
