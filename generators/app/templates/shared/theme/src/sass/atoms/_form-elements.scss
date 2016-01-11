@@ -3,12 +3,12 @@
 
 button,
 input[type="submit"] {
-  @include btn--submit($button-color);
+  @include button--submit($button-color);
 }
 
 input[value="Delete"],
 input[value="Remove"] {
-  @include btn--submit($delete-color);
+  @include button--submit($delete-color);
 }
 
 // textarea, /* Every input field known to css. work in progress */
