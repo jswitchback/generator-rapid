@@ -212,7 +212,6 @@ DrupalthemeGenerator.prototype.app = function app() {
   this.mkdir('build/images');
   this.mkdir('build/fonts');
   this.mkdir('src/js');
-  this.mkdir('src/js/vendor');
   this.mkdir('src/.tmp/sass');
 
 };
@@ -341,6 +340,7 @@ DrupalthemeGenerator.prototype.themeFonts = function themeFonts() {
 DrupalthemeGenerator.prototype.bowerFilesTheme = function bowerFiles() {
   this.template('shared/theme/_bower.json', 'bower.json');
   this.template('shared/theme/_bowerrc', '.bowerrc');
+  this.directory('shared/theme/vendor', 'vendor');
 };
 
 DrupalthemeGenerator.prototype.bowerFilesLibraries = function bowerFiles() {

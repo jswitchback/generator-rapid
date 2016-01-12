@@ -13,6 +13,7 @@ module.exports = {
   'watch.js': ['watch:js'],
   'minify.js': ['newer:uglify:prod'],
   'minify.js.dev': ['newer:uglify:dev'],
+  'minify.js.prod': ['newer:uglify:prod'],
   'lint.js': ['newer:jshint:all'],
   'build.js': ['minify.js'],
   'build.js.dev': ['copy:js'],
@@ -178,12 +179,12 @@ module.exports = {
 
   'watch.styleguide': ['watch:styleguide'],
 
-  'build.styleguide': ['shell:patternlab'],
-
-  'build.styleguide_assets': [
+  'build.styleguide.assets': [
       'concat:styleguide_css',
       'concat:styleguide_js'
   ],
+
+  'build.styleguide': ['build.css', 'build.styleguide.assets', 'shell:patternlab'],
 
   'build.sg': ['build.styleguide'],
 
