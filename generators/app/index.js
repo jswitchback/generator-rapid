@@ -36,7 +36,11 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
       // npm: false,
       callback: function () {
         // Emit a new event - dependencies installed
-        this.emit('dependenciesInstalled');
+        if (!skippingInstall) {
+          this.emit('dependenciesInstalled');
+        } else {
+          this.log(yosay('******** SCAFFOLDING COMPLETE. BE SURE TO RUN NPM INSTALL, BOWER INSTALL & GRUNT INIT TO COMPLETE THE BUILD ********'));
+        }
       }.bind(this) // Bind the callback to the parent scope.
     });
 
@@ -47,7 +51,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
 
     // Initial build of css, js & images
     this.log(yosay('******** SCAFFOLDING COMPLETE. RUNNING INITIAL GRUNT TASKS ********'));
-    this.spawnCommand('grunt', ['build.dev']);
+    this.spawnCommand('grunt', ['init']);
 
     // DRUPAL 7 LIBRARIES INSTALL
     // // Change working directory to 'libraries' for final Bower dependency install
@@ -59,7 +63,6 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
       this.spawnCommand('bower', ['install']);
 
       // Reset terminal directory back to current working directory.
-      // Prevent "cd .." from ending up in trash can directory.
       process.chdir(process.cwd());
     }
 

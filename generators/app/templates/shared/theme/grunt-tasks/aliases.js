@@ -141,6 +141,7 @@ module.exports = {
   //////////////////////////////////
 
 
+
   /**** BUILD DEVELOPMENT ****/
   'build.dev': [
       'lint.js',
@@ -150,9 +151,6 @@ module.exports = {
       'build.css.dev',
       'copy:create_favicon_ext',
       'copy:svg'
-      //'concat',
-      //'copy:dist',
-      //'copy:docs'
   ],
 
   'build': ['build.dev'],
@@ -166,9 +164,6 @@ module.exports = {
       'build.css.prod',
       'copy:create_favicon_ext',
       'copy:svg'
-      //'concat',
-      //'copy:dist',
-      //'copy:docs'
   ],
 
 
@@ -184,7 +179,9 @@ module.exports = {
       'concat:styleguide_js'
   ],
 
-  'build.styleguide': ['build.css', 'build.styleguide.assets', 'shell:patternlab'],
+  'build.styleguide.generate': ['shell:patternlab'],
+
+  'build.styleguide': ['build.css', 'build.styleguide.assets', 'build.styleguide.generate'],
 
   'build.sg': ['build.styleguide'],
 
@@ -195,6 +192,9 @@ module.exports = {
   // MISC
   //////////////////////////////////
 
+
+  // INITIAL PROJECT
+  'init': ['build.dev', 'build.styleguide.generate'],
 
   // Drupal
   'cc': ['drush_clear_cache'],

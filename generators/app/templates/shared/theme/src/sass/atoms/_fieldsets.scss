@@ -12,13 +12,7 @@ legend {
   font-weight: $legend-font-weight;
 }
 
-fieldset,
-.fieldset {
-  border-color: $fieldset-border-color;
-  border-width: 1px;
-  border-style: $fieldset-border-style;
-  padding: $fieldset-padding;
-  margin: $form-item-margin;
-  border-radius: $fieldset-border-radius;
-  background: none repeat scroll 0 0 $fieldset-background-color;
+fieldset {
+  margin: 0;
+  padding: 0;
 }
