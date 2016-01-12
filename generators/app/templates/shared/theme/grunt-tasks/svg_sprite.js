@@ -22,7 +22,7 @@ module.exports = {
           },
           dimensions: true,
           prefix: '.sprite-%s', // CSS Selector
-          sprite: '../images/sprites/css/sprite1.css.svg', // Relative path from the stylesheet resource to the SVG sprite. Used in css url().
+          sprite: '../<%= package.paths.images_dest %>/sprites/css/sprite1.css.svg', // Relative path from the stylesheet resource to the SVG sprite. Used in css url().
           example: {
             dest : '../../.docs/sprites/sprite1.css.html'
           },
@@ -44,7 +44,7 @@ module.exports = {
         // https://css-tricks.com/svg-symbol-good-choice-icons/
         symbol : {
           bust : false,
-          sprite : '../images/sprites/symbol/sprite1.symbol.svg',
+          sprite : '../<%= package.paths.images_dest %>/sprites/symbol/sprite1.symbol.svg',
           example: {
             dest : '../../.docs/sprites/sprite1.symbol.html'
           },
