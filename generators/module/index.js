@@ -2,6 +2,7 @@
 var util = require('util');
 var path = require('path');
 var yeoman = require('yeoman-generator');
+var yosay = require('yosay');
 var _ = require('lodash');
 _.str = require('underscore.string');
 
@@ -15,12 +16,20 @@ _.mixin(_.str.exports());
 var DrupalmoduleGenerator = module.exports = function DrupalmoduleGenerator(args, options, config) {
   yeoman.generators.Base.apply(this, arguments);
 
-  // Old method to take directory name for module name
-  // this.moduleName = path.basename(process.cwd());
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
 
   this.on('end', function () {
-    this.installDependencies({ skipInstall: options['skip-install'] });
+    this.installDependencies({
+
+      // Yeoman runs npm install, bower install by default. Turning off for this one.
+      skipInstall: this.options['skip-install'],
+      bower: false,
+      npm: false,
+      callback: function () {
+          this.log(yosay('******** SCAFFOLDING COMPLETE. AUTOMATICALLY SKIPPING NODE & BOWER INSTALL ********'));
+      }.bind(this) // Bind the callback to the parent scope.
+    });
+
   });
 
 };
