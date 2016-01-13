@@ -22,11 +22,11 @@ var DrupalmoduleGenerator = module.exports = function DrupalmoduleGenerator(args
     this.installDependencies({
 
       // Yeoman runs npm install, bower install by default. Turning off for this one.
-      skipInstall: this.options['skip-install'],
-      bower: false,
+      skipInstall: true, // Ignoring command line flag "this.options['skip-install']"
+      bower: true, // Console error "installDependencies needs at least one of npm or bower to run"
       npm: false,
       callback: function () {
-          this.log(yosay('******** SCAFFOLDING COMPLETE. AUTOMATICALLY SKIPPING NODE & BOWER INSTALL ********'));
+          this.log(yosay('******** SCAFFOLDING COMPLETE. AUTOMATICALLY SKIPPING NODE INSTALL ********'));
       }.bind(this) // Bind the callback to the parent scope.
     });
 
@@ -44,15 +44,15 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
     name: 'drupalVersion',
     message: 'Which Drupal version?',
     type: 'list',
-    default: '7',
+    default: 7,
     choices: [
       {
         name: 'Drupal 7',
-        value: '7'
+        value: 7
       },
       {
         name: 'Drupal 8',
-        value: '8'
+        value: 8
       }
     ]
   },{
@@ -72,7 +72,7 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
   },
   {
     when: function (response) {
-      return (response.drupalVersion == '8') ? true : false;
+      return (response.drupalVersion == 8) ? true : false;
     },
     type: 'checkbox',
     name: 'drupal8features',
@@ -96,9 +96,16 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
     ]
   },
   {
-    name: 'addCssJS',
+    type: 'checkbox',
+    name: 'addExtras',
     message: 'Add example stylesheet and javascript?',
-    default: 'Y/n'
+    choices: [
+      {
+        name: 'Yes',
+        value: 'addCssJS',
+        checked: true
+      }
+    ]
   }];
 
   this.prompt(prompts, function (props) {
@@ -109,10 +116,10 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
     this.moduleDesc = props.moduleDesc;
     this.modulePackage = props.modulePackage;
     this.drupalVersion = props.drupalVersion;
-    this.addCssJs = (/y/i).test(this.addCssJs);
-    this.stylesheets = this.addCssJs ? 'stylesheets[all][] = ' + this.moduleName + '.css' : '';
-    this.javascripts = this.addCssJs ? 'scripts[] = ' + this.moduleName + '.js' : '';
-    if (this.drupalVersion == '8') {
+    this.addCssJs = (props.addExtras.indexOf('addCssJS') !== -1) ? true : false;
+    this.stylesheets = this.addCssJs ? 'stylesheets[all][] = css/' + this.moduleName + '.css' : '';
+    this.javascripts = this.addCssJs ? 'scripts[] = js/' + this.moduleName + '.js' : '';
+    if (this.drupalVersion === 8) {
       this.addAdminRoute = props.drupal8features.indexOf('addAdminRoute') !== -1;
       this.addBlockClass = props.drupal8features.indexOf('addBlockClass') !== -1;
       this.addFormClass = props.drupal8features.indexOf('addFormClass') !== -1;
@@ -138,20 +145,20 @@ DrupalmoduleGenerator.prototype.app = function app() {
   this.copy('shared/_bower.json', 'bower.json');
   this.copy('shared/_bowerrc', 'bowerrc');
 
-  if (this.addCssJS) {
+  if (this.addCssJs) {
     this.copy('shared/template.css', 'css/' + moduleName + '.css');
     this.copy('shared/template.js', 'js/' + moduleName + '.js');
   }
 
   switch (drupalVersion) {
-    case '7':
+    case 7:
 
       this.template('d7/_template.info', moduleName + '.info');
       this.template('d7/_template.module', moduleName + '.module');
 
       break;
 
-    case '8':
+    case 8:
 
       this.template('d8/_composer.json', 'composer.json');
       this.template('d8/_template.info.yml', moduleName + '.info.yml');
