@@ -374,7 +374,7 @@ DrupalthemeGenerator.prototype.bowerFilesLibraries = function bowerFiles() {
 
 DrupalthemeGenerator.prototype.packageFiles = function packageFiles() {
   this.packageInfo = {
-    'name': this.themeName,
+    'name': this.themeMachineName,
     'version': '0.0.0',
     'description': this.themeDesc
   };
