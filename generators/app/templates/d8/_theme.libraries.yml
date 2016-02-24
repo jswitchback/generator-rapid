@@ -15,7 +15,10 @@
     build/js/<%= themeName %>.js: {}
 
   dependencies:
+   #- core/drupal # Includes Drupal Behaviors!
    - core/jquery
+   - core/jquery.once
+
    # Other core js from core/assets/
    # -backbone
    # ckeditor
