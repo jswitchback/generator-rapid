@@ -77,5 +77,4 @@ module.exports = {
   // INITIAL PROJECT
   'init': ['build.dev'],
 
-  'serve': ['connect']
 };
