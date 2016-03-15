@@ -36,8 +36,4 @@ module.exports = function(grunt) {
     // preMerge: function(config, data) {}
   });
 
-  // Growl notifications
-  // This is required if you use any options for notifications.
-  grunt.task.run('notify_hooks');
-
 };
