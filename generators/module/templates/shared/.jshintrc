@@ -1,0 +1,25 @@
+{
+    "nonbsp": true,
+    "trailing": true,
+    "indent": 2,
+    "quotmark": "single",
+    "eqeqeq": true,
+    "curly": true,
+    "forin": true,
+    "latedef": true,
+    "immed": true,
+    "newcap": true,
+    "noempty": true,
+    "nonew": true,
+    "undef": true,
+    "unused": true,
+    "strict": false,
+    "browser": true,
+    "globals": {
+        "jQuery": false,
+        "Drupal": false,
+        "CKEDITOR": false,
+        "enquire": false,
+        "Modernizr": false
+    }
+}

@@ -1,0 +1,9 @@
+# Ignore sass cache
+.sass-cache
+**/*.sass-cache
+.DS_Store
+
+# Front-end grunt task related
+node_modules
+vendor
+.bundle

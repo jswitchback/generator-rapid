@@ -19,14 +19,16 @@ var DrupalmoduleGenerator = module.exports = function DrupalmoduleGenerator(args
   this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
 
   this.on('end', function () {
+    var runNode = this.addFrontEndTooling;
+
     this.installDependencies({
 
       // Yeoman runs npm install, bower install by default. Turning off for this one.
       skipInstall: true, // Ignoring command line flag "this.options['skip-install']"
       bower: true, // Console error "installDependencies needs at least one of npm or bower to run"
-      npm: false,
+      npm: runNode,
       callback: function () {
-          this.log(yosay('******** SCAFFOLDING COMPLETE. AUTOMATICALLY SKIPPING NODE INSTALL ********'));
+          // this.log(yosay('******** SCAFFOLDING COMPLETE. AUTOMATICALLY SKIPPING NODE INSTALL ********'));
       }.bind(this) // Bind the callback to the parent scope.
     });
 
@@ -79,17 +81,17 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
     message: 'Add more Drupal 8 features',
     choices: [
       {
-        name: 'Add admin route files',
+        name: 'Include example admin route files',
         value: 'addAdminRoute',
         checked: true
       },
       {
-        name: 'Add example block files',
+        name: 'Include example block files',
         value: 'addBlockClass',
         checked: true
       },
       {
-        name: 'Add example form files',
+        name: 'Include example form files',
         value: 'addFormClass',
         checked: true
       }
@@ -98,11 +100,26 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
   {
     type: 'checkbox',
     name: 'addExtras',
-    message: 'Add example stylesheet and javascript?',
+    message: 'Front end extras:',
     choices: [
       {
-        name: 'Yes',
+        name: 'Include template css/js directories & files',
         value: 'addCssJS',
+        checked: true
+      }
+    ]
+  },
+  {
+    when: function (response) {
+      return (response.addExtras.indexOf('addCssJS') !== -1) ? true : false;
+    },
+    type: 'checkbox',
+    name: 'addFrontEndTooling',
+    message: 'Do you want to add linting & compiling via Grunt?',
+    choices: [
+      {
+        name: 'Include Grunt and other front end tooling.',
+        value: 'addFrontEndTooling',
         checked: true
       }
     ]
@@ -117,6 +134,7 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
     this.modulePackage = props.modulePackage;
     this.drupalVersion = props.drupalVersion;
     this.addCssJs = (props.addExtras.indexOf('addCssJS') !== -1) ? true : false;
+    this.addFrontEndTooling = (props.addFrontEndTooling.indexOf('addFrontEndTooling') !== -1) ? true : false;
     this.stylesheets = this.addCssJs ? 'stylesheets[all][] = css/' + this.moduleName + '.css' : '';
     this.javascripts = this.addCssJs ? 'scripts[] = js/' + this.moduleName + '.js' : '';
     if (this.drupalVersion === 8) {
@@ -141,13 +159,24 @@ DrupalmoduleGenerator.prototype.app = function app() {
   // Set our destination to be the new directory.
   this.destinationRoot(moduleName);
 
-  // this.template('_package.json', 'package.json');
   this.copy('shared/_bower.json', 'bower.json');
   this.copy('shared/_bowerrc', 'bowerrc');
 
   if (this.addCssJs) {
     this.copy('shared/template.css', 'css/' + moduleName + '.css');
     this.copy('shared/template.js', 'js/' + moduleName + '.js');
+  }
+
+  if (this.addFrontEndTooling) {
+    this.template('shared/_package.json', 'package.json');
+    this.directory('shared/sass-dependencies', 'sass-dependencies');
+    this.directory('shared/grunt-tasks', 'grunt-tasks');
+    this.copy('shared/gruntfile.js', 'gruntfile.js');
+    this.copy('shared/.jshintrc', '.jshintrc');
+    this.copy('shared/.gitignore', '.gitignore');
+    this.directory('shared/src', 'src');
+    this.copy('shared/template.scss', 'src/sass/' + moduleName + '.scss');
+    this.copy('shared/template.js', 'src/js/' + moduleName + '.js');
   }
 
   switch (drupalVersion) {

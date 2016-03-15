@@ -26,7 +26,7 @@ module.exports = {
       tasks: ['copy:fonts']
   },
   images: {
-      files: '<%= package.paths.images_source %>/*',
+      files: ['<%= package.paths.images_source %>/*.{png,jpg,gif}'],
       tasks: ['build.images']
   },
   styleguide: {
