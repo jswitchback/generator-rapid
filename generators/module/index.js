@@ -100,25 +100,15 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
   {
     type: 'checkbox',
     name: 'addExtras',
-    message: 'Front end extras:',
+    message: 'Front-end extras:',
     choices: [
       {
         name: 'Include template css/js directories & files',
         value: 'addCssJS',
         checked: true
-      }
-    ]
-  },
-  {
-    when: function (response) {
-      return (response.addExtras.indexOf('addCssJS') !== -1) ? true : false;
-    },
-    type: 'checkbox',
-    name: 'addFrontEndTooling',
-    message: 'Do you want to add linting & compiling via Grunt?',
-    choices: [
+      },
       {
-        name: 'Include Grunt and other front end tooling.',
+        name: 'Include Grunt and other front-end tooling.',
         value: 'addFrontEndTooling',
         checked: true
       }
@@ -134,7 +124,7 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
     this.modulePackage = props.modulePackage;
     this.drupalVersion = props.drupalVersion;
     this.addCssJs = (props.addExtras.indexOf('addCssJS') !== -1) ? true : false;
-    this.addFrontEndTooling = (props.addFrontEndTooling.indexOf('addFrontEndTooling') !== -1) ? true : false;
+    this.addFrontEndTooling = (props.addExtras.indexOf('addFrontEndTooling') !== -1) ? true : false;
     this.stylesheets = this.addCssJs ? 'stylesheets[all][] = css/' + this.moduleName + '.css' : '';
     this.javascripts = this.addCssJs ? 'scripts[] = js/' + this.moduleName + '.js' : '';
     if (this.drupalVersion === 8) {
@@ -175,6 +165,7 @@ DrupalmoduleGenerator.prototype.app = function app() {
     this.copy('shared/.jshintrc', '.jshintrc');
     this.copy('shared/.gitignore', '.gitignore');
     this.directory('shared/src', 'src');
+    this.mkdir('src/images');
     this.copy('shared/template.scss', 'src/sass/' + moduleName + '.scss');
     this.copy('shared/template.js', 'src/js/' + moduleName + '.js');
   }
