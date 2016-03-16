@@ -11,10 +11,10 @@ module.exports = {
 
 
   'watch.js': ['watch:js'],
-  'minify.js': ['newer:uglify:prod'],
-  'minify.js.dev': ['newer:uglify:dev'],
-  'minify.js.prod': ['newer:uglify:prod'],
-  'lint.js': ['newer:jshint:all'],
+  'minify.js': ['uglify:prod'],
+  'minify.js.dev': ['uglify:dev'],
+  'minify.js.prod': ['uglify:prod'],
+  'lint.js': ['jshint:all'],
   'build.js': ['minify.js'],
   'build.js.dev': ['copy:js'],
   'build.js.prod': ['minify.js'],

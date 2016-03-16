@@ -17,9 +17,9 @@ module.exports = {
   },
   js: {
     expand: true,
-    cwd: 'src/js/',
+    cwd: '<%= package.paths.js_source %>/',
     src: '**/*',
-    dest: 'build/js/',
+    dest: '<%= package.paths.js_dest %>/',
   },
   svg: {
       expand: true,

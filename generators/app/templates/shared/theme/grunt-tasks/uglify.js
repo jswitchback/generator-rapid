@@ -9,9 +9,9 @@ module.exports = {
       files: [{
 
           expand: true,
-          cwd: 'src/js/',
+          cwd: '<%= package.paths.js_source %>',
           src: ['**/*.js'],
-          dest: 'build/js',
+          dest: '<%= package.paths.js_dest %>',
       }]
   },
   prod: {
@@ -23,9 +23,9 @@ module.exports = {
       },
       files: [{
           expand: true,
-          cwd: 'src/js/',
+          cwd: '<%= package.paths.js_source %>',
           src: ['**/*.js'],
-          dest: 'build/js',
+          dest: '<%= package.paths.js_dest %>',
           // ext: '.min.js' used if you want to append .min.js to files.
       }]
   }

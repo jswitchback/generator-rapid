@@ -6,7 +6,7 @@ module.exports = {
   },
   js: {
       // rebuild if js files change
-      files: ['src/js/**/*.js',],
+      files: ['<%= package.paths.js_source %>/**/*.js',],
       tasks: ['jshint','uglify:dev','concat:styleguide_js']
   },
   sass: {

@@ -160,7 +160,6 @@ DrupalmoduleGenerator.prototype.app = function app() {
   if (this.addFrontEndTooling) {
     this.template('shared/_package.json', 'package.json');
     this.directory('shared/sass-dependencies', 'sass-dependencies');
-    this.directory('shared/grunt-tasks', 'grunt-tasks');
     this.copy('shared/gruntfile.js', 'gruntfile.js');
     this.copy('shared/.jshintrc', '.jshintrc');
     this.copy('shared/.gitignore', '.gitignore');
