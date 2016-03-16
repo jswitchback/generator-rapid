@@ -38,6 +38,6 @@
     "yo": ">=1.0.0"
   },
   "scripts": {
-    "preinstall": "npm link && exit 1"
+    "prepublish": "npm link"
   }
 }
