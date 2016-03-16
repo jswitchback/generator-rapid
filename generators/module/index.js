@@ -28,7 +28,11 @@ var DrupalmoduleGenerator = module.exports = function DrupalmoduleGenerator(args
       bower: true, // Console error "installDependencies needs at least one of npm or bower to run"
       npm: runNode,
       callback: function () {
-          // this.log(yosay('******** SCAFFOLDING COMPLETE. AUTOMATICALLY SKIPPING NODE INSTALL ********'));
+          if (runNode) {
+            this.log(yosay('******** SCAFFOLDING COMPLETE. INSTALLING FRONT-END DEPENDENCIES (GRUNT)  ********'));
+          } else {
+            this.log(yosay('******** SCAFFOLDING COMPLETE. NO FRONT-END DEPENDENCIES TO INSTALL.  ********'));
+          }
       }.bind(this) // Bind the callback to the parent scope.
     });
 
@@ -40,6 +44,11 @@ util.inherits(DrupalmoduleGenerator, yeoman.generators.Base);
 
 DrupalmoduleGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
+
+  // Have Yeoman greet the user.
+  this.log(yosay(
+    'Welcome to the Rapid module generator!'
+  ));
 
   var prompts = [
   {
