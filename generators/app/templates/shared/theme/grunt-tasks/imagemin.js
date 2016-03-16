@@ -3,10 +3,11 @@ module.exports = {
     options: {
         optimizationLevel: 3
     },
+    // Does not handle gifs ... https://github.com/gruntjs/grunt-contrib-imagemin/issues/29
     files: [{
         expand: true,
         cwd: '<%= package.paths.images_source %>/',
-        src: ['*.{png,jpg}', 'sprites/*.{png,jpg,gif}'],
+        src: ['*.{png,jpg}', 'sprites/*.{png,jpg}'],
         dest: '<%= package.paths.images_dest %>/'
     }]
   },

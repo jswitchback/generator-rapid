@@ -208,7 +208,7 @@ module.exports = function(grunt) {
           files: [{
               expand: true,
               cwd: '<%= pkg.paths.images_source %>/',
-              src: ['*.{png,jpg}', 'sprites/*.{png,jpg}'],
+              src: ['*.{png,jpg}', '**/*.{png,jpg}'],
               dest: '<%= pkg.paths.images_dest %>/'
           }]
         },
