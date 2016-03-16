@@ -152,7 +152,7 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
       },
       type: 'checkbox',
       name: 'features',
-      message: 'These will be installed in the Libraries directory. (Select with arrow keys & spacebar)',
+      message: 'These will be installed in the Libraries directory via Bower. (Select with arrow keys & spacebar)',
       choices: [{
           name: 'jQuery Smooth-scroll',
           value: 'smoothScroll',
