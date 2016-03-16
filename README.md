@@ -10,27 +10,16 @@ To run this generator locally:
 
 This is not yet available as a global npm module. npm allows you to create a global module symlinked to a local one. This is what you'll want to do.
 
-From the root of your generator project (in generator-rapid/ folder). Open a terminal and type:
+Clone the repository, change directory and install the generators dependencies with the following command:
 
 ```bash
-npm link
+git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm install
 ```
 
-That'll install your project dependencies and symlink a global module to your local file. Next install the generators dependancies:
-
-```bash
-npm install
-```
-
-After npm is done, you'll be able to call:
+After npm is done, you'll be able to generate a new theme or module from templates in any directory:
 
 ```bash
 yo rapid
-```
-
-This will scaffold a theme for you. There is also a generator for scaffolding a module (beta).
-
-```bash
 yo rapid:module
 ```
 
