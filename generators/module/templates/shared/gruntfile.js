@@ -142,9 +142,6 @@ module.exports = function(grunt) {
 
       watch: {
         options: {
-            // livereload: true,
-            livereload: 9001,
-            spawn: false
         },
         js: {
             // rebuild if js files change
@@ -157,12 +154,6 @@ module.exports = function(grunt) {
           // runs the task `sass` whenever any watched file changes
           tasks: ['sass:dev', 'postcss:modern']
         },
-        // livereload : {
-        //   files: ['<%= pkg.paths.css_dest %>/**/*.css'],
-        //   options : {
-        //     livereload: true
-        //   }
-        // },
         images: {
             files: ['<%= pkg.paths.images_source %>/*.{png,jpg,gif}'],
             tasks: ['build.images']
