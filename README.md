@@ -13,7 +13,7 @@ This is not yet available as a global npm module. npm allows you to create a glo
 Clone the repository, change directory and install the generators dependencies with the following command:
 
 ```bash
-git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm install
+git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm link && npm install
 ```
 
 After npm is done, you'll be able to generate a new theme or module from templates in any directory:

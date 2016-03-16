@@ -36,8 +36,5 @@
   },
   "peerDependencies": {
     "yo": ">=1.0.0"
-  },
-  "scripts": {
-    "prepublish": "npm link"
   }
 }
