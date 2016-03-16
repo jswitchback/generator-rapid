@@ -6,11 +6,7 @@
 ######################## RAPID GENERATOR README
 
 
-To run this generator locally:
-
-This is not yet available as a global npm module. npm allows you to create a global module symlinked to a local one. This is what you'll want to do.
-
-Clone the repository, change directory and install the generators dependencies with the following command:
+To run this generator locally: clone the repository, change directory and install the generators dependencies with the following command:
 
 ```bash
 git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm link && npm install
