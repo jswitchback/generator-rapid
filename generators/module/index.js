@@ -24,7 +24,7 @@ var DrupalmoduleGenerator = module.exports = function DrupalmoduleGenerator(args
     this.installDependencies({
 
       // Yeoman runs npm install, bower install by default. Turning off for this one.
-      skipInstall: true, // Ignoring command line flag "this.options['skip-install']"
+      skipInstall: false, // Ignore command line flag "--skip-install" = "this.options['skip-install']"
       bower: true, // Console error "installDependencies needs at least one of npm or bower to run"
       npm: runNode,
       callback: function () {
