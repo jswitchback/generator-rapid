@@ -144,14 +144,11 @@ module.exports = function(grunt) {
         options: {
         },
         js: {
-            // rebuild if js files change
             files: ['<%= pkg.paths.js_source %>/**/*.js',],
             tasks: ['jshint','uglify:dev']
         },
         sass: {
-          // Watches all scss files.
           files: ['<%= pkg.paths.css_source %>/**/*.scss'],
-          // runs the task `sass` whenever any watched file changes
           tasks: ['sass:dev', 'postcss:modern']
         },
         images: {
