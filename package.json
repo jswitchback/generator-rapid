@@ -23,6 +23,7 @@
     "yeoman-generator"
   ],
   "dependencies": {
+    "abbrev": "^1.0.7",
     "chalk": "^1.1.1",
     "escape-string-regexp": "^1.0.5",
     "execSync": "~1.0.1-pre",
