@@ -127,6 +127,7 @@ DrupalmoduleGenerator.prototype.askFor = function askFor() {
   this.prompt(prompts, function (props) {
 
     // Exposes variables to template files
+    this.moduleNameRaw = props.moduleName;
     this.moduleName = String(_(_.slugify(props.moduleName)).underscored());
     this.moduleClassName = this.moduleName.charAt(0).toUpperCase() + this.moduleName.slice(1);
     this.moduleDesc = props.moduleDesc;

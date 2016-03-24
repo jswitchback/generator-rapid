@@ -11,6 +11,7 @@
     "js_dest": "js"
   },
   "devDependencies": {
+    "abbrev": "^1.0.7",
     "autoprefixer": "^6.2.3",
     "grunt": "~0.4.4",
     "grunt-contrib-concat": "~1.0.0",

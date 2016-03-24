@@ -1,6 +1,6 @@
 module.exports = function(grunt) {
 
-  var url = grunt.option('url') || '<%= pkg.name %>';
+  var url = grunt.option('url') || '<%= package.name %>';
 
   return {
     dev: {

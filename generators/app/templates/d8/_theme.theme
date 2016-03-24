@@ -34,6 +34,11 @@ function <%= themeMachineName %>_preprocess_block(&$variables) {
   if ($variables['plugin_id'] == 'system_branding_block') {
     $variables['attributes']['class'][] = 'clearfix';
   }
+
+  // Add classes to blocks.
+  if (!empty($variables['attributes']['id'])) {
+    $variables['attributes']['class'][] = preg_replace('/^block-/', '', $variables['attributes']['id']);
+  }
 }
 
 /**

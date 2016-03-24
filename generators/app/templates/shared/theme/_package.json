@@ -21,6 +21,7 @@
     "styleguide": ".docs/patternlab"
   },
   "devDependencies": {
+    "abbrev": "^1.0.7",
     "autoprefixer": "^6.2.3",
     "grunt": "~0.4.4",
     "grunt-browser-sync": "^2.2.0",
