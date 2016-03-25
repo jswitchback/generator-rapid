@@ -8,9 +8,9 @@ core: 8.x
 
 
 
-base theme: stable
-#base theme: classy
-#base theme: false #no base theme ...  If this line is missing Drupal defaults to Stable as the base theme
+# base theme: stable // No classes on anything: menus, nodes, body, etc.
+base theme: classy
+#base theme: false #no base theme ...  If there is no "base theme" setting Drupal defaults to Stable.
 
 
 
