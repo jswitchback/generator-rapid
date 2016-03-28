@@ -23,8 +23,6 @@
    - <%= themeName %>/modernizr<% } %>
    <% if (enquire) { %>
    - <%= themeName %>/enquire<% } %>
-   <% if (fastclick) { %>
-   - <%= themeName %>/fastclick<% } %>
    <% if (respond) { %>
    - <%= themeName %>/respond<% } %>
    <% if (smoothScroll) { %>
@@ -64,17 +62,6 @@ modernizr:
 enquire:
   js:
     vendor/enquire/dist/enquire.min.js: {}
-
-<% } %>
-<% if (fastclick) { %>
-
-
-fastclick:
-  css:
-    theme:
-      vendor/path/to/css.css: {}
-  js:
-    vendor/path/to/js.js: {}
 
 <% } %>
 <% if (respond) { %>

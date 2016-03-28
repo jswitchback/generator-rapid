@@ -140,8 +140,8 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
           value: 'enquire',
           checked: false
         }, {
-          name: 'Fast Click (Touch)',
-          value: 'fastclick',
+          name: 'Media Match (IE8/9)',
+          value: 'mediaMatch',
           checked: false
         }]
     },
@@ -164,10 +164,6 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
         }, {
           name: 'Enquire',
           value: 'enquire',
-          checked: false
-        }, {
-          name: 'Fast Click (Touch)',
-          value: 'fastclick',
           checked: false
         }, {
           name: 'Media Match (IE8/9)',
@@ -195,7 +191,6 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
     this.magnificPopup    = features.indexOf('magnificPopup') !== -1;
     this.modernizr        = features.indexOf('modernizr') !== -1;
     this.enquire          = features.indexOf('enquire') !== -1;
-    this.fastclick        = features.indexOf('fastclick') !== -1;
     this.mediaMatch       = features.indexOf('mediaMatch') !== -1;
     this.respond          = features.indexOf('respond') !== -1;
 
