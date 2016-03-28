@@ -13,7 +13,7 @@ $breakpoint-to-ems: true;
 
 // Set min and max width of the overall layout
 $viewport-min: 320px;
-$viewport-max: 960px;
+$viewport-max: 1080px;
 
 // Standard dpi breakpoints
 $phone-max: max-width 479px;
@@ -50,7 +50,7 @@ $orientation-portrait: "only screen and (orientation: portrait)";
 // as well as block and form element margins,
 // p + p tags, hr tags, blockquote and pre tag padding
 $vert-gutter: $base-line-height * 1.5;
-$horiz-gutter: 24px;
+$horiz-gutter: 20px;
 
 
 // Variable source: Singularity
