@@ -536,7 +536,11 @@
 }
 
 @mixin layout-gutter {
+  padding-left: $horiz-gutter;
+  padding-right: $horiz-gutter;
+}
+
+@mixin grid-gutter {
   padding-left: ($horiz-gutter/2);
   padding-right: ($horiz-gutter/2);
 }
-
