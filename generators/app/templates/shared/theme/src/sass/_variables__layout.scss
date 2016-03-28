@@ -26,8 +26,12 @@ $tablet-small-min: 600px;
 $tablet-portrait-max: max-width 767px;
 $tablet-portrait-min: 768px;
 
-$desktop-max: max-width 959px;
-$desktop-min: 960px;
+$desktop-small-max: max-width 839px;
+$desktop-small-min: 840px;
+
+$desktop-max: max-width 1079px;
+$desktop-min: 1080px;
+
 
 // Miscellanous breakpoints
 $tablet-landscape-min: 1024px;
