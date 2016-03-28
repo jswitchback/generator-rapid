@@ -17,7 +17,7 @@
     "css_source": "src/sass",
     "css_dest": "build/css",
     "js_source": "src/js",
-    "js_dest": "js",
+    "js_dest": "build/js",
     "styleguide": ".docs/patternlab"
   },
   "devDependencies": {
