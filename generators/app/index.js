@@ -132,10 +132,6 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
           value: 'smoothScroll',
           checked: false
         }, {
-          name: 'Modernizr',
-          value: 'modernizr',
-          checked: false
-        }, {
           name: 'Enquire',
           value: 'enquire',
           checked: false
@@ -156,10 +152,6 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
       choices: [{
           name: 'jQuery Smooth-scroll',
           value: 'smoothScroll',
-          checked: false
-        }, {
-          name: 'Modernizr',
-          value: 'modernizr',
           checked: false
         }, {
           name: 'Enquire',
@@ -189,7 +181,6 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
     this.librariesDirectory = '../../libraries/';
     this.smoothScroll     = features.indexOf('smoothScroll') !== -1;
     this.magnificPopup    = features.indexOf('magnificPopup') !== -1;
-    this.modernizr        = features.indexOf('modernizr') !== -1;
     this.enquire          = features.indexOf('enquire') !== -1;
     this.mediaMatch       = features.indexOf('mediaMatch') !== -1;
     this.respond          = features.indexOf('respond') !== -1;

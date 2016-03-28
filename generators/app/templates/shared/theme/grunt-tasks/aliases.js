@@ -194,7 +194,7 @@ module.exports = {
 
 
   // INITIAL PROJECT
-  'init': ['build.dev', 'build.styleguide.generate'],
+  'init': ['build.dev', 'modernizr', 'build.styleguide.generate'],
 
   // Drupal
   'cc': ['drush_clear_cache'],
