@@ -241,10 +241,15 @@ DrupalthemeGenerator.prototype.themeStyles = function themeStyles() {
 
 DrupalthemeGenerator.prototype.themeScripts = function themeScripts() {
   var themeMachineName = this.themeMachineName,
-      drupalVersion = this.drupalVersion;
+      drupalVersion = this.drupalVersion,
+      includeEnquire = this.enquire;
 
   this.template('shared/theme/src/js/_scripts.js', 'src/js/' + themeMachineName + '.js');
-  this.copy('shared/theme/src/js/responsive.js', 'src/js/responsive.js');
+
+  if (includeEnquire) {
+    this.copy('shared/theme/src/js/responsive.js', 'src/js/responsive.js');
+  }
+
   this.copy('shared/theme/src/js/ckeditor-extended-styles.js', 'src/js/ckeditor-extended-styles.js');
 
   switch (drupalVersion) {
