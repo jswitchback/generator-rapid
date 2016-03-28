@@ -11,13 +11,26 @@
 <%= themeName %>_global-js:
   js:
     # header: true # Uncomment to load in header
-    build/js/responsive.js: {}
+    <% if (enquire) { %>
+    build/js/responsive.js: {}<% } %>
     build/js/<%= themeName %>.js: {}
 
   dependencies:
    #- core/drupal # Includes Drupal Behaviors!
    - core/jquery
    - core/jquery.once
+   <% if (modernizr) { %>
+   - <%= themeName %>/modernizr<% } %>
+   <% if (enquire) { %>
+   - <%= themeName %>/enquire<% } %>
+   <% if (fastclick) { %>
+   - <%= themeName %>/fastclick<% } %>
+   <% if (respond) { %>
+   - <%= themeName %>/respond<% } %>
+   <% if (smoothScroll) { %>
+   - <%= themeName %>/smoothScroll<% } %>
+   <% if (magnificPopup) { %>
+   - <%= themeName %>/magnificPopup<% } %>
 
    # Other core js from core/assets/
    # -backbone
@@ -42,21 +55,15 @@
 <% if (modernizr) { %>
 
 modernizr:
-  css:
-    theme:
-      vendor/path/to/css.css: {}
   js:
-    vendor/path/to/js.js: {}
+    vendor/modernizr/modernizr.js: {}
 
 <% } %>
 <% if (enquire) { %>
 
 enquire:
-  css:
-    theme:
-      vendor/path/to/css.css: {}
   js:
-    vendor/path/to/js.js: {}
+    vendor/enquire/dist/enquire.min.js: {}
 
 <% } %>
 <% if (fastclick) { %>
