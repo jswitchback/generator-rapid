@@ -22,6 +22,7 @@
    <% if (modernizr) { %>
    - <%= themeName %>/modernizr<% } %>
    <% if (enquire) { %>
+   - <%= themeName %>/mediaMatch
    - <%= themeName %>/enquire<% } %>
    <% if (respond) { %>
    - <%= themeName %>/respond<% } %>
@@ -62,6 +63,13 @@ modernizr:
 enquire:
   js:
     vendor/enquire/dist/enquire.min.js: {}
+
+<% } %>
+<% if (mediaMatch) { %>
+
+mediaMatch:
+  js:
+    vendor/media-match/dist/media.match.min.js: {}
 
 <% } %>
 <% if (respond) { %>
