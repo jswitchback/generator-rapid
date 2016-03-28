@@ -520,3 +520,23 @@
   position: absolute;
 }
 
+
+
+////////////////////////////
+// LAYOUT
+////////////////////////////
+
+
+
+@mixin layout-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: $viewport-max;
+  min-width: $viewport-min;
+}
+
+@mixin layout-gutter {
+  padding-left: ($horiz-gutter/2);
+  padding-right: ($horiz-gutter/2);
+}
+

@@ -13,21 +13,12 @@ html {
 
 // @TODO: Change these to individual regions (header, content, footer)
 .layout-container {
-  margin-left: auto;
-  margin-right: auto;
-  max-width: $viewport-max;
-  min-width: $viewport-min;
+  @include layout-container;
 }
 
 header,
 main,
 footer {
-  padding-left: ($horiz-gutter/2);
-  padding-right: ($horiz-gutter/2);
+  @include layout-gutter;
   @include micro-clearfix;
-}
-
-.block {
-  margin-bottom: $vert-gutter;
-  margin-top: 0;
 }
