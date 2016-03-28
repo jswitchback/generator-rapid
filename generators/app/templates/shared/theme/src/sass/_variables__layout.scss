@@ -9,7 +9,8 @@
 
 // Converts breakpoints to ems for better font scaling & accessibility.
 // Variable source: breakpoint
-$breakpoint-to-ems: true;
+@include breakpoint-set('to ems', true);
+
 
 // Set min and max width of the overall layout
 $viewport-min: 320px;
