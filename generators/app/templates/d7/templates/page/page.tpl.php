@@ -80,96 +80,95 @@
    $content_pre      = render($page['content_pre']);
    $content_post     = render($page['content_post']);
    $highlighted_post = render($page['highlighted_post']);
+   $footer           = render($page['footer']);
    $dev_region       = render($page['dev_region']);
    $page_sidebar     = render($page['page_sidebar']);
   ?>
 
- <header id= "header-wrapper">
-    <div id="header" role="banner">
-      <div class="region__header region">
+ <header id= "header" role="banner">
+    <div class="layout-container">
 
-        <?php if ($logo): ?>
-          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+      <?php if ($logo): ?>
+      <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo"><img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" /></a>
+      <?php endif; ?>
+
+      <?php print render($page['header']); ?>
+
+      <?php if ($site_name || $site_slogan): ?>
+      <div class="name-and-slogan" id="name-and-slogan">
+        <?php if ($site_name): ?>
+        <h1 class="site-name" id="site-name">
+          <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
+        </h1>
         <?php endif; ?>
 
-        <?php print render($page['header']); ?>
-
-        <?php if ($site_name || $site_slogan): ?>
-        <div class="name-and-slogan" id="name-and-slogan">
-          <?php if ($site_name): ?>
-            <h1 class="site-name" id="site-name">
-              <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" class="header__site-link" rel="home"><span><?php print $site_name; ?></span></a>
-            </h1>
-          <?php endif; ?>
-
-          <?php if ($site_slogan): ?>
-            <div class="site-slogan" id="site-slogan"><?php print $site_slogan; ?></div>
-          <?php endif; ?>
-        </div>
+        <?php if ($site_slogan): ?>
+          <div class="site-slogan" id="site-slogan"><?php print $site_slogan; ?></div>
         <?php endif; ?>
+      </div>
+      <?php endif; ?>
 
-        <?php if ($secondary_menu): ?>
-        <nav class="secondary-menu" id="secondary-menu" role="navigation">
-          <?php print theme('links__system_secondary_menu', array(
-            'links' => $secondary_menu,
+      <?php if ($secondary_menu): ?>
+      <nav class="secondary-menu" id="secondary-menu" role="navigation">
+        <?php print theme('links__system_secondary_menu', array(
+          'links' => $secondary_menu,
+          'attributes' => array(
+            'class' => array('links', 'inline', 'clearfix'),
+          ),
+          'heading' => array(
+            'text' => $secondary_menu_heading,
+            'level' => 'h2',
+            'class' => array('element-invisible'),
+          ),
+        )); ?>
+      </nav>
+      <?php endif; ?>
+
+      <?php if ($page_sidebar): ?>
+      <a href="#page-sidebar" id="toggle-sidebar">
+        <span class="label">Off Canvas</span>
+      </a>
+      <?php endif; ?>
+
+      <a href="#navigation" id="toggle-nav" class="toggle-nav nav-button">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </a>
+
+      <div id="navigation" class="navigation">
+
+      <?php print render($page['navigation']); ?>
+
+      <?php if ($main_menu): ?>
+        <nav id="main-menu" role="navigation" tabindex="-1">
+          <?php
+          // This code snippet is hard to modify. We recommend turning off the
+          // "Main menu" on your sub-theme's settings form, deleting this PHP
+          // code block, and, instead, using the "Menu block" module.
+          // @see https://drupal.org/project/menu_block
+          print theme('links__system_main_menu', array(
+            'links' => $main_menu,
             'attributes' => array(
               'class' => array('links', 'inline', 'clearfix'),
             ),
             'heading' => array(
-              'text' => $secondary_menu_heading,
+              'text' => t('Main menu'),
               'level' => 'h2',
               'class' => array('element-invisible'),
             ),
           )); ?>
         </nav>
-        <?php endif; ?>
+      <?php endif; ?>
 
-        <?php if ($page_sidebar): ?>
-        <a href="#page-sidebar" id="toggle-sidebar">
-          <span class="label">Off Canvas</span>
-        </a>
-        <?php endif; ?>
-
-        <a href="#navigation" id="toggle-nav" class="toggle-nav nav-button">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </a>
-
-        <div id="navigation" class="navigation">
-
-        <?php print render($page['navigation']); ?>
-
-        <?php if ($main_menu): ?>
-          <nav id="main-menu" role="navigation" tabindex="-1">
-            <?php
-            // This code snippet is hard to modify. We recommend turning off the
-            // "Main menu" on your sub-theme's settings form, deleting this PHP
-            // code block, and, instead, using the "Menu block" module.
-            // @see https://drupal.org/project/menu_block
-            print theme('links__system_main_menu', array(
-              'links' => $main_menu,
-              'attributes' => array(
-                'class' => array('links', 'inline', 'clearfix'),
-              ),
-              'heading' => array(
-                'text' => t('Main menu'),
-                'level' => 'h2',
-                'class' => array('element-invisible'),
-              ),
-            )); ?>
-          </nav>
-        <?php endif; ?>
-
-        </div><!-- /#navigation -->
-      </div>
+      </div><!-- /#navigation -->
     </div>
-  </header><!-- /#header-wrapper -->
+  </header><!-- /#header -->
   <div id="main-wrapper">
 
     <?php print $highlighted; ?>
 
-    <div id="main">
+    <div id="main" class="main layout-container">
 
       <div id="content" class="column" role="main">
         <?php print $breadcrumb; ?>
@@ -194,10 +193,10 @@
       </div><!-- /#content -->
 
       <?php if ($sidebar_first || $sidebar_second): ?>
-        <aside class="sidebars">
-          <?php print $sidebar_first; ?>
-          <?php print $sidebar_second; ?>
-        </aside><!-- /.sidebars -->
+      <aside class="sidebars">
+        <?php print $sidebar_first; ?>
+        <?php print $sidebar_second; ?>
+      </aside><!-- /.sidebars -->
       <?php endif; ?>
 
     </div><!-- /#main -->
@@ -206,26 +205,30 @@
 
   </div><!-- /#main-wrapper -->
 
-  <?php print render($page['footer']); ?>
+  <?php if ($footer): ?>
+  <footer class="footer">
+    <?php print render($page['footer']); ?>
+  </footer>
+  <?php endif; ?>
 
   <?php print render($page['bottom']); ?>
 
   <?php if ($add_to_top): ?>
-    <a id="to-top" href="#">TO TOP</a>
+  <a id="to-top" href="#">TO TOP</a>
   <?php endif; ?>
 
 </div><!-- /#page -->
 
 <?php if ($page_sidebar): ?>
-  <section id="page__sidebar">
-    <a href="#page" id="close-sidebar" class="nav-button">X</a>
-    <?php print $page_sidebar; ?>
-  </section>
+<section id="page__sidebar">
+  <a href="#page" id="close-sidebar" class="nav-button">X</a>
+  <?php print $page_sidebar; ?>
+</section>
 <?php endif; ?>
 
 <?php if ($dev_region && $is_admin): ?>
-  <section id="region__dev">
-    <span id="dev-tab"></span>
-    <?php print $dev_region; ?>
-  </section>
+<section id="region__dev">
+  <span id="dev-tab"></span>
+  <?php print $dev_region; ?>
+</section>
 <?php endif; ?>

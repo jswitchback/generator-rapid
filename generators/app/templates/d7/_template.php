@@ -254,6 +254,13 @@ function <%= themeMachineName %>_preprocess_region(&$variables, $hook) {
   // if ($variables['region'] == 'header') {
   //    $variables['theme_hook_suggestions'][] = 'region__no_wrapper';
   //  }
+
+  // BEM Classes to regions
+  // foreach ($classes as $key => &$class) {
+  //   if (strpos($class, 'region-') === 0) {
+  //     $variables['classes_array'][$key] = str_replace('region-','region__', $class);
+  //   }
+  // }
 }
 
 
