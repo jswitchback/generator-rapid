@@ -29,6 +29,10 @@ module.exports = {
       files: ['<%= package.paths.images_source %>/*.{png,jpg,gif}'],
       tasks: ['build.images']
   },
+  svg_sprite: {
+      files: ['<%= package.paths.images_source %>/sprites/**/*.svg'],
+      tasks: ['build.images.sprites']
+  },
   styleguide: {
     files: [
       '<%= package.paths.styleguide %>/source/_patterns/**/*.twig',
