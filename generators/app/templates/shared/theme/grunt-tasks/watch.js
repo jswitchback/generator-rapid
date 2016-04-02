@@ -1,8 +1,4 @@
 module.exports = {
-  options: {
-      livereload: true,
-      spawn: false
-  },
   js: {
       // rebuild if js files change
       files: ['<%= package.paths.js_source %>/**/*.js',],
@@ -14,13 +10,12 @@ module.exports = {
     // runs the task `sass` whenever any watched file changes
     tasks: ['sass:dev', 'postcss:modern', 'concat:styleguide_css', 'copy:sourcemaps']
   },
-  // Handled in global options above. Here in case we need to target specific files.
-  // livereload : {
-  //   files: ['<%= package.paths.css_dest %>/**/*.css'],
-  //   options : {
-  //     livereload: true
-  //   }
-  // },
+  livereload : {
+    files: ['<%= package.paths.css_dest %>/**/*.css'],
+    options : {
+      livereload: true
+    }
+  },
   fonts: {
       files: ['src/fonts/**/*'],
       tasks: ['copy:fonts']
