@@ -14,6 +14,7 @@ module.exports = {
     // runs the task `sass` whenever any watched file changes
     tasks: ['sass:dev', 'postcss:modern', 'concat:styleguide_css', 'copy:sourcemaps']
   },
+  // Handled in global options above. Here in case we need to target specific files.
   // livereload : {
   //   files: ['<%= package.paths.css_dest %>/**/*.css'],
   //   options : {
