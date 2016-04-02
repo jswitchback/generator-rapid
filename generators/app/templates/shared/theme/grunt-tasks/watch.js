@@ -1,7 +1,6 @@
 module.exports = {
   options: {
-      // livereload: true,
-      livereload: 9001,
+      livereload: true,
       spawn: false
   },
   js: {
@@ -15,12 +14,12 @@ module.exports = {
     // runs the task `sass` whenever any watched file changes
     tasks: ['sass:dev', 'postcss:modern', 'concat:styleguide_css', 'copy:sourcemaps']
   },
-  livereload : {
-    files: ['<%= package.paths.css_dest %>/**/*.css'],
-    options : {
-      livereload: true
-    }
-  },
+  // livereload : {
+  //   files: ['<%= package.paths.css_dest %>/**/*.css'],
+  //   options : {
+  //     livereload: true
+  //   }
+  // },
   fonts: {
       files: ['src/fonts/**/*'],
       tasks: ['copy:fonts']
