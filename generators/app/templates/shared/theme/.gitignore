@@ -5,6 +5,5 @@
 
 # Front-end grunt task related
 node_modules
-vendor
 .bundle
 src/.tmp
