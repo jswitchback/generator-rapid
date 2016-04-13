@@ -50,13 +50,10 @@
    # picturefill
    # underscore
 
-<% if (modernizr) { %>
-
 modernizr:
   js:
-    vendor/modernizr/modernizr.js: {}
+    vendor/modernizr/modernizr-custom.js: {}
 
-<% } %>
 <% if (enquire) { %>
 
 enquire:
