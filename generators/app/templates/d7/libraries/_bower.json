@@ -2,8 +2,7 @@
   "name": "Libraries",
   "version": "0.1",
   "dependencies": {
-    "html5shiv": "~3.7.2"<% if (modernizr) { %>,
-    "modernizr": "~2.6.2"<% } %><% if (enquire) { %>,
+    "html5shiv": "~3.7.2"<% if (enquire) { %>,
     "enquire": "~2.1.2"<% } %><% if (fastclick) { %>,
     "fastclick": "~1.0.3"<% } %><% if (mediaMatch) { %>,
     "media-match": "~2.0.2"<% } %><% if (respond) { %>,
