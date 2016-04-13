@@ -1,8 +1,8 @@
 # generator-rapid [![Build Status](https://secure.travis-ci.org/jswitchback/generator-rapid.png?branch=master)](https://travis-ci.org/jswitchback/generator-rapid)
 
-################################################
+------------------------------------------------
 ### YEOMAN README
-################################################
+------------------------------------------------
 
 
 > [Yeoman](http://yeoman.io) generator
@@ -53,9 +53,9 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 MIT
 
 
-################################################
+------------------------------------------------
 ### RAPID GENERATOR README
-################################################
+------------------------------------------------
 
 
 ## Rapid Generator
