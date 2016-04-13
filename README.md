@@ -58,8 +58,6 @@ MIT
 ------------------------------------------------
 
 
-## Rapid Generator
-
 ### Installing locally
 
 Clone the repository, change directory and install the generators dependencies with the following command:
