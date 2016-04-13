@@ -1,7 +1,7 @@
 # generator-rapid [![Build Status](https://secure.travis-ci.org/jswitchback/generator-rapid.png?branch=master)](https://travis-ci.org/jswitchback/generator-rapid)
 
 ------------------------------------------------
-### YEOMAN README
+### YEOMAN
 ------------------------------------------------
 
 
@@ -54,7 +54,7 @@ MIT
 
 
 ------------------------------------------------
-### RAPID GENERATOR README
+### RAPID GENERATOR
 ------------------------------------------------
 
 
