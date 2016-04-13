@@ -19,8 +19,7 @@
    #- core/drupal # Includes Drupal Behaviors!
    - core/jquery
    - core/jquery.once
-   <% if (modernizr) { %>
-   - <%= themeName %>/modernizr<% } %>
+   - <%= themeName %>/modernizr
    <% if (enquire) { %>
    - <%= themeName %>/mediaMatch
    - <%= themeName %>/enquire<% } %>
