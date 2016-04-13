@@ -1,14 +1,11 @@
 module.exports = {
   js: {
-      // rebuild if js files change
       files: ['<%= package.paths.js_source %>/**/*.js',],
       tasks: ['jshint','uglify:dev','concat:styleguide_js']
   },
   sass: {
-    // Watches all scss files.
     files: ['<%= package.paths.css_source %>/**/*.scss'],
-    // runs the task `sass` whenever any watched file changes
-    tasks: ['sass:dev', 'postcss:modern', 'concat:styleguide_css', 'copy:sourcemaps']
+    tasks: ['sass:dev', 'postcss:modern', 'build.styleguide', 'copy:sourcemaps']
   },
   livereload : {
     files: ['<%= package.paths.css_dest %>/**/*.css'],
