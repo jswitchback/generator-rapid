@@ -19,6 +19,7 @@
    #- core/drupal # Includes Drupal Behaviors!
    - core/jquery
    - core/jquery.once
+   - <%= themeName %>/html5shiv
    - <%= themeName %>/modernizr
    <% if (enquire) { %>
    - <%= themeName %>/mediaMatch
@@ -49,6 +50,11 @@
    # normalize-css
    # picturefill
    # underscore
+
+
+html5shiv:
+  js:
+    vendor/html5shiv/dist/html5shiv.min.js: {}
 
 modernizr:
   js:

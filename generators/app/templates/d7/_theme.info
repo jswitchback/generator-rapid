@@ -71,8 +71,11 @@ stylesheets[all][] = build/css/styles.css
 ; Optionally add some JavaScripts to your theme.
 
 ; placeholder plugin as needed http://mths.be/placeholder
+scripts[] = vendor/html5shiv/dist/html5shiv.min.js
+scripts[] = vendor/modernizr/modernizr-custom.js
 scripts[] = build/js/<%= themeMachineName %>.js
 scripts[] = build/js/responsive.js
+
 
 
 ;--------------------- REGIONS ------------------------

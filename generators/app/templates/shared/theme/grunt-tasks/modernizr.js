@@ -13,7 +13,6 @@ module.exports = {
       'flexbox'
     ],
     options: [
-      'html5shiv',
       'setClasses'
     ],
     uglify: true
