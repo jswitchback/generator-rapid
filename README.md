@@ -1,7 +1,8 @@
 # generator-rapid [![Build Status](https://secure.travis-ci.org/jswitchback/generator-rapid.png?branch=master)](https://travis-ci.org/jswitchback/generator-rapid)
 
-
-######################## YEOMAN README ########################
+################################################
+### YEOMAN README
+################################################
 
 
 > [Yeoman](http://yeoman.io) generator
@@ -52,15 +53,16 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 MIT
 
 
-
-######################## RAPID GENERATOR README ########################
+################################################
+### RAPID GENERATOR README
+################################################
 
 
 ## Rapid Generator
 
 ### Installing locally
 
-To run this generator locally: clone the repository, change directory and install the generators dependencies with the following command:
+Clone the repository, change directory and install the generators dependencies with the following command:
 
 ```bash
 git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm link && npm install
