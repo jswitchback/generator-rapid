@@ -3,24 +3,8 @@
 > [Yeoman](http://yeoman.io) generator
 
 
-######################## RAPID GENERATOR README
 
-
-To run this generator locally: clone the repository, change directory and install the generators dependencies with the following command:
-
-```bash
-git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm link && npm install
-```
-
-After npm is done, you'll be able to generate a new theme or module from templates in any directory:
-
-```bash
-yo rapid
-yo rapid:module
-```
-
-
-######################## YEOMAN README
+######################## YEOMAN README ########################
 
 
 
@@ -68,3 +52,23 @@ If you'd like to get to know Yeoman better and meet some of his friends, [Grunt]
 ## License
 
 MIT
+
+
+
+######################## RAPID GENERATOR README ########################
+
+
+
+To run this generator locally: clone the repository, change directory and install the generators dependencies with the following command:
+
+```bash
+git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm link && npm install
+```
+
+After npm is done, you'll be able to generate a new theme or module from templates in any directory:
+
+```bash
+yo rapid
+yo rapid:module
+```
+
