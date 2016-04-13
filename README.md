@@ -1,12 +1,10 @@
 # generator-rapid [![Build Status](https://secure.travis-ci.org/jswitchback/generator-rapid.png?branch=master)](https://travis-ci.org/jswitchback/generator-rapid)
 
-> [Yeoman](http://yeoman.io) generator
-
-
 
 ######################## YEOMAN README ########################
 
 
+> [Yeoman](http://yeoman.io) generator
 
 ## Getting Started
 
@@ -58,6 +56,9 @@ MIT
 ######################## RAPID GENERATOR README ########################
 
 
+## Rapid Generator
+
+### Installing locally
 
 To run this generator locally: clone the repository, change directory and install the generators dependencies with the following command:
 
@@ -65,7 +66,9 @@ To run this generator locally: clone the repository, change directory and instal
 git clone https://github.com/jswitchback/generator-rapid.git && cd generator-rapid && npm link && npm install
 ```
 
-After npm is done, you'll be able to generate a new theme or module from templates in any directory:
+### Generating a theme or module
+
+Generate a new theme or module from templates in any directory:
 
 ```bash
 yo rapid
