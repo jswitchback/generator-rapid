@@ -34,7 +34,7 @@ module.exports = {
       '<%= package.paths.styleguide %>/source/_patterns/**/*.json',
       '<%= package.paths.styleguide %>/source/_data/*.json'
     ],
-    tasks: ['shell:patternlab'],
+    tasks: ['build.styleguide'],
     options: {
       spawn: false,
       livereload: true
