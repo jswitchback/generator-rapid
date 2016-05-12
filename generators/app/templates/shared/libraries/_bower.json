@@ -4,7 +4,7 @@
   "dependencies": {
     "html5shiv": "^3.7.3",
     "fastclick": "~1.0.3",
-    "magnific-popup": "1.0.0",<% if (enquire) { %>,
+    "magnific-popup": "1.0.0"<% if (enquire) { %>,
     "enquire": "~2.1.2"<% } %><% if (mediaMatch) { %>,
     "media-match": "~2.0.2"<% } %><% if (respond) { %>,
     "respond": "~1.4.2"<% } %><% if (smoothScroll) { %>,
