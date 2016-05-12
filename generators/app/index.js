@@ -331,34 +331,30 @@ DrupalthemeGenerator.prototype.themeFonts = function themeFonts() {
   this.directory('shared/theme/src/fonts', 'src/fonts');
 };
 
-DrupalthemeGenerator.prototype.bowerFilesTheme = function bowerFiles() {
-  this.template('shared/theme/_bower.json', 'bower.json');
-  this.template('shared/theme/_bowerrc', '.bowerrc');
-  this.directory('shared/theme/vendor', 'vendor');
-};
-
-DrupalthemeGenerator.prototype.bowerFilesLibraries = function bowerFiles() {
+DrupalthemeGenerator.prototype.bowerFilesTheme = function bowerFilesTheme() {
   var drupalVersion = this.drupalVersion;
 
   switch (drupalVersion) {
     // Drupal 7
+    // Drupal 7 vendor js/css should be installed in the Libraries directory
     case 7:
       this.template('shared/libraries/_bower.json', this.librariesDirectory + '/bower.json');
       // Make Libraries directory in case it's not there.
       this.mkdir(this.librariesDirectory);
-      this.copy('d7/libraries/README.txt', this.librariesDirectory + '/README.txt');
-      this.template('d7/libraries/_bowerrc', this.librariesDirectory + '/.bowerrc');
+      this.copy('shared/libraries/README.txt', this.librariesDirectory + '/README.txt');
+      this.template('d7/_bowerrc', this.librariesDirectory + '/.bowerrc');
       break;
 
     // Drupal 8
     case 8:
-
+      this.template('shared/libraries/_bower.json', 'bower.json');
+      this.template('d8/_bowerrc', '.bowerrc');
+      this.directory('shared/theme/vendor', 'vendor');
       break;
 
     default:
       console.log('No Drupal version detected while adding bower files');
   }
-
 
 
 };
