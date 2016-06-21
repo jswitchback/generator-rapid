@@ -69,87 +69,6 @@ module.exports = {
   },
 
   /**** APPLE ****/
-  //
-  // apple_29: {
-  //   options: {
-  //     width: 29,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>29.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_29_2x: {
-  //   options: {
-  //     width: 58,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>29@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_40: {
-  //   options: {
-  //     width: 40,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>40.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_40_2x: {
-  //   options: {
-  //     width: 80,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>40@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_50: {
-  //   options: {
-  //     width: 50,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>50.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_50_2x: {
-  //   options: {
-  //     width: 100,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>50@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_60: {
-  //     options: {
-  //       width: '60'
-  //     },
-  //     files: {
-  //       '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>60.png' : '<%= image_resize.src_image_icons %>'
-  //     }
-  // },
-
-  // apple_57: {
-  //   options: {
-  //     width: 57,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>57.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_57_2x: {
-  //   options: {
-  //     width: 114,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>57@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
 
   // iPad Pro (@2x) - 167
   apple_167: {
@@ -201,33 +120,6 @@ module.exports = {
       }
   },
 
-  // apple_72: {
-  //   options: {
-  //     width: 72,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>72.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_72_2x: {
-  //   options: {
-  //     width: 144,
-  //   },
-  //   files: {
-  //    '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>72@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // apple_76_2x: {
-  //   options: {
-  //     width: 152,
-  //   },
-  //   files: {
-  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>76@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
   apple_512: {
     options: {
       width: 512,
@@ -265,79 +157,6 @@ module.exports = {
       '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>192.png' : '<%= image_resize.src_image_icons %>'
     }
   },
-
-  // android_36: {
-  //   options: {
-  //     width: 36,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>36.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // android_48: {
-  //   options: {
-  //     width: 48,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>48.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // android_48_2x: {
-  //   options: {
-  //     width: 96,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>48@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // android_72: {
-  //   options: {
-  //     width: 72,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>72.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // android_72_2x: {
-  //   options: {
-  //     width: 144,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>72@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // android_128_2x: {
-  //   options: {
-  //     width: 256,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>128@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-
-  // android_192_2x: {
-  //   options: {
-  //     width: 384,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>192@2x.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
-
-  // android_196: {
-  //   options: {
-  //     width: 196,
-  //   },
-  //   files: {
-  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>196.png' : '<%= image_resize.src_image_icons %>'
-  //   }
-  // },
 
   /**** WINDOWS ****/
 

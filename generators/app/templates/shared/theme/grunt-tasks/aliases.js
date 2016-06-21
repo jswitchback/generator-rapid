@@ -62,63 +62,41 @@ module.exports = {
   ],
 
   'build.images.web': [
-      'newer:image_resize:apple_57',
-      'newer:image_resize:apple_57_2x',
+      'newer:image_resize:apple_167',
       'newer:image_resize:apple_76',
-      'newer:image_resize:apple_76_2x',
+      'newer:image_resize:apple_152',
+      'newer:image_resize:apple_120',
+      'newer:image_resize:apple_180',
 
-      'newer:image_resize:android_128',
-      'newer:image_resize:android_128_2x',
       'newer:image_resize:android_192',
-      'newer:image_resize:android_192_2x',
+      'newer:image_resize:android_128',
 
       'newer:image_resize:windows_144',
 
-      'newer:image_resize:favicon_16',
       'newer:image_resize:favicon_32',
-      'newer:image_resize:favicon_48',
       'newer:image_resize:favicon_64'
 
   ],
 
   'build.images.apple': [
-      'newer:image_resize:apple_29',
-      'newer:image_resize:apple_29_2x',
-      'newer:image_resize:apple_40',
-      'newer:image_resize:apple_40_2x',
-      'newer:image_resize:apple_50',
-      'newer:image_resize:apple_50_2x',
-      'newer:image_resize:apple_57',
-      'newer:image_resize:apple_57_2x',
-      'newer:image_resize:apple_60',
-      'newer:image_resize:apple_60_2x',
-      'newer:image_resize:apple_72',
-      'newer:image_resize:apple_72_2x',
+      'newer:image_resize:apple_167',
       'newer:image_resize:apple_76',
-      'newer:image_resize:apple_76_2x',
+      'newer:image_resize:apple_152',
+      'newer:image_resize:apple_120',
+      'newer:image_resize:apple_180',
       'newer:image_resize:apple_512',
       'newer:image_resize:apple_512_2x'
   ],
 
   'build.images.android': [
-      'newer:image_resize:android_36',
-      'newer:image_resize:android_48',
-      'newer:image_resize:android_48_2x',
-      'newer:image_resize:android_72',
-      'newer:image_resize:android_72_2x',
-      'newer:image_resize:android_128',
-      'newer:image_resize:android_128_2x',
       'newer:image_resize:android_192',
-      'newer:image_resize:android_192_2x',
-      'newer:image_resize:android_196'
+      'newer:image_resize:android_128'
   ],
 
   'build.images.windows': ['newer:image_resize:windows_144'],
 
   'build.images.favicon': [
-      'newer:image_resize:favicon_16',
       'newer:image_resize:favicon_32',
-      'newer:image_resize:favicon_48',
       'newer:image_resize:favicon_64'
   ],
 
