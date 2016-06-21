@@ -69,115 +69,99 @@ module.exports = {
   },
 
   /**** APPLE ****/
+  //
+  // apple_29: {
+  //   options: {
+  //     width: 29,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>29.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
-  apple_29: {
-    options: {
-      width: 29,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>29.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // apple_29_2x: {
+  //   options: {
+  //     width: 58,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>29@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
-  apple_29_2x: {
-    options: {
-      width: 58,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>29@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // apple_40: {
+  //   options: {
+  //     width: 40,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>40.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
-  apple_40: {
-    options: {
-      width: 40,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>40.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // apple_40_2x: {
+  //   options: {
+  //     width: 80,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>40@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
-  apple_40_2x: {
-    options: {
-      width: 80,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>40@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // apple_50: {
+  //   options: {
+  //     width: 50,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>50.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
-  apple_50: {
-    options: {
-      width: 50,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>50.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // apple_50_2x: {
+  //   options: {
+  //     width: 100,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>50@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
-  apple_50_2x: {
-    options: {
-      width: 100,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>50@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // apple_60: {
+  //     options: {
+  //       width: '60'
+  //     },
+  //     files: {
+  //       '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>60.png' : '<%= image_resize.src_image_icons %>'
+  //     }
+  // },
 
-  apple_60: {
+  // apple_57: {
+  //   options: {
+  //     width: 57,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>57.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // apple_57_2x: {
+  //   options: {
+  //     width: 114,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>57@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // iPad Pro (@2x) - 167
+  apple_167: {
       options: {
-        width: '60'
+        width: 167,
       },
       files: {
-        '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>60.png' : '<%= image_resize.src_image_icons %>'
+        '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>167@2x.png' : '<%= image_resize.src_image_icons %>'
       }
   },
 
-  apple_57: {
-    options: {
-      width: 57,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>57.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  apple_57_2x: {
-    options: {
-      width: 114,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>57@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  apple_60_2x: {
-      options: {
-        width: 120,
-      },
-      files: {
-        '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>60@2x.png' : '<%= image_resize.src_image_icons %>'
-      }
-  },
-
-  apple_72: {
-    options: {
-      width: 72,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>72.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  apple_72_2x: {
-    options: {
-      width: 144,
-    },
-    files: {
-     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>72@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
+  // iPad 2 & Mini (@1x) - 76
   apple_76: {
       options: {
           width: 76,
@@ -187,14 +171,62 @@ module.exports = {
       }
   },
 
-  apple_76_2x: {
-    options: {
-      width: 152,
-    },
-    files: {
-      '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>76@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
+  // iPad & mini (@2x) - 152
+  apple_152: {
+      options: {
+        width: 152,
+      },
+      files: {
+        '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>152.png' : '<%= image_resize.src_image_icons %>'
+      }
   },
+
+  // iPhone 4s, 5, 6s (@2x) - 120
+  apple_120: {
+      options: {
+        width: 120,
+      },
+      files: {
+        '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>120.png' : '<%= image_resize.src_image_icons %>'
+      }
+  },
+
+  // iPhone 6s Plus, 6 (@3x) - 180
+  apple_180: {
+      options: {
+        width: 180,
+      },
+      files: {
+        '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>180.png' : '<%= image_resize.src_image_icons %>'
+      }
+  },
+
+  // apple_72: {
+  //   options: {
+  //     width: 72,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>72.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // apple_72_2x: {
+  //   options: {
+  //     width: 144,
+  //   },
+  //   files: {
+  //    '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>72@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // apple_76_2x: {
+  //   options: {
+  //     width: 152,
+  //   },
+  //   files: {
+  //     '<%= image_resize.apple_dest %>/<%= image_resize.apple_prefix %>76@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
   apple_512: {
     options: {
@@ -216,66 +248,12 @@ module.exports = {
 
   /**** ANDROID ****/
 
-  android_36: {
-    options: {
-      width: 36,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>36.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  android_48: {
-    options: {
-      width: 48,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>48.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  android_48_2x: {
-    options: {
-      width: 96,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>48@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  android_72: {
-    options: {
-      width: 72,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>72.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  android_72_2x: {
-    options: {
-      width: 144,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>72@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
   android_128: {
     options: {
       width: 128,
     },
     files: {
       '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>128.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
-
-  android_128_2x: {
-    options: {
-      width: 256,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>128@2x.png' : '<%= image_resize.src_image_icons %>'
     }
   },
 
@@ -288,23 +266,78 @@ module.exports = {
     }
   },
 
-  android_192_2x: {
-    options: {
-      width: 384,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>192@2x.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // android_36: {
+  //   options: {
+  //     width: 36,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>36.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
-  android_196: {
-    options: {
-      width: 196,
-    },
-    files: {
-      '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>196.png' : '<%= image_resize.src_image_icons %>'
-    }
-  },
+  // android_48: {
+  //   options: {
+  //     width: 48,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>48.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // android_48_2x: {
+  //   options: {
+  //     width: 96,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>48@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // android_72: {
+  //   options: {
+  //     width: 72,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>72.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // android_72_2x: {
+  //   options: {
+  //     width: 144,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>72@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // android_128_2x: {
+  //   options: {
+  //     width: 256,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>128@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+
+  // android_192_2x: {
+  //   options: {
+  //     width: 384,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>192@2x.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
+
+  // android_196: {
+  //   options: {
+  //     width: 196,
+  //   },
+  //   files: {
+  //     '<%= image_resize.android_dest %>/<%= image_resize.android_prefix %>196.png' : '<%= image_resize.src_image_icons %>'
+  //   }
+  // },
 
   /**** WINDOWS ****/
 
@@ -319,14 +352,14 @@ module.exports = {
 
   /**** FAVICON ****/
 
-  favicon_16: {
-    options: {
-      width: 16,
-    },
-    files: {
-      '<%= image_resize.favicon_dest %>/<%= image_resize.favicon_prefix %>16.png' : '<%= image_resize.src_image_favicon %>'
-    }
-  },
+  // favicon_16: {
+  //   options: {
+  //     width: 16,
+  //   },
+  //   files: {
+  //     '<%= image_resize.favicon_dest %>/<%= image_resize.favicon_prefix %>16.png' : '<%= image_resize.src_image_favicon %>'
+  //   }
+  // },
 
   favicon_32: {
     options: {
@@ -337,14 +370,14 @@ module.exports = {
     }
   },
 
-  favicon_48: {
-    options: {
-      width: 48,
-    },
-    files: {
-      '<%= image_resize.favicon_dest %>/<%= image_resize.favicon_prefix %>48.png' : '<%= image_resize.src_image_favicon %>'
-    }
-  },
+  // favicon_48: {
+  //   options: {
+  //     width: 48,
+  //   },
+  //   files: {
+  //     '<%= image_resize.favicon_dest %>/<%= image_resize.favicon_prefix %>48.png' : '<%= image_resize.src_image_favicon %>'
+  //   }
+  // },
 
   favicon_64: {
     options: {
