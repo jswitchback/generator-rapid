@@ -96,7 +96,7 @@
     <!-- iPad Pro (@2x) - 167 -->
     <link rel="apple-touch-icon-precomposed" sizes="167x167" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/apple/apple-touch-icon-precomposed-167.png">
     <!-- iPad 2 & Mini (@1x) - 76 -->
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/apple/apple-touch-icon-precomposed-72.png">
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/apple/apple-touch-icon-precomposed-76.png">
     <!-- iPad & mini (@2x) - 152 -->
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/apple/apple-touch-icon-precomposed-152.png">
     <!-- iPhone 4s, 5, 6s (@2x) - 120 -->
@@ -104,8 +104,8 @@
     <!-- iPhone 6s Plus, 6 (@3x) - 180 -->
     <link rel="apple-touch-icon-precomposed" sizes="180x180" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/apple/apple-touch-icon-precomposed-180.png">
     <!-- Chrome / Android -->
-    <link rel="icon" sizes="192x192" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/android/android-icon-128.png">
-    <link rel="icon" sizes="128x128" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/android/android-icon-192.png">
+    <link rel="icon" sizes="192x192" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/android/android-icon-192.png">
+    <link rel="icon" sizes="128x128" href="<?php print $GLOBALS['base_url'] . '/' . $path_to_theme; ?>/build/images/app-icons/android/android-icon-128.png">
   <?php endif; ?>
 
   <meta http-equiv="cleartype" content="on">

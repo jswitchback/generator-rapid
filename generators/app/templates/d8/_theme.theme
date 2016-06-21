@@ -15,6 +15,112 @@ function <%= themeMachineName %>_preprocess_page(&$variables) {
   // }
 }
 
+function <%= themeMachineName %>_page_attachments_alter(array &$page) {
+  $site_name = \Drupal::config('system.site')->get('name');
+  $theme_path = drupal_get_path('theme', '<%= themeMachineName %>');
+
+  $icons = array(
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'application-name',
+        'content' => $site_name,
+      ),
+    ),
+    // array(
+    //   '#type' => 'html_tag',
+    //   '#tag' => 'meta',
+    //   '#attributes' => array(
+    //     'name' => 'msapplication-TileColor',
+    //     'content' => '',
+    //   ),
+    // ),
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'msapplication-TileImage',
+        'content' => $theme_path . '/build/images/app-icons/windows/ms-application-icon-144.png',
+      ),
+    ),
+    // iPad Pro (@2x) - 167
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon-precomposed',
+        'href' => $theme_path . '/build/images/app-icons/apple/apple-touch-icon-precomposed-167.png',
+        'sizes' => '167x167',
+      ),
+    ),
+    // iPad 2 & Mini (@1x) - 76
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon-precomposed',
+        'href' => $theme_path . '/build/images/app-icons/apple/apple-touch-icon-precomposed-76.png',
+        'sizes' => '76x76',
+      ),
+    ),
+    // iPad & mini (@2x) - 152
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon-precomposed',
+        'href' => $theme_path . '/build/images/app-icons/apple/apple-touch-icon-precomposed-152.png',
+        'sizes' => '152x152',
+      ),
+    ),
+    // iPhone 4s, 5, 6s (@2x) - 120
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon-precomposed',
+        'href' => $theme_path . '/build/images/app-icons/apple/apple-touch-icon-precomposed-120.png',
+        'sizes' => '120x120',
+      ),
+    ),
+    // <!-- iPhone 6s Plus, 6 (@3x) - 180 -->
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'rel' => 'apple-touch-icon-precomposed',
+        'href' => $theme_path . '/build/images/app-icons/apple/apple-touch-icon-precomposed-180.png',
+        'sizes' => '180x180',
+      ),
+    ),
+
+    // Chrome / Android
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'rel' => 'icon',
+        'href' => $theme_path . '/build/images/app-icons/android/android-icon-192.png',
+        'sizes' => '192x192',
+      ),
+    ),
+    // Chrome / Android
+    array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'rel' => 'icon',
+        'href' => $theme_path . '/build/images/app-icons/android/android-icon-128.png',
+        'sizes' => '128x128',
+      ),
+    ),
+  );
+  foreach ($icons as $key => $icon) {
+    $page['#attached']['html_head'][] = [$icon, 'icon-' . $key];
+  }
+}
+
 /**
  * Implements hook_preprocess_HOOK() for node.html.twig.
  */
