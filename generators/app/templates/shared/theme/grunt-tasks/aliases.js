@@ -10,7 +10,7 @@ module.exports = {
   //////////////////////////////////
 
 
-  'watch.js': ['watch:js'],
+  'watch.js': ['watch:js', 'watch:livereload'],
   'minify.js': ['uglify:prod'],
   'minify.js.dev': ['uglify:dev'],
   'minify.js.prod': ['uglify:prod'],
@@ -25,8 +25,8 @@ module.exports = {
   //////////////////////////////////
 
 
-  'watch.css': ['watch:sass'],
-  'watch.sass': ['watch:sass'],
+  'watch.css': ['watch:sass', 'watch:livereload'],
+  'watch.sass': ['watch:sass', 'watch:livereload'],
   'build.css': ['sass:dev', 'concat:styleguide_css', 'postcss:modern', 'copy:sourcemaps'],
   'build.css.dev': ['sass:dev', 'concat:styleguide_css', 'postcss:modern', 'copy:sourcemaps'],
   'build.css.prod': ['sass:prod', 'concat:styleguide_css', 'postcss:modern', 'copy:sourcemaps'],
