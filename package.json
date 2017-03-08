@@ -27,16 +27,19 @@
     "chalk": "^1.1.1",
     "escape-string-regexp": "^1.0.5",
     "execSync": "~1.0.1-pre",
-    "rimraf": "~2.5.2",
+    "html-wiring": "^1.2.0",
+    "mkdirp": "^0.5.1",
+    "rimraf": "~2.6.1",
     "underscore.string": "~3.3.4",
-    "yeoman-generator": "^0.22.5",
-    "yosay": "^1.1.0"
+    "yeoman-generator": "^1.1.1",
+    "yosay": "^2.0.0"
   },
   "devDependencies": {
     "lodash": "^4.6.1",
-    "mocha": "*"
+    "mocha": "*",
+    "yo": "^1.8.5"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0"
+    "yo": ">=1.8.5"
   }
 }

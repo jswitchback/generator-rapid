@@ -32,19 +32,19 @@ html {
 
 
 h1 {
-  @include h1; // Mixin found in _theme.scss
+  @include h1; // Mixin found in _mixins.scss
 }
 
 h2 {
-  @include h2; // Mixin found in _theme.scss
+  @include h2; // Mixin found in _mixins.scss
 }
 
 h3 {
-  @include h3; // Mixin found in _theme.scss
+  @include h3; // Mixin found in _mixins.scss
 }
 
 h4, h5, h6 {
-  @include h4; // Mixin found in _theme.scss
+  @include h4; // Mixin found in _mixins.scss
 }
 
 

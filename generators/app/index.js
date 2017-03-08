@@ -1,10 +1,13 @@
 'use strict';
 var util = require('util');
 var path = require('path');
-var yeoman = require('yeoman-generator');
+var generators = require('yeoman-generator');
 var yosay = require('yosay');
 var _ = require('lodash');
 _.str = require('underscore.string');
+var wiring = require('html-wiring');
+var mkdirp = require('mkdirp');
+
 
 // Mix in non-conflicting functions to Underscore namespace and
 // Generators.
@@ -14,15 +17,15 @@ _.str = require('underscore.string');
 _.mixin(_.str.exports());
 
 var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, options, config) {
-  yeoman.generators.Base.apply(this, arguments);
+  generators.Base.apply(this, arguments);
 
+// var DrupalthemeGenerator = module.exports = generators.Base.extend({
 
   this.themeName = this.env.themeName || 'nameless';
   this.themeDesc = this.env.themeDesc || 'nameless theme description';
   this.themeMachineName = this.env.themeMachineName || 'nameless';
   this.drupalVersion = this.env.drupalVersion;
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
-
+  this.pkg = JSON.parse(wiring.readFileAsString(path.join(__dirname, '../../package.json')));
 
   this.on('end', function () {
     var skippingInstall = this.options['skip-install'];
@@ -70,7 +73,7 @@ var DrupalthemeGenerator = module.exports = function DrupalthemeGenerator(args, 
 
 };
 
-util.inherits(DrupalthemeGenerator, yeoman.generators.Base);
+util.inherits(DrupalthemeGenerator, generators.Base);
 
 DrupalthemeGenerator.prototype.askFor = function askFor() {
   var done = this.async();
@@ -191,17 +194,17 @@ DrupalthemeGenerator.prototype.askFor = function askFor() {
 
 DrupalthemeGenerator.prototype.app = function app() {
   // Create our theme directory
-  this.mkdir(this.themeMachineName);
+  this.mkdirp(this.themeMachineName);
 
   // Set our destination to be the new directory.
   this.destinationRoot(this.themeMachineName);
 
-  this.mkdir('build/js');
-  this.mkdir('build/css');
-  this.mkdir('build/images');
-  this.mkdir('build/fonts');
-  this.mkdir('src/js');
-  this.mkdir('src/.tmp/sass');
+  this.mkdirp('build/js');
+  this.mkdirp('build/css');
+  this.mkdirp('build/images');
+  this.mkdirp('build/fonts');
+  this.mkdirp('src/js');
+  this.mkdirp('src/.tmp/sass');
 
 };
 
@@ -323,8 +326,8 @@ DrupalthemeGenerator.prototype.themeImages = function themeImages() {
   this.copy('shared/theme/logo.png', 'logo.png');
   this.copy('shared/theme/favicon.ico', 'favicon.ico');
   this.directory('shared/theme/src/images', 'src/images');
-  this.mkdir('src/images/resize/2x');
-  this.mkdir('src/images/resize/3x');
+  this.mkdirp('src/images/resize/2x');
+  this.mkdirp('src/images/resize/3x');
 };
 
 DrupalthemeGenerator.prototype.themeFonts = function themeFonts() {
@@ -340,7 +343,7 @@ DrupalthemeGenerator.prototype.bowerFilesTheme = function bowerFilesTheme() {
     case 7:
       this.template('shared/libraries/_bower.json', this.librariesDirectory + '/bower.json');
       // Make Libraries directory in case it's not there.
-      this.mkdir(this.librariesDirectory);
+      this.mkdirp(this.librariesDirectory);
       this.copy('shared/libraries/README.txt', this.librariesDirectory + '/README.txt');
       this.template('d7/_bowerrc', this.librariesDirectory + '/.bowerrc');
       break;

@@ -5,6 +5,8 @@ var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 var _ = require('lodash');
 _.str = require('underscore.string');
+var wiring = require('html-wiring');
+var mkdirp = require('mkdirp');
 
 // Mix in non-conflicting functions to Underscore namespace and
 // Generators.
@@ -14,9 +16,10 @@ _.str = require('underscore.string');
 _.mixin(_.str.exports());
 
 var DrupalmoduleGenerator = module.exports = function DrupalmoduleGenerator(args, options, config) {
-  yeoman.generators.Base.apply(this, arguments);
+  yeoman.Base.apply(this, arguments);
 
-  this.pkg = JSON.parse(this.readFileAsString(path.join(__dirname, '../../package.json')));
+
+  this.pkg = JSON.parse(wiring.readFileAsString(path.join(__dirname, '../../package.json')));
 
   this.on('end', function () {
     var runNode = this.addFrontEndTooling;
@@ -40,7 +43,7 @@ var DrupalmoduleGenerator = module.exports = function DrupalmoduleGenerator(args
 
 };
 
-util.inherits(DrupalmoduleGenerator, yeoman.generators.Base);
+util.inherits(DrupalmoduleGenerator, yeoman.Base);
 
 DrupalmoduleGenerator.prototype.askFor = function askFor() {
   var cb = this.async();
@@ -154,7 +157,7 @@ DrupalmoduleGenerator.prototype.app = function app() {
       moduleClassName = this.moduleClassName,
       drupalVersion = this.drupalVersion;
 
-  this.mkdir(moduleName);
+  this.mkdirp(moduleName);
 
   // Set our destination to be the new directory.
   this.destinationRoot(moduleName);
@@ -174,7 +177,7 @@ DrupalmoduleGenerator.prototype.app = function app() {
     this.copy('shared/.jshintrc', '.jshintrc');
     this.copy('shared/.gitignore', '.gitignore');
     this.directory('shared/src', 'src');
-    this.mkdir('src/images');
+    this.mkdirp('src/images');
     this.copy('shared/template.scss', 'src/sass/' + moduleName + '.scss');
     this.copy('shared/template.js', 'src/js/' + moduleName + '.js');
   }
